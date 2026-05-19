@@ -34,6 +34,7 @@ from database import (
     obtener_top,
     obtener_ultimo_mensaje,
 )
+from formatting import format_value, parse_abbrev
 from games import GAMES, get_game_by_channel
 from gemini_service import extract_stats_from_image
 
@@ -50,13 +51,8 @@ client = discord.Client(intents=intents)
 
 
 # ---------------------------------------------------------------------
-# Utilidades de formato
+# Utilidades
 # ---------------------------------------------------------------------
-def _formatear_numero(n: int) -> str:
-    """1500 -> '1,500'. Solo cosmético para los mensajes."""
-    return f"{n:,}"
-
-
 def _es_imagen(att: discord.Attachment) -> bool:
     return (att.content_type or "").startswith("image/")
 
@@ -95,11 +91,13 @@ async def _procesar_mensaje(
     lineas_resumen: list[str] = []
     nuevo_record = False
 
-    for stat_key in game_config["stats"]:
-        valor = int(stats.get(stat_key, 0) or 0)
+    for stat_key, stat_info in game_config["stats"].items():
+        # Gemini devuelve algo como '1.2Qa' -> lo pasamos a entero exacto.
+        valor_crudo = stats.get(stat_key, "")
+        valor = parse_abbrev(valor_crudo)
         if valor <= 0:
-            # No guardamos ceros: probablemente Gemini no pudo leer
-            # esa stat concreta. Las demás sí pueden valer.
+            # No guardamos ceros: Gemini probablemente no pudo leer esa
+            # stat. Las otras pueden seguir siendo válidas.
             continue
 
         try:
@@ -114,22 +112,26 @@ async def _procesar_mensaje(
             print(f"[ERROR] {game_key}/{stat_key}: fallo al guardar: {error}")
             continue
 
+        fmt = stat_info.get("format", "raw") if isinstance(stat_info, dict) else "raw"
+        valor_fmt = format_value(valor, fmt)
+
         estado = resultado["estado"]
         if estado == "actualizado":
             nuevo_record = True
+            previo_fmt = format_value(resultado["record_previo"], fmt)
             lineas_resumen.append(
-                f"🏆 **{stat_key}**: {_formatear_numero(valor)} "
-                f"(antes {_formatear_numero(resultado['record_previo'])})"
+                f"🏆 **{stat_key}**: {valor_fmt} (antes {previo_fmt})"
             )
         elif estado == "creado":
             nuevo_record = True
             lineas_resumen.append(
-                f"✨ **{stat_key}**: {_formatear_numero(valor)} (primer registro)"
+                f"✨ **{stat_key}**: {valor_fmt} (primer registro)"
             )
         else:  # sin_cambios
+            tu_record_fmt = format_value(resultado["valor"], fmt)
             lineas_resumen.append(
-                f"• **{stat_key}**: {_formatear_numero(valor)} "
-                f"(tu récord sigue siendo {_formatear_numero(resultado['valor'])})"
+                f"• **{stat_key}**: {valor_fmt} "
+                f"(tu récord sigue siendo {tu_record_fmt})"
             )
 
     if not lineas_resumen:
@@ -158,6 +160,8 @@ def _formatear_top(
     """Construye el texto del mensaje fijado para una stat."""
     nombre_juego = game_config["display_name"]
     medallas = ["🥇", "🥈", "🥉"] + ["🏅"] * 7
+    stat_info = game_config["stats"][stat_key]
+    fmt = stat_info.get("format", "raw") if isinstance(stat_info, dict) else "raw"
 
     if not top:
         cuerpo = "_Aún no hay registros para esta estadística._"
@@ -165,7 +169,7 @@ def _formatear_top(
         lineas = []
         for i, fila in enumerate(top):
             medalla = medallas[i] if i < len(medallas) else "▫️"
-            valor = _formatear_numero(int(fila["best_value"]))
+            valor = format_value(int(fila["best_value"]), fmt)
             lineas.append(f"{medalla} **{fila['username']}** — {valor}")
         cuerpo = "\n".join(lineas)
 

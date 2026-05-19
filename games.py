@@ -10,17 +10,32 @@ Cada juego se describe con:
   - channel:      nombre EXACTO del canal de Discord (sin "#").
   - player_name_description:
                   pista para Gemini sobre cómo es el nombre del jugador
-                  en la captura. Es común a todas las stats del juego.
-  - stats:        diccionario {clave_interna: descripcion_para_gemini}.
-                  La clave interna es la que se guarda en la base de
-                  datos. La descripción debe ser PRECISA: cuanto mejor
-                  describas qué tiene que mirar Gemini, menos errores.
-  - top_size:     cuántos jugadores muestra el mensaje fijado de esa
-                  stat (por defecto 10).
+                  en la captura.
+  - stats:        diccionario {clave_interna: {desc, format}}
+                    - desc:   descripción visual para Gemini.
+                    - format: cómo se MUESTRA el valor en Discord.
+                              Disponibles (ver formatting.py):
+                                'money'  -> '$1.2Qa'
+                                'income' -> '$1.2Qa/s'
+                                'plain'  -> '1.2Qa'  (sin símbolo)
+                                'raw'    -> '1,200,000'  (entero plano)
+  - top_size:     cuántos jugadores muestra el mensaje fijado.
 
-Para añadir un juego nuevo: copia un bloque, cámbiale los valores y haz
-push. La base de datos y el bot lo recogen automáticamente.
+Nota sobre valores: el bot los almacena internamente como ENTEROS exactos
+(con precisión arbitraria), así que los rankings ordenan bien aunque las
+cifras sean enormes. La conversión desde/hacia '1.2Qa' la hace
+formatting.py.
+
+Para añadir un juego nuevo: copia un bloque y modifícalo.
 """
+
+# Los sufijos vienen del juego (Verse: STRING_Abbrev). Mantener este
+# texto sincronizado con formatting.ABBREV.
+SUFIJOS_DEL_JUEGO = (
+    "K, M, B, T, Qa, Qi, Sx, Sp, Oc, No, Dc, Un, Du, Tr, "
+    "Qt, Qn, Se, St, Og, Nn, Vg, UVg"
+)
+
 
 GAMES: dict[str, dict] = {
     # ------------------------------------------------------------------
@@ -28,26 +43,30 @@ GAMES: dict[str, dict] = {
     # ------------------------------------------------------------------
     "kick_a_lucky_block": {
         "display_name": "Kick A Lucky Block",
-        "channel": "〔📋〕kick-leaderboard",
+        "channel": "kick-leaderboard",
         "player_name_description": (
             "Texto blanco que aparece debajo de la imagen de perfil "
             "(avatar) del jugador."
         ),
         "stats": {
-            "income": (
-                "Número AMARILLO que representa el dinero por segundo "
-                "del jugador. Se reconoce porque lleva el símbolo '$' "
-                "delante y termina en '/s' (por ejemplo: '$1.2K/s'). "
-                "Si la cifra tiene sufijo de magnitud (K, M, B, T), "
-                "conviértela al entero correspondiente "
-                "(K=mil, M=millón, B=mil millones, T=billón)."
-            ),
-            "cash": (
-                "Número VERDE con el símbolo '$' delante, situado en "
-                "la barra inferior. Es el dinero total acumulado del "
-                "jugador. Si la cifra tiene sufijo de magnitud (K, M, "
-                "B, T), conviértela al entero correspondiente."
-            ),
+            "income": {
+                "desc": (
+                    "Número AMARILLO que representa el dinero por segundo "
+                    "del jugador. Se reconoce porque lleva el símbolo "
+                    "'$' delante y termina en '/s' (ejemplo: '$1.2K/s', "
+                    f"'$45.7Qa/s'). Sufijos posibles: {SUFIJOS_DEL_JUEGO}."
+                ),
+                "format": "income",  # -> '$1.2Qa/s'
+            },
+            "cash": {
+                "desc": (
+                    "Número VERDE con el símbolo '$' delante, situado en "
+                    "la barra inferior. Es el dinero total acumulado del "
+                    "jugador (ejemplo: '$45.7M', '$1.2Qa'). "
+                    f"Sufijos posibles: {SUFIJOS_DEL_JUEGO}."
+                ),
+                "format": "money",  # -> '$1.2Qa'
+            },
         },
         "top_size": 10,
     },
@@ -58,10 +77,12 @@ GAMES: dict[str, dict] = {
     # "mi_juego": {
     #     "display_name": "Mi Juego",
     #     "channel": "mi-juego-leaderboard",
-    #     "player_name_description": "Texto blanco con el nick, arriba a la izquierda",
+    #     "player_name_description": "...",
     #     "stats": {
-    #         "kills": "Número rojo grande junto al icono de calavera",
-    #         "score": "Número amarillo en el centro, debajo de 'SCORE'",
+    #         "kills": {
+    #             "desc": "Número rojo junto al icono de calavera",
+    #             "format": "raw",   # 1,234
+    #         },
     #     },
     #     "top_size": 10,
     # },

@@ -10,14 +10,15 @@
 -- =====================================================================
 
 -- Una fila por (juego, jugador, estadística).
--- best_value es BIGINT porque algunos juegos manejan cifras enormes
--- (M, B, T) y un int normal se queda corto.
+-- best_value es NUMERIC porque algunos sufijos del juego (Sx en
+-- adelante: 10^18 y más) superan lo que cabe en BIGINT. NUMERIC sin
+-- precisión declarada admite enteros tan grandes como necesites.
 create table if not exists public.leaderboard (
-    game        text   not null,
-    discord_id  text   not null,
-    stat        text   not null,
-    best_value  bigint not null default 0,
-    username    text   not null,
+    game        text    not null,
+    discord_id  text    not null,
+    stat        text    not null,
+    best_value  numeric not null default 0,
+    username    text    not null,
     updated_at  timestamptz not null default now(),
     primary key (game, discord_id, stat)
 );

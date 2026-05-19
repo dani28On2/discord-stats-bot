@@ -37,8 +37,10 @@ def _guardar_stat_sync(
     """
     Guarda la mejor marca del jugador en UNA stat de UN juego.
 
-    Devuelve un dict con el resultado:
-      {"estado": "creado"|"actualizado"|"sin_cambios", ...}
+    Nota técnica: el valor se envía como STRING para que NUMERIC en
+    Postgres lo reciba con precisión arbitraria. Si lo mandásemos como
+    int de Python en JSON, los valores enormes (Sx en adelante) se
+    convertirían a float y perderían dígitos.
     """
     consulta = (
         _supabase.table(LEADERBOARD)
@@ -55,7 +57,7 @@ def _guardar_stat_sync(
         "game": game,
         "discord_id": discord_id,
         "stat": stat,
-        "best_value": value,
+        "best_value": str(value),  # NUMERIC acepta string directo
         "username": username,
         "updated_at": ahora,
     }
@@ -64,7 +66,8 @@ def _guardar_stat_sync(
         _supabase.table(LEADERBOARD).insert(fila).execute()
         return {"estado": "creado", "valor": value}
 
-    record_previo = actual.get("best_value", 0)
+    # Convertimos lo que devuelve Supabase a int de Python (precisión arbitraria).
+    record_previo = int(str(actual.get("best_value", 0)).split(".")[0])
     if value > record_previo:
         (
             _supabase.table(LEADERBOARD)
@@ -98,7 +101,12 @@ def _top_sync(game: str, stat: str, limit: int) -> list[dict]:
         .limit(limit)
         .execute()
     )
-    return consulta.data or []
+    filas = consulta.data or []
+    # Normalizamos best_value a int de Python (precisión arbitraria),
+    # porque Supabase devuelve NUMERIC como string o float.
+    for fila in filas:
+        fila["best_value"] = int(str(fila.get("best_value", 0)).split(".")[0])
+    return filas
 
 
 async def obtener_top(game: str, stat: str, limit: int = 10) -> list[dict]:

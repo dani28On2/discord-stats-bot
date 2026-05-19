@@ -58,13 +58,21 @@ def _construir_esquema(game_config: dict) -> type[BaseModel]:
         ),
     }
 
-    for stat_key, stat_desc in game_config["stats"].items():
+    for stat_key, stat_info in game_config["stats"].items():
+        # stat_info ahora es un dict {desc, format}; usamos solo 'desc' aquí.
+        stat_desc = stat_info["desc"] if isinstance(stat_info, dict) else stat_info
         campos[stat_key] = (
-            int,
+            str,
             Field(
                 description=(
-                    f"{stat_desc} Devuelve SOLO el número entero, sin "
-                    f"comas, sin puntos de miles, sin texto."
+                    f"{stat_desc}\n\n"
+                    f"Devuelve el valor EXACTAMENTE como aparece en la "
+                    f"captura, conservando el sufijo de magnitud del "
+                    f"juego (K, M, B, T, Qa, Qi, Sx, Sp, Oc, No, Dc, Un, "
+                    f"Du, Tr, Qt, Qn, Se, St, Og, Nn, Vg, UVg). Ejemplos "
+                    f"válidos: '1.2K', '45.7M', '3.14Qa'. NO incluyas "
+                    f"'$' ni '/s' ni espacios: solo número y sufijo. Si "
+                    f"no hay sufijo, devuelve solo el número."
                 )
             ),
         )
@@ -84,12 +92,16 @@ def _construir_prompt(game_config: dict) -> str:
         f"REGLAS:\n"
         f"- Sigue al pie de la letra las descripciones de cada campo del "
         f"esquema JSON; ahí te indico qué color/posición tiene cada dato.\n"
-        f"- Los números deben ser ENTEROS, sin comas ni símbolos. Si hay "
-        f"sufijos como K, M, B, T conviértelos al entero real "
-        f"(1.2K = 1200, 3M = 3000000).\n"
+        f"- Para las estadísticas numéricas, devuelve el valor TAL CUAL "
+        f"se ve en la captura, con su sufijo del juego (K, M, B, T, Qa, "
+        f"Qi, Sx, Sp, Oc, No, Dc, Un, Du, Tr, Qt, Qn, Se, St, Og, Nn, "
+        f"Vg, UVg). Conserva los decimales que aparezcan (ej. '1.2Qa').\n"
+        f"- IMPORTANTE: no incluyas '$', '/s', comas ni espacios en el "
+        f"valor: solo número con decimales y, opcionalmente, el sufijo "
+        f"correspondiente.\n"
         f"- Si la imagen está borrosa, no es del juego correcto, o no "
         f"puedes leer algún dato con CERTEZA, pon stats_detected=false y "
-        f"deja los números a 0. NO inventes datos."
+        f"deja los strings de stats vacíos. NO inventes datos."
     )
 
 
