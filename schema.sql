@@ -4,6 +4,7 @@
 --  Copia y ejecuta esto en:  Supabase > SQL Editor > New query
 -- =====================================================================
 
+-- Tabla principal: mejor marca de cada jugador.
 create table if not exists public.leaderboard (
     discord_id  text        primary key,           -- ID único de Discord del jugador
     username    text        not null,              -- Nick visible (para el ranking)
@@ -12,12 +13,18 @@ create table if not exists public.leaderboard (
     updated_at  timestamptz not null default now() -- Última actualización
 );
 
--- Índice para ordenar el ranking rápidamente por puntuación.
 create index if not exists leaderboard_best_score_idx
     on public.leaderboard (best_score desc);
 
+-- Tabla de estado: recuerda por dónde iba el procesado por lotes.
+-- Es un simple almacén clave/valor; aquí guardamos el ID del último
+-- mensaje de Discord ya analizado para no repetirlo en la siguiente
+-- ejecución del GitHub Action.
+create table if not exists public.bot_state (
+    key   text primary key,
+    value text
+);
+
 -- NOTA SOBRE SEGURIDAD:
--- El bot usa la SECRET key (sb_secret_...), que tiene acceso privilegiado
--- e ignora las políticas RLS, así que esto funciona tal cual.
--- Si algún día quisieras usar la PUBLISHABLE key (sb_publishable_...),
--- tendrías que activar RLS y crear políticas de INSERT/UPDATE/SELECT.
+-- El bot usa la SECRET key (sb_secret_...), con acceso privilegiado que
+-- ignora las políticas RLS, así que esto funciona tal cual.
