@@ -5,7 +5,7 @@ Punto ÚNICO de carga de configuración y secretos.
 
 El resto del código NUNCA lee variables de entorno directamente:
 siempre las importa desde aquí. Así la "configuración de seguridad"
-queda separada y centralizada, tal como se pide para producción.
+queda separada y centralizada.
 """
 
 import os
@@ -38,6 +38,7 @@ def _requerida(nombre: str) -> str:
 DISCORD_TOKEN: str = _requerida("DISCORD_TOKEN")
 GEMINI_API_KEY: str = _requerida("GEMINI_API_KEY")
 SUPABASE_URL: str = _requerida("SUPABASE_URL")
+# SUPABASE_KEY = la Secret key nueva (sb_secret_...) o la antigua service_role.
 SUPABASE_KEY: str = _requerida("SUPABASE_KEY")
 
 # --- Variables OPCIONALES (con valor por defecto) ---

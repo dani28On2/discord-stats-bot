@@ -23,6 +23,8 @@ from src.config import SUPABASE_KEY, SUPABASE_URL
 #   updated_at  timestamptz
 TABLE = "leaderboard"
 
+# create_client funciona igual con la nueva Secret key (sb_secret_...)
+# que con la antigua service_role: no hay que cambiar nada aquí.
 _supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 
