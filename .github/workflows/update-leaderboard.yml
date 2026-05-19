@@ -45,6 +45,6 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
-          TARGET_CHANNEL_NAME: subir-stats
+          TARGET_CHANNEL_NAME: ${{ secrets.TARGET_CHANNEL_NAME }}
           GEMINI_MODEL: gemini-2.5-flash
         run: python batch_update.py
