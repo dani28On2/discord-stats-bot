@@ -1,21 +1,17 @@
 name: Actualizar leaderboard
 
-# --- Cuándo se ejecuta ---
 on:
-  # 1) MANUAL: aparece un botón "Run workflow" en la pestaña Actions.
+  # Botón "Run workflow" en la pestaña Actions del repo.
   workflow_dispatch:
 
-  # 2) AUTOMÁTICO: cada hora en punto (la hora del cron es UTC).
-  #    Cambia el patrón si quieres otra frecuencia, por ejemplo:
-  #      "*/30 * * * *"  -> cada 30 minutos
-  #      "0 */6 * * *"   -> cada 6 horas
-  #    AVISO: GitHub no garantiza la hora exacta (puede retrasarse en
-  #    horas de carga) y desactiva el cron si el repo pasa ~60 días
-  #    sin actividad. El botón manual no tiene esas limitaciones.
+  # Programado: cada hora en punto (UTC).
+  # Cambia el patrón si quieres otra frecuencia:
+  #   "*/30 * * * *"  -> cada 30 minutos
+  #   "0 */6 * * *"   -> cada 6 horas
   schedule:
     - cron: "0 * * * *"
 
-# Evita que dos ejecuciones a la vez (manual + programada) choquen.
+# Evita ejecuciones solapadas (manual + programada).
 concurrency:
   group: actualizar-leaderboard
   cancel-in-progress: false
@@ -23,14 +19,16 @@ concurrency:
 jobs:
   actualizar:
     runs-on: ubuntu-latest
-    timeout-minutes: 10   # red de seguridad: si algo se cuelga, se corta
+    timeout-minutes: 10
 
     steps:
       - name: Descargar el repositorio
-        uses: actions/checkout@v4
+        # Versión v5 (Node 24) -> elimina el warning de Node 20.
+        uses: actions/checkout@v5
 
       - name: Configurar Python
-        uses: actions/setup-python@v5
+        # Versión v6 (Node 24).
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
@@ -39,12 +37,11 @@ jobs:
 
       - name: Ejecutar la actualización por lotes
         env:
-          PYTHONPATH: .  # <-- ¡AÑADE ESTA LÍNEA!
-          # Estos secretos DEBEN existir en el repositorio
+          # PYTHONPATH=. permite imports planos (config, database, etc.)
+          PYTHONPATH: .
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
-          TARGET_CHANNEL_NAME: ${{ secrets.TARGET_CHANNEL_NAME }}
           GEMINI_MODEL: gemini-2.5-flash
         run: python batch_update.py
