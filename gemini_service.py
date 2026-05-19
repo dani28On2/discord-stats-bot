@@ -15,7 +15,7 @@ from google import genai
 from google.genai import types
 from pydantic import BaseModel, Field
 
-from src.config import GEMINI_API_KEY, GEMINI_MODEL
+from config import GEMINI_API_KEY, GEMINI_MODEL
 
 # El cliente se crea una sola vez al importar el módulo.
 _client = genai.Client(api_key=GEMINI_API_KEY)
