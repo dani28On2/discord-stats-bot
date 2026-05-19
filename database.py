@@ -15,7 +15,7 @@ from datetime import datetime, timezone
 
 from supabase import Client, create_client
 
-from src.config import SUPABASE_KEY, SUPABASE_URL
+from config import SUPABASE_KEY, SUPABASE_URL
 
 TABLE = "leaderboard"
 STATE_TABLE = "bot_state"
