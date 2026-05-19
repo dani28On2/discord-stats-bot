@@ -19,13 +19,13 @@ import asyncio
 
 import discord
 
-from src.config import DISCORD_TOKEN, TARGET_CHANNEL_NAME
-from src.database import (
+from config import DISCORD_TOKEN, TARGET_CHANNEL_NAME
+from database import (
     guardar_puntuacion,
     guardar_ultimo_mensaje,
     obtener_ultimo_mensaje,
 )
-from src.gemini_service import extract_stats_from_image
+from gemini_service import extract_stats_from_image
 
 # En la PRIMERA ejecución (sin estado previo) no procesamos todo el
 # historial del canal para no inundarlo de confirmaciones: solo los
