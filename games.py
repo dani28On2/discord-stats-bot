@@ -28,7 +28,7 @@ GAMES: dict[str, dict] = {
     # ------------------------------------------------------------------
     "kick_a_lucky_block": {
         "display_name": "Kick A Lucky Block",
-        "channel": "kick-leaderboard",
+        "channel": "〔📋〕kick-leaderboard",
         "player_name_description": (
             "Texto blanco que aparece debajo de la imagen de perfil "
             "(avatar) del jugador."
