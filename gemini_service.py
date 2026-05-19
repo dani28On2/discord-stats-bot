@@ -23,39 +23,45 @@ _client = genai.Client(api_key=GEMINI_API_KEY)
 
 class PlayerStats(BaseModel):
     """
-    Esquema que Gemini DEBE rellenar. Las descripciones (Field) se envían
-    al modelo como pistas, así que cuanto más claras, mejor extracción.
+    Si en el futuro añades más cosas a la base de datos (ej: nivel, clan...),
+    solo tienes que añadir aquí la variable y Gemini la buscará automáticamente.
     """
-
     stats_detected: bool = Field(
-        description=(
-            "True solo si la captura es legible y se pueden leer con "
-            "seguridad el nombre, la puntuación y las bajas. "
-            "False si la imagen está borrosa, recortada o no es una "
-            "pantalla de estadísticas de partida."
-        )
+        description="True si logras identificar el recuadro con borde de colores (arcoíris). False en caso contrario."
     )
     player_name: str = Field(
-        description="Nombre o nick del jugador tal y como aparece en la captura."
+        description="El nombre del jugador (el texto blanco debajo del avatar)."
     )
-    score: int = Field(
-        description="Puntuación TOTAL obtenida en la partida (solo el número entero)."
+    is_vip: bool = Field(
+        default=False,
+        description="True si el color de fondo del recuadro es AMARILLO. False si es negro u oscuro."
+    )
+    
+    # --- AQUÍ ESTÁ LA MAGIA DINÁMICA ---
+    cash: int = Field(
+        description=(
+            "Asigna a este campo el número de la estadística que más sentido tenga "
+            "como 'Puntuación' o 'Dinero' (ejemplo: líneas amarillas o verdes como "
+            "INCOME, CASH, MONEY, PUNTOS, etc.)."
+        )
     )
     kills: int = Field(
-        description="Número de bajas / kills del jugador (solo el número entero)."
+        description=(
+            "Asigna a este campo el número de la estadística que más sentido tenga "
+            "como 'Bajas' o 'Aperturas' (ejemplo: líneas rojas o azules como "
+            "PACKS OPENED, CARDS, KILLS, BAJAS, etc.)."
+        )
     )
 
-
-# Instrucción que acompaña a la imagen. Es explícita para reducir errores.
+# Instrucción súper genérica y limpia
 _PROMPT = (
-    "Eres un analista de estadísticas de videojuegos. Observa esta captura "
-    "de pantalla de una pantalla de resultados de partida y extrae los datos "
-    "del jugador principal.\n"
-    "- Devuelve la puntuación y las bajas como números enteros, sin comas ni "
-    "puntos de miles ni texto.\n"
-    "- Si la imagen está borrosa, no es una pantalla de estadísticas, o no "
-    "puedes leer algún dato con certeza, pon stats_detected=false y usa 0 en "
-    "los campos numéricos. No inventes datos."
+    "Eres un sistema de visión artificial. Tu ÚNICO objetivo es localizar en la imagen "
+    "un recuadro de estadísticas con un borde de múltiples colores (arcoíris).\n\n"
+    "REGLA DE ORO: IGNORA POR COMPLETO el resto de la pantalla (fondo, chat, menús). "
+    "Céntrate SOLO en el interior del recuadro.\n\n"
+    "Usa tu lógica para extraer los datos de ese recuadro y rellenar las variables "
+    "que te pido en el esquema JSON, basándote en las descripciones que te he dado "
+    "para cada variable. Extrae solo los números enteros, sin letras ni símbolos."
 )
 
 
