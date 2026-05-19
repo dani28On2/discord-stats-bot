@@ -53,6 +53,7 @@ async def _procesar_mensaje(message: discord.Message) -> None:
     try:
         image_bytes = await attachment.read()
         stats = await extract_stats_from_image(image_bytes, attachment.content_type)
+        print(f"[DEBUG] Respuesta de Gemini para el mensaje {message.id}: {stats}")
     except Exception as error:
         print(f"[WARN] Mensaje {message.id}: fallo al analizar con Gemini: {error}")
         return
