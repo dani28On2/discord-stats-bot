@@ -1,0 +1,16 @@
+# --- Dependencias del bot de estadísticas de Discord ---
+
+# Librería principal del bot de Discord
+discord.py>=2.4.0
+
+# SDK oficial de Google para Gemini (NO usar google-generativeai, está deprecado)
+google-genai>=1.0.0
+
+# Cliente oficial de Supabase para Python
+supabase>=2.4.0
+
+# Carga de variables de entorno desde el archivo .env
+python-dotenv>=1.0.0
+
+# Validación de datos y esquemas para el Structured Output de Gemini
+pydantic>=2.6.0
