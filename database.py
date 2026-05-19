@@ -1,13 +1,18 @@
 """
 database.py
 ===========
-Capa de acceso a Supabase.
+Acceso a Supabase.
 
-Dos responsabilidades:
-  1. Guardar la MEJOR puntuación de cada jugador (tabla 'leaderboard').
-  2. Recordar el ID del ÚLTIMO mensaje de Discord ya procesado
-     (tabla 'bot_state'), para que el modo por lotes no repita
-     mensajes entre una ejecución y la siguiente.
+Tablas:
+  leaderboard(game, discord_id, stat, best_value, username, updated_at)
+    PK: (game, discord_id, stat)
+    -> Una fila por (juego, jugador, estadística). Permite que cada stat
+       tenga su récord independiente.
+
+  bot_state(key, value)
+    -> Almacén clave/valor para datos sueltos. Lo usamos para:
+         last_message:<game>   -> ID del último mensaje procesado en ese canal
+         pinned:<game>:<stat>  -> ID del mensaje fijado del Top 10 de esa stat
 """
 
 import asyncio
@@ -17,92 +22,123 @@ from supabase import Client, create_client
 
 from config import SUPABASE_KEY, SUPABASE_URL
 
-TABLE = "leaderboard"
-STATE_TABLE = "bot_state"
-STATE_KEY = "last_message_id"  # clave fija de la fila de estado
+LEADERBOARD = "leaderboard"
+STATE = "bot_state"
 
-# create_client funciona igual con la nueva Secret key (sb_secret_...).
 _supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 
-# ---------------------------------------------------------------------
+# =====================================================================
 #  PUNTUACIONES
-# ---------------------------------------------------------------------
-def _guardar_sync(discord_id: str, username: str, score: int, kills: int) -> dict:
+# =====================================================================
+def _guardar_stat_sync(
+    game: str, discord_id: str, username: str, stat: str, value: int
+) -> dict:
     """
-    1. Busca el registro actual del jugador.
-    2. Si no existe -> lo crea.
-    3. Si existe y la nueva puntuación es mayor -> lo actualiza.
-    4. Si no supera su récord -> no toca nada.
+    Guarda la mejor marca del jugador en UNA stat de UN juego.
+
+    Devuelve un dict con el resultado:
+      {"estado": "creado"|"actualizado"|"sin_cambios", ...}
     """
     consulta = (
-        _supabase.table(TABLE)
+        _supabase.table(LEADERBOARD)
         .select("*")
+        .eq("game", game)
         .eq("discord_id", discord_id)
+        .eq("stat", stat)
         .execute()
     )
-    registro_actual = consulta.data[0] if consulta.data else None
+    actual = consulta.data[0] if consulta.data else None
 
     ahora = datetime.now(timezone.utc).isoformat()
     fila = {
+        "game": game,
         "discord_id": discord_id,
+        "stat": stat,
+        "best_value": value,
         "username": username,
-        "best_score": score,
-        "best_kills": kills,
         "updated_at": ahora,
     }
 
-    if registro_actual is None:
-        _supabase.table(TABLE).insert(fila).execute()
-        return {"estado": "creado", "puntuacion": score}
+    if actual is None:
+        _supabase.table(LEADERBOARD).insert(fila).execute()
+        return {"estado": "creado", "valor": value}
 
-    record_previo = registro_actual.get("best_score", 0)
-    if score > record_previo:
-        _supabase.table(TABLE).update(fila).eq("discord_id", discord_id).execute()
-        return {
-            "estado": "actualizado",
-            "puntuacion": score,
-            "record_previo": record_previo,
-        }
+    record_previo = actual.get("best_value", 0)
+    if value > record_previo:
+        (
+            _supabase.table(LEADERBOARD)
+            .update(fila)
+            .eq("game", game)
+            .eq("discord_id", discord_id)
+            .eq("stat", stat)
+            .execute()
+        )
+        return {"estado": "actualizado", "valor": value, "record_previo": record_previo}
 
-    return {"estado": "sin_cambios", "puntuacion": record_previo}
+    return {"estado": "sin_cambios", "valor": record_previo}
 
 
-async def guardar_puntuacion(
-    discord_id: str, username: str, score: int, kills: int
+async def guardar_stat(
+    game: str, discord_id: str, username: str, stat: str, value: int
 ) -> dict:
-    """Envoltura asíncrona (Supabase es bloqueante -> hilo aparte)."""
     return await asyncio.to_thread(
-        _guardar_sync, discord_id, username, score, kills
+        _guardar_stat_sync, game, discord_id, username, stat, value
     )
 
 
-# ---------------------------------------------------------------------
-#  ESTADO: último mensaje procesado
-# ---------------------------------------------------------------------
-def _obtener_ultimo_sync() -> str | None:
-    """Devuelve el ID del último mensaje procesado, o None si es la 1ª vez."""
+def _top_sync(game: str, stat: str, limit: int) -> list[dict]:
+    """Top N de una stat concreta de un juego, ordenado descendentemente."""
     consulta = (
-        _supabase.table(STATE_TABLE)
-        .select("value")
-        .eq("key", STATE_KEY)
+        _supabase.table(LEADERBOARD)
+        .select("username,best_value,updated_at")
+        .eq("game", game)
+        .eq("stat", stat)
+        .order("best_value", desc=True)
+        .limit(limit)
         .execute()
     )
-    if consulta.data:
-        return consulta.data[0]["value"]
-    return None
+    return consulta.data or []
 
 
-def _guardar_ultimo_sync(message_id: str) -> None:
-    """Guarda (crea o actualiza) el ID del último mensaje procesado."""
-    _supabase.table(STATE_TABLE).upsert(
-        {"key": STATE_KEY, "value": str(message_id)}
-    ).execute()
+async def obtener_top(game: str, stat: str, limit: int = 10) -> list[dict]:
+    return await asyncio.to_thread(_top_sync, game, stat, limit)
 
 
-async def obtener_ultimo_mensaje() -> str | None:
-    return await asyncio.to_thread(_obtener_ultimo_sync)
+# =====================================================================
+#  ESTADO (almacén clave/valor)
+# =====================================================================
+def _state_get_sync(key: str) -> str | None:
+    consulta = (
+        _supabase.table(STATE).select("value").eq("key", key).execute()
+    )
+    return consulta.data[0]["value"] if consulta.data else None
 
 
-async def guardar_ultimo_mensaje(message_id: str) -> None:
-    return await asyncio.to_thread(_guardar_ultimo_sync, message_id)
+def _state_set_sync(key: str, value: str) -> None:
+    _supabase.table(STATE).upsert({"key": key, "value": str(value)}).execute()
+
+
+async def state_get(key: str) -> str | None:
+    return await asyncio.to_thread(_state_get_sync, key)
+
+
+async def state_set(key: str, value: str) -> None:
+    return await asyncio.to_thread(_state_set_sync, key, value)
+
+
+# Helpers semánticos para que batch_update.py se lea mejor.
+async def obtener_ultimo_mensaje(game: str) -> str | None:
+    return await state_get(f"last_message:{game}")
+
+
+async def guardar_ultimo_mensaje(game: str, message_id: str) -> None:
+    return await state_set(f"last_message:{game}", message_id)
+
+
+async def obtener_id_pinned(game: str, stat: str) -> str | None:
+    return await state_get(f"pinned:{game}:{stat}")
+
+
+async def guardar_id_pinned(game: str, stat: str, message_id: str) -> None:
+    return await state_set(f"pinned:{game}:{stat}", message_id)

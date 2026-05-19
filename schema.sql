@@ -1,30 +1,34 @@
 -- =====================================================================
 --  ESQUEMA DE LA BASE DE DATOS (Supabase / PostgreSQL)
 -- ---------------------------------------------------------------------
---  Copia y ejecuta esto en:  Supabase > SQL Editor > New query
+--  Ejecuta esto en:  Supabase > SQL Editor > New query
+--
+--  IMPORTANTE: si vienes de la versión anterior (tabla 'leaderboard'
+--  con columnas discord_id/username/best_score/best_kills), bórrala
+--  antes con:    drop table if exists public.leaderboard;
+--  Los datos previos NO se conservan: el modelo cambia.
 -- =====================================================================
 
--- Tabla principal: mejor marca de cada jugador.
+-- Una fila por (juego, jugador, estadística).
+-- best_value es BIGINT porque algunos juegos manejan cifras enormes
+-- (M, B, T) y un int normal se queda corto.
 create table if not exists public.leaderboard (
-    discord_id  text        primary key,           -- ID único de Discord del jugador
-    username    text        not null,              -- Nick visible (para el ranking)
-    best_score  integer     not null default 0,    -- Mejor puntuación registrada
-    best_kills  integer     not null default 0,    -- Bajas de esa mejor partida
-    updated_at  timestamptz not null default now() -- Última actualización
+    game        text   not null,
+    discord_id  text   not null,
+    stat        text   not null,
+    best_value  bigint not null default 0,
+    username    text   not null,
+    updated_at  timestamptz not null default now(),
+    primary key (game, discord_id, stat)
 );
 
-create index if not exists leaderboard_best_score_idx
-    on public.leaderboard (best_score desc);
+-- Para sacar el Top N de una stat concreta de un juego (la consulta más habitual).
+create index if not exists leaderboard_game_stat_value_idx
+    on public.leaderboard (game, stat, best_value desc);
 
--- Tabla de estado: recuerda por dónde iba el procesado por lotes.
--- Es un simple almacén clave/valor; aquí guardamos el ID del último
--- mensaje de Discord ya analizado para no repetirlo en la siguiente
--- ejecución del GitHub Action.
+-- Tabla de estado: almacén clave/valor.
+-- Se usa para 'last_message:<game>' y 'pinned:<game>:<stat>'.
 create table if not exists public.bot_state (
     key   text primary key,
     value text
 );
-
--- NOTA SOBRE SEGURIDAD:
--- El bot usa la SECRET key (sb_secret_...), con acceso privilegiado que
--- ignora las políticas RLS, así que esto funciona tal cual.
