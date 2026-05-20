@@ -11,7 +11,7 @@ Cada juego se describe con:
   - player_name_description:
                   pista para Gemini sobre cómo es el nombre del jugador
                   en la captura.
-  - stats:        diccionario {clave_interna: {desc, format}}
+  - stats:        diccionario {clave_interna: {desc, format, emoji, title}}
                     - desc:   descripción visual para Gemini.
                     - format: cómo se MUESTRA el valor en Discord.
                               Disponibles (ver formatting.py):
@@ -19,12 +19,11 @@ Cada juego se describe con:
                                 'income' -> '$1.2Qa/s'
                                 'plain'  -> '1.2Qa'  (sin símbolo)
                                 'raw'    -> '1,200,000'  (entero plano)
+                    - emoji:  emoji que precede a la stat en las
+                              confirmaciones (ej: '💵', '💰').
+                    - title:  título del mensaje fijado de esa stat
+                              (ej: 'MOST CASH'). Se muestra en grande.
   - top_size:     cuántos jugadores muestra el mensaje fijado.
-
-Nota sobre valores: el bot los almacena internamente como ENTEROS exactos
-(con precisión arbitraria), así que los rankings ordenan bien aunque las
-cifras sean enormes. La conversión desde/hacia '1.2Qa' la hace
-formatting.py.
 
 Para añadir un juego nuevo: copia un bloque y modifícalo.
 """
@@ -56,7 +55,9 @@ GAMES: dict[str, dict] = {
                     "'$' delante y termina en '/s' (ejemplo: '$1.2K/s', "
                     f"'$45.7Qa/s'). Sufijos posibles: {SUFIJOS_DEL_JUEGO}."
                 ),
-                "format": "income",  # -> '$1.2Qa/s'
+                "format": "income",   # -> '$1.2Qa/s'
+                "emoji": "💰",
+                "title": "MOST INCOME",
             },
             "cash": {
                 "desc": (
@@ -65,7 +66,9 @@ GAMES: dict[str, dict] = {
                     "jugador (ejemplo: '$45.7M', '$1.2Qa'). "
                     f"Sufijos posibles: {SUFIJOS_DEL_JUEGO}."
                 ),
-                "format": "money",  # -> '$1.2Qa'
+                "format": "money",    # -> '$1.2Qa'
+                "emoji": "💵",
+                "title": "MOST CASH",
             },
         },
         "top_size": 10,
@@ -81,7 +84,9 @@ GAMES: dict[str, dict] = {
     #     "stats": {
     #         "kills": {
     #             "desc": "Número rojo junto al icono de calavera",
-    #             "format": "raw",   # 1,234
+    #             "format": "raw",
+    #             "emoji": "💀",
+    #             "title": "MOST KILLS",
     #         },
     #     },
     #     "top_size": 10,
