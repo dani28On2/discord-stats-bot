@@ -113,6 +113,7 @@ async def _procesar_mensaje(
             continue
 
         fmt = stat_info.get("format", "raw") if isinstance(stat_info, dict) else "raw"
+        emoji = stat_info.get("emoji", "📊") if isinstance(stat_info, dict) else "📊"
         valor_fmt = format_value(valor, fmt)
 
         estado = resultado["estado"]
@@ -120,17 +121,17 @@ async def _procesar_mensaje(
             nuevo_record = True
             previo_fmt = format_value(resultado["record_previo"], fmt)
             lineas_resumen.append(
-                f"🏆 **{stat_key}**: {valor_fmt} (antes {previo_fmt})"
+                f"{emoji} **{stat_key}**: {valor_fmt} (antes {previo_fmt})"
             )
         elif estado == "creado":
             nuevo_record = True
             lineas_resumen.append(
-                f"✨ **{stat_key}**: {valor_fmt} (primer registro)"
+                f"{emoji} **{stat_key}**: {valor_fmt} (primer registro)"
             )
         else:  # sin_cambios
             tu_record_fmt = format_value(resultado["valor"], fmt)
             lineas_resumen.append(
-                f"• **{stat_key}**: {valor_fmt} "
+                f"{emoji} **{stat_key}**: {valor_fmt} "
                 f"(tu récord sigue siendo {tu_record_fmt})"
             )
 
@@ -158,10 +159,15 @@ def _formatear_top(
     game_config: dict, stat_key: str, top: list[dict]
 ) -> str:
     """Construye el texto del mensaje fijado para una stat."""
-    nombre_juego = game_config["display_name"]
     medallas = ["🥇", "🥈", "🥉"] + ["🏅"] * 7
     stat_info = game_config["stats"][stat_key]
     fmt = stat_info.get("format", "raw") if isinstance(stat_info, dict) else "raw"
+    emoji = stat_info.get("emoji", "📊") if isinstance(stat_info, dict) else "📊"
+    titulo_stat = (
+        stat_info.get("title", stat_key.upper())
+        if isinstance(stat_info, dict)
+        else stat_key.upper()
+    )
 
     if not top:
         cuerpo = "_Aún no hay registros para esta estadística._"
@@ -174,9 +180,9 @@ def _formatear_top(
         cuerpo = "\n".join(lineas)
 
     timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
+    # '# ' al principio = título grande en Discord (markdown).
     return (
-        f"📌 **{nombre_juego} — Top {game_config['top_size']} · "
-        f"`{stat_key}`**\n\n"
+        f"# {emoji} {titulo_stat} {emoji}\n\n"
         f"{cuerpo}\n\n"
         f"_Actualizado: {timestamp}_"
     )
