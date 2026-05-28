@@ -90,7 +90,7 @@ GAMES: dict[str, dict] = {
     # ------------------------------------------------------------------
     "laser_for_brainrots": {
         "display_name": "Laser For Brainrots",
-        "channel": "laser-for-brainrots",
+        "channel": "💥︱laser-for-brainrots",
         "summary_channel": CANAL_RESUMEN,
         "player_name_description": NOMBRE_JUGADOR_DESC,
         "stats": STATS_INCOME_CASH,
@@ -102,7 +102,7 @@ GAMES: dict[str, dict] = {
     # ------------------------------------------------------------------
     "be_flash_for_brainrots": {
         "display_name": "Be Flash For Brainrots",
-        "channel": "be-flash-for-brainrots",
+        "channel": "⚡︱be-flash-for-brainrots",
         "summary_channel": CANAL_RESUMEN,
         "player_name_description": NOMBRE_JUGADOR_DESC,
         "stats": STATS_INCOME_CASH,
