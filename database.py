@@ -150,3 +150,12 @@ async def obtener_id_pinned(game: str, stat: str) -> str | None:
 
 async def guardar_id_pinned(game: str, stat: str, message_id: str) -> None:
     return await state_set(f"pinned:{game}:{stat}", message_id)
+
+
+async def obtener_id_resumen(game: str) -> str | None:
+    """ID del mensaje consolidado del juego en el canal de moderadores."""
+    return await state_get(f"summary:{game}")
+
+
+async def guardar_id_resumen(game: str, message_id: str) -> None:
+    return await state_set(f"summary:{game}", message_id)
