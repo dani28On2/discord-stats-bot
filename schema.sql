@@ -19,6 +19,7 @@ create table if not exists public.leaderboard (
     stat        text    not null,
     best_value  numeric not null default 0,
     username    text    not null,
+    is_vip      boolean not null default false,
     updated_at  timestamptz not null default now(),
     primary key (game, discord_id, stat)
 );
