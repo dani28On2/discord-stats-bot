@@ -32,7 +32,8 @@ _supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 #  PUNTUACIONES
 # =====================================================================
 def _guardar_stat_sync(
-    game: str, discord_id: str, username: str, stat: str, value: int
+    game: str, discord_id: str, username: str, stat: str, value: int,
+    is_vip: bool = False,
 ) -> dict:
     """
     Guarda la mejor marca del jugador en UNA stat de UN juego.
@@ -59,6 +60,7 @@ def _guardar_stat_sync(
         "stat": stat,
         "best_value": str(value),  # NUMERIC acepta string directo
         "username": username,
+        "is_vip": is_vip,
         "updated_at": ahora,
     }
 
@@ -79,14 +81,24 @@ def _guardar_stat_sync(
         )
         return {"estado": "actualizado", "valor": value, "record_previo": record_previo}
 
+    # Aunque no supere el récord, actualizamos is_vip por si cambió de estado.
+    (
+        _supabase.table(LEADERBOARD)
+        .update({"is_vip": is_vip, "username": username})
+        .eq("game", game)
+        .eq("discord_id", discord_id)
+        .eq("stat", stat)
+        .execute()
+    )
     return {"estado": "sin_cambios", "valor": record_previo}
 
 
 async def guardar_stat(
-    game: str, discord_id: str, username: str, stat: str, value: int
+    game: str, discord_id: str, username: str, stat: str, value: int,
+    is_vip: bool = False,
 ) -> dict:
     return await asyncio.to_thread(
-        _guardar_stat_sync, game, discord_id, username, stat, value
+        _guardar_stat_sync, game, discord_id, username, stat, value, is_vip
     )
 
 
@@ -94,7 +106,7 @@ def _top_sync(game: str, stat: str, limit: int) -> list[dict]:
     """Top N de una stat concreta de un juego, ordenado descendentemente."""
     consulta = (
         _supabase.table(LEADERBOARD)
-        .select("username,best_value,updated_at")
+        .select("username,best_value,is_vip,updated_at")
         .eq("game", game)
         .eq("stat", stat)
         .order("best_value", desc=True)
