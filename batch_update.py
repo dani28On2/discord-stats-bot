@@ -140,6 +140,7 @@ async def _procesar_mensaje(
 
     # 2) Guardar cada stat por separado y construir el resumen para Discord.
     jugador = stats.get("player_name") or message.author.display_name
+    es_vip = bool(stats.get("is_vip", False))
     lineas_resumen: list[str] = []
 
     for stat_key, stat_info in game_config["stats"].items():
@@ -158,6 +159,7 @@ async def _procesar_mensaje(
                 username=str(message.author),
                 stat=stat_key,
                 value=valor,
+                is_vip=es_vip,
             )
         except Exception as error:
             print(f"[ERROR] {game_key}/{stat_key}: fallo al guardar: {error}")
@@ -302,6 +304,7 @@ def _construir_json(game_key: str, game_config: dict, datos: dict) -> str:
             {
                 "name": fila["username"],
                 stat_key: format_value(int(fila["best_value"]), fmt),
+                "isVip": bool(fila.get("is_vip", False)),
             }
             for fila in top
         ]
