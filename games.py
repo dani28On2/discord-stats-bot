@@ -70,7 +70,7 @@ GAMES: dict[str, dict] = {
     # ------------------------------------------------------------------
     "laser_for_brainrots": {
         "display_name": "💥Laser For Brainrots💥",
-        "channel": "laser-for-brainrots",
+        "channel": "💥︱laser-for-brainrots",
         "summary_channel": CANAL_RESUMEN,
         "player_name_description": NOMBRE_JUGADOR_DESC,
         "island_code": "2943-6452-4033",
@@ -83,7 +83,7 @@ GAMES: dict[str, dict] = {
     # ------------------------------------------------------------------
     "be_flash_for_brainrots": {
         "display_name": "⚡Be Flash For Brainrots⚡",
-        "channel": "be-flash-for-brainrots",
+        "channel": "⚡︱be-flash-for-brainrots",
         "summary_channel": CANAL_RESUMEN,
         "player_name_description": NOMBRE_JUGADOR_DESC,
         "island_code": "7694-0608-3252",
@@ -96,7 +96,7 @@ GAMES: dict[str, dict] = {
     # ------------------------------------------------------------------
     "kick_for_brainrots": {
         "display_name": "💪Kick For Brainrots💪",
-        "channel": "kick-for-brainrots",
+        "channel": "💪︱kick-for-brainrots",
         "summary_channel": CANAL_RESUMEN,
         "player_name_description": NOMBRE_JUGADOR_DESC,
         "island_code": "4852-1373-7293",
