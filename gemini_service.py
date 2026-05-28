@@ -70,6 +70,17 @@ def _construir_esquema(game_config: dict) -> type[BaseModel]:
                 )
             ),
         ),
+        "is_vip": (
+            bool,
+            Field(
+                description=(
+                    "True si el FONDO de la tarjeta de estadísticas es "
+                    "AMARILLO (jugador VIP). False si el fondo es NEGRO u "
+                    "OSCURO (jugador normal). Fíjate solo en el color de "
+                    "fondo de la tarjeta, no en otros elementos."
+                )
+            ),
+        ),
     }
 
     for stat_key, stat_info in game_config["stats"].items():
