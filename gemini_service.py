@@ -56,6 +56,20 @@ def _construir_esquema(game_config: dict) -> type[BaseModel]:
             str,
             Field(description=game_config["player_name_description"]),
         ),
+        "island_code": (
+            str,
+            Field(
+                description=game_config.get(
+                    "island_code_description",
+                    "Código de isla: texto blanco con borde negro en "
+                    "cursiva, ENTRE PARÉNTESIS, en la parte inferior, con "
+                    "formato de tres grupos de dígitos separados por "
+                    "guiones (ej. '(2943-6452-4033)'). Devuélvelo tal cual "
+                    "incluyendo los paréntesis. Si no puedes leerlo con "
+                    "certeza, devuelve cadena vacía.",
+                )
+            ),
+        ),
     }
 
     for stat_key, stat_info in game_config["stats"].items():
