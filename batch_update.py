@@ -21,6 +21,8 @@ Al terminar cierra la conexión: el GitHub Action se cierra solo.
 """
 
 import asyncio
+import io
+import json
 from datetime import datetime
 
 import discord
@@ -53,7 +55,8 @@ MAX_POR_EJECUCION = 200
 REJECTION_MESSAGE = (
     "❌ This image was rejected — please resubmit.\n"
     "**Reason:** Not a valid stats card.\n"
-    "Your screenshot must clearly show the statistics card."
+    "Your screenshot must clearly show the statistics card, "
+    "including the island code at the bottom."
 )
 
 intents = discord.Intents.default()
@@ -66,6 +69,30 @@ client = discord.Client(intents=intents)
 # ---------------------------------------------------------------------
 def _es_imagen(att: discord.Attachment) -> bool:
     return (att.content_type or "").startswith("image/")
+
+
+def _normalizar_codigo(texto: str) -> str:
+    """
+    Deja solo los dígitos de un código de isla, para comparar el número
+    sin que importen guiones o espacios.
+    '(2943-6452-4033)' -> '294364524033'
+    """
+    return "".join(c for c in str(texto or "") if c.isdigit())
+
+
+def _tiene_parentesis(texto: str) -> bool:
+    """
+    True si el texto contiene un par de paréntesis con dígitos dentro.
+    El código de isla legítimo SIEMPRE aparece entre paréntesis, así que
+    esto descarta otros números de la pantalla que no los lleven.
+    """
+    s = str(texto or "")
+    abre = s.find("(")
+    cierra = s.find(")", abre + 1)
+    if abre == -1 or cierra == -1:
+        return False
+    # Que haya al menos un dígito dentro de los paréntesis.
+    return any(c.isdigit() for c in s[abre + 1 : cierra])
 
 
 # ---------------------------------------------------------------------
@@ -92,6 +119,24 @@ async def _procesar_mensaje(
     if not stats.get("stats_detected"):
         await message.reply(REJECTION_MESSAGE, mention_author=False)
         return
+
+    # 1.5) Verificar el código de isla: la captura debe pertenecer a
+    #      este juego. Exigimos (a) que venga entre paréntesis y (b) que
+    #      los dígitos coincidan con el código del juego. Los guiones o
+    #      espacios internos no importan (tolerancia al OCR).
+    esperado = _normalizar_codigo(game_config.get("island_code", ""))
+    if esperado:  # solo validamos si el juego tiene código configurado
+        crudo = stats.get("island_code", "")
+        leido = _normalizar_codigo(crudo)
+        if not _tiene_parentesis(crudo) or leido != esperado:
+            print(
+                f"[INFO] {game_key} / msg {message.id}: código de isla "
+                f"inválido (leído '{crudo or 'vacío'}', "
+                f"esperado entre paréntesis '{game_config['island_code']}'). "
+                f"Rechazada."
+            )
+            await message.reply(REJECTION_MESSAGE, mention_author=False)
+            return
 
     # 2) Guardar cada stat por separado y construir el resumen para Discord.
     jugador = stats.get("player_name") or message.author.display_name
@@ -233,65 +278,89 @@ async def _actualizar_mensaje_fijado(
 # ---------------------------------------------------------------------
 # Mensaje resumen consolidado (canal de moderadores)
 # ---------------------------------------------------------------------
-async def _construir_resumen(game_key: str, game_config: dict) -> str:
+def _construir_json(game_key: str, game_config: dict, datos: dict) -> str:
     """
-    Texto de UN mensaje con TODAS las tablas de un juego.
-    Estructura: título grande con el nombre del juego, y debajo un
-    bloque por cada stat con su título y su Top N.
+    Construye el texto JSON consolidado de un juego.
+
+    `datos` es {stat_key: [filas_top...]} ya obtenido de la BD.
+    Estructura del JSON resultante:
+        {
+          "game": "Laser For Brainrots",
+          "updated_at": "2026-05-28 12:00 UTC",
+          "leaderboards": {
+            "income": [ {"name": "...", "income": "$7.8T/s"}, ... ],
+            "cash":   [ {"name": "...", "cash": "$677.8T"}, ... ]
+          }
+        }
+    El valor va FORMATEADO como se ve en el juego ($, sufijo, /s).
     """
-    medallas = ["🥇", "🥈", "🥉"] + ["🏅"] * 7
-    bloques: list[str] = []
+    leaderboards = {}
+    for stat_key, top in datos.items():
+        stat_info = game_config["stats"][stat_key]
+        fmt = stat_info.get("format", "raw") if isinstance(stat_info, dict) else "raw"
+        leaderboards[stat_key] = [
+            {
+                "name": fila["username"],
+                stat_key: format_value(int(fila["best_value"]), fmt),
+            }
+            for fila in top
+        ]
 
-    for stat_key, stat_info in game_config["stats"].items():
-        fmt = stat_info.get("format", "raw")
-        emoji = stat_info.get("emoji", "📊")
-        titulo_stat = stat_info.get("title", stat_key.upper())
-
-        top = await obtener_top(game_key, stat_key, limit=game_config["top_size"])
-        if not top:
-            cuerpo = "_Sin registros._"
-        else:
-            lineas = []
-            for i, fila in enumerate(top):
-                medalla = medallas[i] if i < len(medallas) else "▫️"
-                valor = format_value(int(fila["best_value"]), fmt)
-                lineas.append(f"{medalla} **{fila['username']}** — {valor}")
-            cuerpo = "\n".join(lineas)
-
-        # '## ' = título mediano de Discord (cabecera para cada stat).
-        bloques.append(f"## {emoji} {titulo_stat} {emoji}\n{cuerpo}")
-
-    timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
-    return (
-        f"# 🎮 {game_config['display_name']}\n\n"
-        + "\n\n".join(bloques)
-        + f"\n\n_Actualizado: {timestamp}_"
-    )
+    documento = {
+        "game": game_config["display_name"],
+        "updated_at": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+        "leaderboards": leaderboards,
+    }
+    return json.dumps(documento, indent=2, ensure_ascii=False)
 
 
 async def _actualizar_mensaje_resumen(
     canal_resumen: discord.TextChannel, game_key: str, game_config: dict
 ) -> None:
-    """Crea o edita el mensaje resumen del juego en el canal de moderadores."""
-    texto = await _construir_resumen(game_key, game_config)
-    msg_id = await obtener_id_resumen(game_key)
+    """
+    Publica el resumen del juego como ARCHIVO .json adjunto.
 
+    Discord no permite editar un archivo adjunto ya enviado, así que el
+    patrón es: borrar el mensaje anterior (si existe) y enviar uno nuevo
+    con el archivo actualizado. El ID del nuevo mensaje se guarda para
+    poder borrarlo en la siguiente ejecución.
+    """
+    # 1) Reunir los datos de todas las stats.
+    datos = {}
+    for stat_key in game_config["stats"]:
+        datos[stat_key] = await obtener_top(
+            game_key, stat_key, limit=game_config["top_size"]
+        )
+
+    contenido_json = _construir_json(game_key, game_config, datos)
+
+    # 2) Borrar el mensaje anterior si lo había.
+    msg_id = await obtener_id_resumen(game_key)
     if msg_id is not None:
         try:
-            mensaje = await canal_resumen.fetch_message(int(msg_id))
-            await mensaje.edit(content=texto)
-            return
+            anterior = await canal_resumen.fetch_message(int(msg_id))
+            await anterior.delete()
         except discord.NotFound:
-            print(f"[INFO] Resumen de {game_key} no existe. Lo recreo.")
+            pass  # ya no existía, seguimos
         except discord.HTTPException as e:
-            print(f"[WARN] Error editando resumen de {game_key}: {e}")
-            return
+            print(f"[WARN] No pude borrar el resumen anterior de {game_key}: {e}")
 
+    # 3) Enviar el nuevo con el archivo adjunto.
+    #    El archivo se construye en memoria, sin tocar disco.
+    nombre_archivo = f"{game_key}_leaderboard.json"
+    archivo = discord.File(
+        io.BytesIO(contenido_json.encode("utf-8")),
+        filename=nombre_archivo,
+    )
+    mensaje_texto = (
+        f"**{game_config['display_name']}** — leaderboard\n"
+        f"_Actualizado: {datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')}_"
+    )
     try:
-        nuevo = await canal_resumen.send(texto)
+        nuevo = await canal_resumen.send(content=mensaje_texto, file=archivo)
         await guardar_id_resumen(game_key, str(nuevo.id))
     except discord.HTTPException as e:
-        print(f"[ERROR] No pude crear el resumen de {game_key}: {e}")
+        print(f"[ERROR] No pude enviar el resumen de {game_key}: {e}")
 
 
 # ---------------------------------------------------------------------
@@ -431,6 +500,20 @@ async def on_ready():
                     )
                     cache_resumen[nombre_resumen] = None
                 else:
+                    # El bot necesita Attach Files (para el .json) y
+                    # Manage Messages (para borrar el resumen anterior).
+                    p = canal_resumen.permissions_for(canal_resumen.guild.me)
+                    if not p.attach_files:
+                        print(
+                            f"[WARN] Sin permiso 'Attach Files' en "
+                            f"#{nombre_resumen}: no podré subir el .json."
+                        )
+                    if not p.manage_messages:
+                        print(
+                            f"[WARN] Sin permiso 'Manage Messages' en "
+                            f"#{nombre_resumen}: no podré borrar el resumen "
+                            f"anterior (se acumularán mensajes)."
+                        )
                     cache_resumen[nombre_resumen] = canal_resumen
 
             canal_resumen = cache_resumen[nombre_resumen]
