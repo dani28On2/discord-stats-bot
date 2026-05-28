@@ -30,7 +30,9 @@ from database import (
     guardar_stat,
     guardar_ultimo_mensaje,
     guardar_id_pinned,
+    guardar_id_resumen,
     obtener_id_pinned,
+    obtener_id_resumen,
     obtener_top,
     obtener_ultimo_mensaje,
 )
@@ -44,6 +46,15 @@ BACKFILL_PRIMERA_VEZ = 25
 
 # Tope de mensajes nuevos por ejecución (evita tandas inesperadas).
 MAX_POR_EJECUCION = 200
+
+# Mensaje único de rechazo (imagen ilegible o no es una stats card).
+# Se usa tanto cuando Gemini marca stats_detected=false como cuando
+# Gemini detecta la card pero no consigue leer ningún valor > 0.
+REJECTION_MESSAGE = (
+    "❌ This image was rejected — please resubmit.\n"
+    "**Reason:** Not a valid stats card.\n"
+    "Your screenshot must clearly show the statistics card."
+)
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -79,17 +90,12 @@ async def _procesar_mensaje(
         return
 
     if not stats.get("stats_detected"):
-        await message.reply(
-            "🔍 No conseguí leer las estadísticas de esta captura "
-            "(¿borrosa o sin datos visibles?).",
-            mention_author=False,
-        )
+        await message.reply(REJECTION_MESSAGE, mention_author=False)
         return
 
     # 2) Guardar cada stat por separado y construir el resumen para Discord.
     jugador = stats.get("player_name") or message.author.display_name
     lineas_resumen: list[str] = []
-    nuevo_record = False
 
     for stat_key, stat_info in game_config["stats"].items():
         # Gemini devuelve algo como '1.2Qa' -> lo pasamos a entero exacto.
@@ -118,34 +124,26 @@ async def _procesar_mensaje(
 
         estado = resultado["estado"]
         if estado == "actualizado":
-            nuevo_record = True
             previo_fmt = format_value(resultado["record_previo"], fmt)
             lineas_resumen.append(
-                f"{emoji} **{stat_key}**: {valor_fmt} (antes {previo_fmt})"
+                f"{emoji} **{stat_key}**: {valor_fmt} (previous {previo_fmt})"
             )
         elif estado == "creado":
-            nuevo_record = True
             lineas_resumen.append(
-                f"{emoji} **{stat_key}**: {valor_fmt} (primer registro)"
+                f"{emoji} **{stat_key}**: {valor_fmt} (first record)"
             )
         else:  # sin_cambios
             tu_record_fmt = format_value(resultado["valor"], fmt)
             lineas_resumen.append(
                 f"{emoji} **{stat_key}**: {valor_fmt} "
-                f"(tu récord sigue siendo {tu_record_fmt})"
+                f"(your record stays at {tu_record_fmt})"
             )
 
     if not lineas_resumen:
-        await message.reply(
-            "⚠️ No pude leer ninguna estadística de la captura.",
-            mention_author=False,
-        )
+        await message.reply(REJECTION_MESSAGE, mention_author=False)
         return
 
-    cabecera = (
-        f"🎯 Captura de **{jugador}** procesada"
-        + (" — ¡nuevo récord! 🎉" if nuevo_record else "")
-    )
+    cabecera = f"🎯 **{jugador}**'s screenshot processed"
     await message.reply(
         cabecera + "\n" + "\n".join(lineas_resumen),
         mention_author=False,
@@ -233,6 +231,70 @@ async def _actualizar_mensaje_fijado(
 
 
 # ---------------------------------------------------------------------
+# Mensaje resumen consolidado (canal de moderadores)
+# ---------------------------------------------------------------------
+async def _construir_resumen(game_key: str, game_config: dict) -> str:
+    """
+    Texto de UN mensaje con TODAS las tablas de un juego.
+    Estructura: título grande con el nombre del juego, y debajo un
+    bloque por cada stat con su título y su Top N.
+    """
+    medallas = ["🥇", "🥈", "🥉"] + ["🏅"] * 7
+    bloques: list[str] = []
+
+    for stat_key, stat_info in game_config["stats"].items():
+        fmt = stat_info.get("format", "raw")
+        emoji = stat_info.get("emoji", "📊")
+        titulo_stat = stat_info.get("title", stat_key.upper())
+
+        top = await obtener_top(game_key, stat_key, limit=game_config["top_size"])
+        if not top:
+            cuerpo = "_Sin registros._"
+        else:
+            lineas = []
+            for i, fila in enumerate(top):
+                medalla = medallas[i] if i < len(medallas) else "▫️"
+                valor = format_value(int(fila["best_value"]), fmt)
+                lineas.append(f"{medalla} **{fila['username']}** — {valor}")
+            cuerpo = "\n".join(lineas)
+
+        # '## ' = título mediano de Discord (cabecera para cada stat).
+        bloques.append(f"## {emoji} {titulo_stat} {emoji}\n{cuerpo}")
+
+    timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
+    return (
+        f"# 🎮 {game_config['display_name']}\n\n"
+        + "\n\n".join(bloques)
+        + f"\n\n_Actualizado: {timestamp}_"
+    )
+
+
+async def _actualizar_mensaje_resumen(
+    canal_resumen: discord.TextChannel, game_key: str, game_config: dict
+) -> None:
+    """Crea o edita el mensaje resumen del juego en el canal de moderadores."""
+    texto = await _construir_resumen(game_key, game_config)
+    msg_id = await obtener_id_resumen(game_key)
+
+    if msg_id is not None:
+        try:
+            mensaje = await canal_resumen.fetch_message(int(msg_id))
+            await mensaje.edit(content=texto)
+            return
+        except discord.NotFound:
+            print(f"[INFO] Resumen de {game_key} no existe. Lo recreo.")
+        except discord.HTTPException as e:
+            print(f"[WARN] Error editando resumen de {game_key}: {e}")
+            return
+
+    try:
+        nuevo = await canal_resumen.send(texto)
+        await guardar_id_resumen(game_key, str(nuevo.id))
+    except discord.HTTPException as e:
+        print(f"[ERROR] No pude crear el resumen de {game_key}: {e}")
+
+
+# ---------------------------------------------------------------------
 # Procesado de UN juego completo (un canal)
 # ---------------------------------------------------------------------
 async def _procesar_juego(canal: discord.TextChannel, game_key: str) -> None:
@@ -285,22 +347,50 @@ async def _procesar_juego(canal: discord.TextChannel, game_key: str) -> None:
 
 
 # ---------------------------------------------------------------------
+# Resolución de canales por nombre, con detección de duplicados
+# ---------------------------------------------------------------------
+def _resolver_canal(
+    todos: list[discord.TextChannel], nombre: str
+) -> tuple[discord.TextChannel | None, str | None]:
+    """
+    Devuelve (canal, error). Si hay varios canales con el mismo nombre,
+    no adivina: devuelve error. Si no existe, devuelve (None, None).
+    """
+    coincidencias = [ch for ch in todos if ch.name == nombre]
+    if len(coincidencias) == 0:
+        return None, None
+    if len(coincidencias) > 1:
+        ids = ", ".join(str(ch.id) for ch in coincidencias)
+        return None, (
+            f"Hay {len(coincidencias)} canales llamados #{nombre} "
+            f"(IDs: {ids}). Renómbralos o pásate a IDs en games.py."
+        )
+    return coincidencias[0], None
+
+
+# ---------------------------------------------------------------------
 # on_ready: orquesta todo y cierra
 # ---------------------------------------------------------------------
 @client.event
 async def on_ready():
     print(f"[BATCH] Conectado como {client.user}")
     try:
-        # Mapear nombre de canal -> objeto canal una sola vez.
-        canales_por_nombre = {
-            ch.name: ch
-            for ch in client.get_all_channels()
+        # Lista única de canales de texto, ordenable por nombre con duplicados.
+        canales_texto: list[discord.TextChannel] = [
+            ch for ch in client.get_all_channels()
             if isinstance(ch, discord.TextChannel)
-        }
+        ]
+
+        # Cache para no resolver el mismo canal resumen una vez por juego.
+        cache_resumen: dict[str, discord.TextChannel | None] = {}
 
         for game_key, game_config in GAMES.items():
+            # --- 1) Canal del juego ---
             nombre_canal = game_config["channel"]
-            canal = canales_por_nombre.get(nombre_canal)
+            canal, err = _resolver_canal(canales_texto, nombre_canal)
+            if err:
+                print(f"[ERROR] {game_key}: {err}")
+                continue
             if canal is None:
                 print(
                     f"[ERROR] El juego '{game_key}' apunta al canal "
@@ -309,19 +399,48 @@ async def on_ready():
                 )
                 continue
 
-            # Verificación útil: el bot necesita poder fijar mensajes.
             permisos = canal.permissions_for(canal.guild.me)
             if not permisos.manage_messages:
                 print(
                     f"[WARN] No tengo permiso 'Manage Messages' en "
-                    f"#{nombre_canal}; no podré fijar el Top. Dame ese "
-                    f"permiso en la configuración del canal."
+                    f"#{nombre_canal}; no podré fijar el Top."
                 )
 
+            # --- 2) Procesar capturas y refrescar pinned por stat ---
             try:
                 await _procesar_juego(canal, game_key)
             except Exception as e:
                 print(f"[ERROR] Fallo procesando '{game_key}': {e}")
+                # Aun así intentamos publicar el resumen abajo.
+
+            # --- 3) Mensaje resumen en el canal de moderadores ---
+            nombre_resumen = game_config.get("summary_channel")
+            if not nombre_resumen:
+                continue
+
+            if nombre_resumen not in cache_resumen:
+                canal_resumen, err = _resolver_canal(canales_texto, nombre_resumen)
+                if err:
+                    print(f"[ERROR] Canal resumen '{nombre_resumen}': {err}")
+                    cache_resumen[nombre_resumen] = None
+                elif canal_resumen is None:
+                    print(
+                        f"[ERROR] No encuentro el canal resumen "
+                        f"#{nombre_resumen}. Créalo o quita "
+                        f"'summary_channel' de games.py para deshabilitarlo."
+                    )
+                    cache_resumen[nombre_resumen] = None
+                else:
+                    cache_resumen[nombre_resumen] = canal_resumen
+
+            canal_resumen = cache_resumen[nombre_resumen]
+            if canal_resumen is None:
+                continue
+
+            try:
+                await _actualizar_mensaje_resumen(canal_resumen, game_key, game_config)
+            except Exception as e:
+                print(f"[ERROR] Fallo publicando resumen de '{game_key}': {e}")
 
     finally:
         await client.close()
