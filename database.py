@@ -148,24 +148,28 @@ async def state_set(key: str, value: str) -> None:
 
 
 # Helpers semánticos para que batch_update.py se lea mejor.
-async def obtener_ultimo_mensaje(game: str) -> str | None:
-    return await state_get(f"last_message:{game}")
+# Ahora SOLO hay un canal de envío, así que el "último mensaje
+# procesado" es un único valor global (no por juego).
+async def obtener_ultimo_mensaje_global() -> str | None:
+    return await state_get("last_message:submit")
 
 
-async def guardar_ultimo_mensaje(game: str, message_id: str) -> None:
-    return await state_set(f"last_message:{game}", message_id)
+async def guardar_ultimo_mensaje_global(message_id: str) -> None:
+    return await state_set("last_message:submit", message_id)
 
 
-async def obtener_id_pinned(game: str, stat: str) -> str | None:
-    return await state_get(f"pinned:{game}:{stat}")
+# Mensaje (embed) del juego en el canal de leaderboards. No está fijado,
+# simplemente se edita. Hay UNO por juego.
+async def obtener_id_embed(game: str) -> str | None:
+    return await state_get(f"embed:{game}")
 
 
-async def guardar_id_pinned(game: str, stat: str, message_id: str) -> None:
-    return await state_set(f"pinned:{game}:{stat}", message_id)
+async def guardar_id_embed(game: str, message_id: str) -> None:
+    return await state_set(f"embed:{game}", message_id)
 
 
 async def obtener_id_resumen(game: str) -> str | None:
-    """ID del mensaje consolidado del juego en el canal de moderadores."""
+    """ID del mensaje (con .json adjunto) en el canal de moderadores."""
     return await state_get(f"summary:{game}")
 
 
