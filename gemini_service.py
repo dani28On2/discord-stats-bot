@@ -27,6 +27,7 @@ las stats relevantes para ese juego.
 """
 
 import asyncio
+import random
 
 from google import genai
 from google.genai import types
@@ -36,6 +37,32 @@ from config import GEMINI_API_KEY, GEMINI_MODEL
 from games import GAMES, ISLAND_CODE_DESC, NOMBRE_JUGADOR_DESC
 
 _client = genai.Client(api_key=GEMINI_API_KEY)
+
+# --- Configuración de reintentos ---
+# Reintentamos sólo errores TRANSITORIOS (no fallos de la imagen ni de
+# nuestro código). Estos códigos son los que documenta Google:
+#   429 -> RESOURCE_EXHAUSTED (rate limit)
+#   503 -> UNAVAILABLE (modelo sobrecargado)
+#   500 / 504 -> errores internos / timeouts del servicio
+_TRANSIENT_STATUS_CODES = {429, 500, 503, 504}
+_MAX_REINTENTOS = 3  # 1 intento + 2 reintentos = 3 intentos en total
+_BACKOFF_BASE = 2.0  # segundos: 2, 4, 8...
+
+
+def _es_error_transitorio(error: Exception) -> bool:
+    """
+    True si conviene reintentar el error. Lo detectamos por el código
+    HTTP que el SDK incluye en el mensaje, porque la jerarquía de
+    excepciones de google-genai todavía cambia entre versiones.
+    """
+    texto = str(error)
+    for code in _TRANSIENT_STATUS_CODES:
+        if f"{code} " in texto or f"{code}:" in texto:
+            return True
+    # Algunos timeouts/conexiones rotas no traen código pero sí son
+    # transitorios: los marcamos por nombre de excepción.
+    nombre = type(error).__name__.lower()
+    return any(k in nombre for k in ("timeout", "connection", "unavailable"))
 
 
 def _stats_union() -> dict[str, str]:
@@ -166,7 +193,35 @@ async def extract_stats_from_image(
     image_bytes: bytes, mime_type: str
 ) -> dict:
     """
-    Versión asíncrona. Ya no recibe game_config: el esquema es universal
-    y el juego se identifica DESPUÉS leyendo 'island_code' del resultado.
+    Versión asíncrona con REINTENTOS para errores transitorios
+    (429 rate limit, 503 servicio sobrecargado, timeouts).
+
+    Si tras todos los intentos sigue fallando, propaga la excepción
+    para que el bot la trate como error final.
     """
-    return await asyncio.to_thread(_extraer_sync, image_bytes, mime_type)
+    ultimo_error: Exception | None = None
+    for intento in range(1, _MAX_REINTENTOS + 1):
+        try:
+            return await asyncio.to_thread(_extraer_sync, image_bytes, mime_type)
+        except Exception as error:
+            ultimo_error = error
+            if not _es_error_transitorio(error):
+                # Error definitivo (no es de los que arregla esperar):
+                # no tiene sentido reintentar.
+                raise
+            if intento >= _MAX_REINTENTOS:
+                break
+
+            # Backoff exponencial con un poco de jitter aleatorio:
+            # 2s, 4s, 8s ± 25%. Evita que reintentos paralelos coincidan.
+            espera = _BACKOFF_BASE ** intento
+            espera += random.uniform(0, espera * 0.25)
+            print(
+                f"[RETRY] Gemini error transitorio (intento {intento}/"
+                f"{_MAX_REINTENTOS}), reintentando en {espera:.1f}s: {error}"
+            )
+            await asyncio.sleep(espera)
+
+    # Se agotaron los reintentos: relanzamos el último error.
+    assert ultimo_error is not None
+    raise ultimo_error
