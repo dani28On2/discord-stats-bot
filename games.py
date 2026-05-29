@@ -49,9 +49,17 @@ SUFIJOS_DEL_JUEGO = (
 STATS_INCOME_CASH = {
     "income": {
         "desc": (
-            "Número AMARILLO que representa el dinero por segundo del "
-            "jugador. Se reconoce porque lleva el símbolo '$' delante y "
-            "termina en '/s' (ejemplo: '$1.2K/s', '$45.7Qa/s'). "
+            "Número AMARILLO etiquetado 'INCOME' DENTRO de la tarjeta "
+            "negra titulada 'LIFETIME STATS' (la del medio, con borde "
+            "arcoíris y el avatar del jugador a la izquierda). Lleva "
+            "el símbolo '$' delante y termina en '/s' "
+            "(ejemplo: '$43.3Qa/s'). "
+            "IMPORTANTE: NO uses el valor parecido que aparece en el "
+            "HUD lateral del juego (esquina izquierda con icono de "
+            "rayo); ese es el income actual, NO el lifetime. SOLO el "
+            "que está dentro de la tarjeta LIFETIME STATS. "
+            "Si DENTRO de la tarjeta hubiera por error más de un "
+            "valor candidato a 'INCOME', escoge el MÁS ALTO. "
             f"Sufijos posibles: {SUFIJOS_DEL_JUEGO}."
         ),
         "format": "income",
@@ -60,9 +68,16 @@ STATS_INCOME_CASH = {
     },
     "cash": {
         "desc": (
-            "Número VERDE con el símbolo '$' delante, situado en la "
-            "barra inferior. Es el dinero total acumulado del jugador "
-            "(ejemplo: '$45.7M', '$1.2Qa'). "
+            "Número VERDE etiquetado 'CASH' DENTRO de la tarjeta negra "
+            "titulada 'LIFETIME STATS' (la del medio, con borde "
+            "arcoíris y el avatar del jugador a la izquierda). Lleva "
+            "el símbolo '$' delante (ejemplo: '$117.5Sx'). "
+            "IMPORTANTE: NO uses el valor parecido que aparece en el "
+            "HUD lateral del juego (esquina izquierda con icono de "
+            "billetes); ese es el cash actual, NO el lifetime. SOLO "
+            "el que está dentro de la tarjeta LIFETIME STATS. "
+            "Si DENTRO de la tarjeta hubiera por error más de un "
+            "valor candidato a 'CASH', escoge el MÁS ALTO. "
             f"Sufijos posibles: {SUFIJOS_DEL_JUEGO}."
         ),
         "format": "money",
