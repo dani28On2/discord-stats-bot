@@ -95,6 +95,7 @@ GAMES: dict[str, dict] = {
     # ------------------------------------------------------------------
     "laser_for_brainrots": {
         "display_name": "Laser For Brainrots",
+        "emoji": "💥",
         "island_code": "2943-6452-4033",
         "color": 0xFF3355,  # rojo coral (laser)
         "player_name_description": NOMBRE_JUGADOR_DESC,
@@ -107,6 +108,7 @@ GAMES: dict[str, dict] = {
     # ------------------------------------------------------------------
     "be_flash_for_brainrots": {
         "display_name": "Be Flash For Brainrots",
+        "emoji": "⚡",
         "island_code": "7694-0608-3252",
         "color": 0xFFD93D,  # amarillo (flash/rayo)
         "player_name_description": NOMBRE_JUGADOR_DESC,
@@ -119,6 +121,7 @@ GAMES: dict[str, dict] = {
     # ------------------------------------------------------------------
     "kick_for_brainrots": {
         "display_name": "Kick For Brainrots",
+        "emoji": "💪",
         "island_code": "4852-1373-7293",
         "color": 0x4ECDC4,  # verde turquesa (kick)
         "player_name_description": NOMBRE_JUGADOR_DESC,
@@ -131,6 +134,7 @@ GAMES: dict[str, dict] = {
     # ------------------------------------------------------------------
     # "mi_juego": {
     #     "display_name": "Mi Juego",
+    #     "emoji": "🎮",
     #     "island_code": "0000-0000-0000",
     #     "color": 0x9966FF,
     #     "player_name_description": "...",
