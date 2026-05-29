@@ -4,17 +4,48 @@ games.py
 CONFIGURACIÓN DE JUEGOS.
 
 Este es el ÚNICO archivo que tienes que tocar para añadir o quitar juegos.
+
+ARQUITECTURA DE CANALES (única para todos los juegos):
+  - SUBMIT_CHANNEL:    canal compartido donde los jugadores suben todas
+                       las capturas. El bot identifica el juego por el
+                       CÓDIGO DE ISLA que lea en la imagen.
+  - LEADERBOARD_CHANNEL: canal público de solo lectura donde el bot
+                       publica/edita un embed por juego con sus rankings.
+  - SUMMARY_CHANNEL:   canal privado de moderadores con los .json de
+                       respaldo (un archivo adjunto por juego).
+
+Cada juego se describe con:
+  - display_name:  cómo aparece en los mensajes del bot.
+  - island_code:   código de isla esperado (sirve para identificar el
+                   juego al recibir una captura).
+  - color:         entero RGB para el borde del embed (ej. 0xFF3355).
+  - player_name_description: pista para Gemini sobre el nombre del jugador.
+  - stats:         diccionario {clave_interna: {desc, format, emoji, title}}.
+  - top_size:      cuántos jugadores muestra cada ranking.
+
+Para añadir un juego nuevo: copia un bloque y modifícalo.
 """
 
-# Los sufijos vienen del juego (Verse: STRING_Abbrev). Mantener este
-# texto sincronizado con formatting.ABBREV.
+# ---------------------------------------------------------------------
+# Canales (nombres EXACTOS de Discord; copia y pega desde Discord si
+# llevan caracteres especiales como '︱' U+FE31).
+# ---------------------------------------------------------------------
+SUBMIT_CHANNEL = "📤︱submit-stats"
+LEADERBOARD_CHANNEL = "🏆︱leaderboards"
+SUMMARY_CHANNEL = "📊︱leaderboard-data"
+
+
+# ---------------------------------------------------------------------
+# Sufijos del juego (Verse: STRING_Abbrev). Mantener sincronizado con
+# formatting.ABBREV.
+# ---------------------------------------------------------------------
 SUFIJOS_DEL_JUEGO = (
     "K, M, B, T, Qa, Qi, Sx, Sp, Oc, No, Dc, Un, Du, Tr, "
     "Qt, Qn, Se, St, Og, Nn, Vg, UVg"
 )
 
-# Las stats de income y cash se reusan entre juegos (de momento son
-# iguales). Las defino una vez y las inserto en cada juego que las use.
+# Stats compartidas (income/cash). Si en el futuro un juego tiene stats
+# distintas, defínelas en línea en su bloque y no uses esta plantilla.
 STATS_INCOME_CASH = {
     "income": {
         "desc": (
@@ -40,13 +71,13 @@ STATS_INCOME_CASH = {
     },
 }
 
-# Descripción común del nombre del jugador (mismo formato en ambos juegos).
+# Descripción común del nombre del jugador.
 NOMBRE_JUGADOR_DESC = (
     "Texto blanco que aparece debajo de la imagen de perfil (avatar) "
     "del jugador."
 )
 
-# Descripción común de cómo aparece el código de isla en la captura.
+# Descripción común del código de isla (en la captura).
 ISLAND_CODE_DESC = (
     "Código de isla: texto BLANCO con BORDE NEGRO, en CURSIVA, ENTRE "
     "PARÉNTESIS, situado en la parte INFERIOR de la pantalla. Tiene el "
@@ -57,23 +88,16 @@ ISLAND_CODE_DESC = (
     "devuelve una cadena vacía."
 )
 
-# Canal único de respaldo/referencia para moderadores.
-# OJO: el carácter entre el emoji y el texto es '︱' (U+FE31), NO un '|'
-# normal. Si renombras el canal en Discord, copia y pega el nombre tal cual
-# en lugar de teclearlo.
-CANAL_RESUMEN = "📊︱leaderboard-data"
-
 
 GAMES: dict[str, dict] = {
     # ------------------------------------------------------------------
     # LASER FOR BRAINROTS
     # ------------------------------------------------------------------
     "laser_for_brainrots": {
-        "display_name": "💥Laser For Brainrots💥",
-        "channel": "💥︱laser-for-brainrots",
-        "summary_channel": CANAL_RESUMEN,
-        "player_name_description": NOMBRE_JUGADOR_DESC,
+        "display_name": "Laser For Brainrots",
         "island_code": "2943-6452-4033",
+        "color": 0xFF3355,  # rojo coral (laser)
+        "player_name_description": NOMBRE_JUGADOR_DESC,
         "stats": STATS_INCOME_CASH,
         "top_size": 10,
     },
@@ -82,11 +106,10 @@ GAMES: dict[str, dict] = {
     # BE FLASH FOR BRAINROTS
     # ------------------------------------------------------------------
     "be_flash_for_brainrots": {
-        "display_name": "⚡Be Flash For Brainrots⚡",
-        "channel": "⚡︱be-flash-for-brainrots",
-        "summary_channel": CANAL_RESUMEN,
-        "player_name_description": NOMBRE_JUGADOR_DESC,
+        "display_name": "Be Flash For Brainrots",
         "island_code": "7694-0608-3252",
+        "color": 0xFFD93D,  # amarillo (flash/rayo)
+        "player_name_description": NOMBRE_JUGADOR_DESC,
         "stats": STATS_INCOME_CASH,
         "top_size": 10,
     },
@@ -95,83 +118,48 @@ GAMES: dict[str, dict] = {
     # KICK FOR BRAINROTS
     # ------------------------------------------------------------------
     "kick_for_brainrots": {
-        "display_name": "💪Kick For Brainrots💪",
-        "channel": "💪︱kick-for-brainrots",
-        "summary_channel": CANAL_RESUMEN,
-        "player_name_description": NOMBRE_JUGADOR_DESC,
+        "display_name": "Kick For Brainrots",
         "island_code": "4852-1373-7293",
+        "color": 0x4ECDC4,  # verde turquesa (kick)
+        "player_name_description": NOMBRE_JUGADOR_DESC,
         "stats": STATS_INCOME_CASH,
         "top_size": 10,
     },
 
     # ------------------------------------------------------------------
-    # PLANTILLA PARA AÑADIR UN JUEGO NUEVO  (copia y modifica)
+    # PLANTILLA PARA AÑADIR UN JUEGO NUEVO (copia y modifica)
     # ------------------------------------------------------------------
     # "mi_juego": {
     #     "display_name": "Mi Juego",
-    #     "channel": "mi-juego",
-    #     "summary_channel": CANAL_RESUMEN,
-    #     "player_name_description": "...",
     #     "island_code": "0000-0000-0000",
-    #     "stats": {
-    #         "kills": {
-    #             "desc": "Número rojo junto al icono de calavera",
-    #             "format": "raw",
-    #             "emoji": "💀",
-    #             "title": "MOST KILLS",
-    #         },
-    #     },
+    #     "color": 0x9966FF,
+    #     "player_name_description": "...",
+    #     "stats": { ... },
     #     "top_size": 10,
     # },
 }
 
-"""
-  - display_name: cómo aparece en los mensajes del bot.
-  - channel:      nombre EXACTO del canal de Discord donde los jugadores
-                  suben sus capturas (sin "#"). El bot lee mensajes nuevos
-                  de aquí y publica los mensajes fijados de Top N por stat.
-  - summary_channel:
-                  nombre del canal (también sin "#") donde el bot
-                  mantiene UN mensaje consolidado por juego con todas
-                  las tablas dentro. Usado como respaldo / referencia
-                  para moderadores. Puede ser el mismo nombre en varios
-                  juegos: cada juego tendrá su mensaje editable propio.
-  - player_name_description:
-                  pista para Gemini sobre cómo es el nombre del jugador
-                  en la captura.
-  - island_code:  código de isla ESPERADO para este juego. Sirve para
-                  verificar que la captura pertenece al juego correcto
-                  (evita que una captura de otro juego con el mismo
-                  formato cuele en el canal equivocado). La comparación
-                  ignora paréntesis, guiones y espacios: solo cuentan
-                  los dígitos.
-  - stats:        diccionario {clave_interna: {desc, format, emoji, title}}
-                    - desc:   descripción visual para Gemini.
-                    - format: cómo se MUESTRA el valor en Discord.
-                              Disponibles (ver formatting.py):
-                                'money'  -> '$1.2Qa'
-                                'income' -> '$1.2Qa/s'
-                                'plain'  -> '1.2Qa'  (sin símbolo)
-                                'raw'    -> '1,200,000'  (entero plano)
-                    - emoji:  emoji que precede a la stat en las
-                              confirmaciones y abre/cierra el título
-                              del mensaje fijado.
-                    - title:  título del mensaje fijado de esa stat
-                              (ej: 'MOST CASH').
-  - top_size:     cuántos jugadores muestra cada ranking.
 
-Para añadir un juego nuevo: copia un bloque y modifícalo.
-"""
-
-# Inyecta automáticamente la descripción del código de isla en cada juego
-# (es la misma para todos), para no tener que repetirla en cada bloque.
+# Inyecta automáticamente la descripción del código de isla en cada juego.
 for _cfg in GAMES.values():
     _cfg.setdefault("island_code_description", ISLAND_CODE_DESC)
 
 
-def get_game_by_channel(channel_name: str) -> tuple[str, dict] | None:
-    """Devuelve (clave_interna, config) del juego asociado a ese canal."""
+def _normalizar_codigo(texto: str) -> str:
+    """Solo dígitos, para comparar códigos ignorando paréntesis/guiones."""
+    return "".join(c for c in str(texto or "") if c.isdigit())
+
+
+def get_game_by_island_code(island_code: str) -> tuple[str, dict] | None:
+    """
+    Devuelve (clave_interna, config) del juego cuyo código de isla
+    coincide con el dado. La comparación es por dígitos (tolerante a
+    paréntesis, guiones y espacios).
+    """
+    objetivo = _normalizar_codigo(island_code)
+    if not objetivo:
+        return None
     for key, cfg in GAMES.items():
-        if cfg["channel"] == channel_name:
+        if _normalizar_codigo(cfg.get("island_code", "")) == objetivo:
             return key, cfg
     return None
