@@ -251,8 +251,9 @@ async def _construir_embed(game_key: str, game_config: dict) -> discord.Embed:
     Embed con TODAS las stats del juego como campos.
     VIPs marcados con 👑 y nombre en negrita más fuerte.
     """
+    emoji_juego = game_config.get("emoji", "🎮")
     embed = discord.Embed(
-        title=f"🎮 {game_config['display_name']}",
+        title=f"{emoji_juego} {game_config['display_name']} {emoji_juego}",
         color=game_config.get("color", 0x808080),
     )
 
@@ -282,7 +283,7 @@ async def _construir_embed(game_key: str, game_config: dict) -> discord.Embed:
             cuerpo = "\n".join(lineas)
 
         embed.add_field(
-            name=f"{emoji} {titulo}",
+            name=f"{emoji} {titulo} {emoji}",
             value=cuerpo,
             inline=False,
         )
