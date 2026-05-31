@@ -75,6 +75,11 @@ REJECT_REASONS = {
         "Either the screenshot is from another island or the code was "
         "misread — please resubmit a clear screenshot."
     ),
+    "name_unreadable": (
+        "I couldn't read your **player name** properly — the stats card "
+        "appears to be cut off in the screenshot. Make sure the whole "
+        "card is visible, including your name below the avatar."
+    ),
     "stats_unreadable": (
         "I detected the card but couldn't read any of the statistics. "
         "Make sure the **income** and **cash** values are clearly visible "
@@ -181,6 +186,26 @@ async def _procesar_mensaje(message: discord.Message) -> str | None:
         return None
 
     game_key, game_config = juego
+
+    # 2.5) Verificar que el NOMBRE del jugador se ve completo en la
+    #      captura. Sin esto, se nos colaría como username el que dice
+    #      Discord (correcto), pero el record quedaría asociado a una
+    #      lectura recortada en la imagen, lo cual confunde si el bot
+    #      muestra player_name en otros sitios. Comprobamos:
+    #        - el flag que pedimos a Gemini ('name_fully_visible')
+    #        - señales obvias de truncado en el propio texto leído
+    nombre_leido = (stats.get("player_name") or "").strip()
+    nombre_truncado = nombre_leido.endswith(("...", "…")) or nombre_leido == ""
+    nombre_visible = bool(stats.get("name_fully_visible", True))
+    if nombre_truncado or not nombre_visible:
+        print(
+            f"[INFO] msg {message.id}: nombre no se ve completo "
+            f"(leído '{nombre_leido}', "
+            f"name_fully_visible={nombre_visible}). Rechazada."
+        )
+        contenido, am = _build_rejection(message, "name_unreadable")
+        await message.reply(contenido, allowed_mentions=am)
+        return None
 
     # 3) Guardar cada stat del juego que tenga valor leído.
     jugador = stats.get("player_name") or message.author.display_name
