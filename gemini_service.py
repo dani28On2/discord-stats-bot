@@ -104,6 +104,22 @@ def _construir_esquema_universal() -> type[BaseModel]:
             str,
             Field(description=NOMBRE_JUGADOR_DESC),
         ),
+        "name_fully_visible": (
+            bool,
+            Field(
+                description=(
+                    "True si el nombre del jugador (texto blanco bajo "
+                    "el avatar) se ve COMPLETO en la captura, sin "
+                    "estar recortado por el borde de la imagen ni "
+                    "tapado por otros elementos. False si la tarjeta "
+                    "LIFETIME STATS está cortada por algún borde y el "
+                    "nombre no se aprecia completo, o si solo se ve "
+                    "una parte del texto (por ejemplo termina en '...' "
+                    "o se corta a mitad de letra). En caso de duda, "
+                    "devuelve False."
+                )
+            ),
+        ),
         "island_code": (
             str,
             Field(description=ISLAND_CODE_DESC),
