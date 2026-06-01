@@ -102,6 +102,31 @@ async def guardar_stat(
     )
 
 
+def _obtener_record_previo_sync(
+    game: str, discord_id: str, stat: str
+) -> int | None:
+    """Consulta el récord actual del jugador en una stat (sin modificar nada)."""
+    consulta = (
+        _supabase.table(LEADERBOARD)
+        .select("best_value")
+        .eq("game", game)
+        .eq("discord_id", discord_id)
+        .eq("stat", stat)
+        .execute()
+    )
+    if not consulta.data:
+        return None
+    return int(str(consulta.data[0]["best_value"]).split(".")[0])
+
+
+async def obtener_record_previo(
+    game: str, discord_id: str, stat: str
+) -> int | None:
+    return await asyncio.to_thread(
+        _obtener_record_previo_sync, game, discord_id, stat
+    )
+
+
 def _top_sync(game: str, stat: str, limit: int) -> list[dict]:
     """Top N de una stat concreta de un juego, ordenado descendentemente."""
     consulta = (
