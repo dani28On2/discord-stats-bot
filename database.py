@@ -38,11 +38,29 @@ def _guardar_stat_sync(
     """
     Guarda la mejor marca del jugador en UNA stat de UN juego.
 
+    Regla del nombre: el username se CONGELA al primero registrado
+    para este discord_id (en cualquier juego, en cualquier stat). Si
+    el jugador ya existe en la BD, ignoramos el username que venga
+    y reutilizamos el que ya tenía guardado. Solo se respeta el
+    'username' parámetro cuando es la PRIMERA vez que vemos ese
+    discord_id. Para cambiar el nombre, edita la BD a mano.
+
     Nota técnica: el valor se envía como STRING para que NUMERIC en
-    Postgres lo reciba con precisión arbitraria. Si lo mandásemos como
-    int de Python en JSON, los valores enormes (Sx en adelante) se
-    convertirían a float y perderían dígitos.
+    Postgres lo reciba con precisión arbitraria.
     """
+    # ¿Conocemos ya a este jugador? Buscamos cualquier fila suya, en
+    # cualquier juego/stat, para reutilizar su nombre congelado.
+    existente = (
+        _supabase.table(LEADERBOARD)
+        .select("username")
+        .eq("discord_id", discord_id)
+        .limit(1)
+        .execute()
+    )
+    if existente.data:
+        username = existente.data[0]["username"]  # nombre congelado
+
+    # Buscamos la fila exacta (juego, jugador, stat).
     consulta = (
         _supabase.table(LEADERBOARD)
         .select("*")
@@ -71,9 +89,13 @@ def _guardar_stat_sync(
     # Convertimos lo que devuelve Supabase a int de Python (precisión arbitraria).
     record_previo = int(str(actual.get("best_value", 0)).split(".")[0])
     if value > record_previo:
+        # Importante: NO incluimos 'username' en este update aunque esté
+        # en 'fila', porque la fila trae el nombre congelado y queremos
+        # que se respete el que está en la BD si tú lo editaste a mano.
+        update_fila = {k: v for k, v in fila.items() if k != "username"}
         (
             _supabase.table(LEADERBOARD)
-            .update(fila)
+            .update(update_fila)
             .eq("game", game)
             .eq("discord_id", discord_id)
             .eq("stat", stat)
@@ -81,10 +103,11 @@ def _guardar_stat_sync(
         )
         return {"estado": "actualizado", "valor": value, "record_previo": record_previo}
 
-    # Aunque no supere el récord, actualizamos is_vip por si cambió de estado.
+    # Aunque no supere el récord, refrescamos is_vip por si cambió.
+    # El username NO se toca: respeta lo que haya en la BD.
     (
         _supabase.table(LEADERBOARD)
-        .update({"is_vip": is_vip, "username": username})
+        .update({"is_vip": is_vip})
         .eq("game", game)
         .eq("discord_id", discord_id)
         .eq("stat", stat)
