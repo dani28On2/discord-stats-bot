@@ -222,7 +222,11 @@ async def _procesar_mensaje(message: discord.Message) -> str | None:
             resultado = await guardar_stat(
                 game=game_key,
                 discord_id=str(message.author.id),
-                username=str(message.author),
+                # Usamos el nombre que aparece en la CAPTURA (lo que el
+                # jugador puso en el juego), no el nick de Discord.
+                # 'jugador' ya viene saneado arriba: stats['player_name']
+                # con fallback al display_name de Discord si vacío.
+                username=jugador,
                 stat=stat_key,
                 value=valor,
                 is_vip=es_vip,
