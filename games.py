@@ -89,6 +89,44 @@ STATS_INCOME_CASH = {
     },
 }
 
+# Stats del modo "Keyboard Escape": SPEED y WINS. No llevan '$' ni '/s'
+# (no son dinero ni dinero/segundo), pero sí pueden tener sufijos del
+# juego (8.2K, 1.5M, etc).
+STATS_SPEED_WINS = {
+    "speed": {
+        "desc": (
+            "Número en TEXTO ROJO etiquetado 'SPEED' DENTRO de la "
+            "tarjeta negra titulada 'LIFETIME STATS' (la del medio, con "
+            "borde arcoíris y el avatar del jugador a la izquierda). "
+            "Tiene DOS partes separadas por un ESPACIO: dígitos y "
+            "sufijo (ejemplo: '8.2 K', '1.5 M', '125'). NO lleva el "
+            "símbolo '$' delante. Es la fila que está ENCIMA de 'WINS'.\n"
+            "Si DENTRO de la tarjeta hubiera por error más de un valor "
+            "candidato a 'SPEED', escoge el MÁS ALTO. "
+            f"Sufijos posibles: {SUFIJOS_DEL_JUEGO}."
+        ),
+        "format": "plain",   # -> '8.2K' (sin símbolo monetario)
+        "emoji": "🏃",
+        "title": "MOST SPEED",
+    },
+    "wins": {
+        "desc": (
+            "Número en TEXTO AMARILLO etiquetado 'WINS' DENTRO de la "
+            "tarjeta negra titulada 'LIFETIME STATS' (la del medio, con "
+            "borde arcoíris y el avatar del jugador a la izquierda). "
+            "Tiene DOS partes separadas por un ESPACIO: dígitos y "
+            "sufijo (ejemplo: '1 K', '500', '2.5 M'). NO lleva el "
+            "símbolo '$' delante. Es la fila que está DEBAJO de 'SPEED'.\n"
+            "Si DENTRO de la tarjeta hubiera por error más de un valor "
+            "candidato a 'WINS', escoge el MÁS ALTO. "
+            f"Sufijos posibles: {SUFIJOS_DEL_JUEGO}."
+        ),
+        "format": "plain",
+        "emoji": "🏆",
+        "title": "MOST WINS",
+    },
+}
+
 # Descripción común del nombre del jugador.
 NOMBRE_JUGADOR_DESC = (
     "Texto blanco que aparece debajo de la imagen de perfil (avatar) "
@@ -144,6 +182,19 @@ GAMES: dict[str, dict] = {
         "color": 0x4ECDC4,  # verde turquesa (kick)
         "player_name_description": NOMBRE_JUGADOR_DESC,
         "stats": STATS_INCOME_CASH,
+        "top_size": 10,
+    },
+
+    # ------------------------------------------------------------------
+    # KEYBOARD ESCAPE
+    # ------------------------------------------------------------------
+    "keyboard_escape": {
+        "display_name": "Keyboard Escape",
+        "emoji": "⌨️",
+        "island_code": "1931-6763-0020",
+        "color": 0x9966FF,  # morado (sin chocar con los otros tres)
+        "player_name_description": NOMBRE_JUGADOR_DESC,
+        "stats": STATS_SPEED_WINS,
         "top_size": 10,
     },
 
