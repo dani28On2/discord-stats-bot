@@ -97,6 +97,16 @@ def _color_a_specified(color_rgb: tuple[float, float, float]) -> str:
     )
 
 
+def _oscurecer(color_rgb: tuple[float, float, float], factor: float = 0.24) -> tuple[float, float, float]:
+    """
+    Devuelve una versión oscura del color (para el borde del título).
+    El factor 0.24 se derivó del verde de referencia que el juego usa
+    (stat G=0.882 -> outline G=0.214). No es exacto para todos los
+    colores, pero da un borde oscuro consistente.
+    """
+    return tuple(c * factor for c in color_rgb)
+
+
 def _reemplazar_color_en_bloque(
     t3d: str, object_name: str, color_rgb: tuple[float, float, float]
 ) -> str:
@@ -119,14 +129,51 @@ def _reemplazar_color_en_bloque(
 
     bloque = t3d[inicio:fin]
     nuevo_color = _color_a_specified(color_rgb)
+    # SpecifiedColor puede tener paréntesis anidados; capturamos hasta el
+    # cierre del ColorAndOpacity. Usamos un patrón que abarca el grupo
+    # completo (R=...,G=...,B=...,A=...).
     bloque_nuevo, n = re.subn(
-        r'ColorAndOpacity=\(SpecifiedColor=\([^)]*\)\)',
+        r'ColorAndOpacity=\(SpecifiedColor=\(R=[^)]*\)\)',
         nuevo_color,
         bloque,
         count=1,
     )
     if n == 0:
         return t3d  # no tenía color explícito; lo dejamos
+    return t3d[:inicio] + bloque_nuevo + t3d[fin:]
+
+
+def _reemplazar_outline_color_en_bloque(
+    t3d: str, object_name: str, color_rgb: tuple[float, float, float]
+) -> str:
+    """
+    Reemplaza el OutlineColor=(...) que está dentro del Font del bloque
+    indicado (el borde del texto). Se usa para el título: borde en una
+    versión oscura del color de la stat.
+    """
+    patron_inicio = re.compile(
+        r'Begin Object\b[^\n]*\bName="' + re.escape(object_name) + r'"'
+    )
+    m = patron_inicio.search(t3d)
+    if not m:
+        return t3d
+    inicio = m.start()
+    fin_match = re.search(r'\n\s*End Object', t3d[inicio:])
+    if not fin_match:
+        return t3d
+    fin = inicio + fin_match.end()
+
+    bloque = t3d[inicio:fin]
+    r, g, b = color_rgb
+    nuevo = f"OutlineColor=(R={r:.6f},G={g:.6f},B={b:.6f},A=1.000000)"
+    bloque_nuevo, n = re.subn(
+        r'OutlineColor=\(R=[^)]*\)',
+        nuevo,
+        bloque,
+        count=1,
+    )
+    if n == 0:
+        return t3d
     return t3d[:inicio] + bloque_nuevo + t3d[fin:]
 
 
@@ -170,7 +217,13 @@ def build_widget_t3d(
 
     # 3) Color del título y de todos los valores.
     if color_rgb is not None:
+        # Título: color principal = color de la stat; borde (OutlineColor)
+        # = versión oscura del mismo.
         out = _reemplazar_color_en_bloque(out, "Tittle", color_rgb)
+        out = _reemplazar_outline_color_en_bloque(
+            out, "Tittle", _oscurecer(color_rgb)
+        )
+        # Valores: color principal = color de la stat.
         for i in range(1, rows_count + 1):
             out = _reemplazar_color_en_bloque(out, f"Value{i}", color_rgb)
 
