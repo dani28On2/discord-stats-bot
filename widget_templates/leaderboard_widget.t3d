@@ -1,277 +1,105 @@
-Begin Object Class=/Script/UMG.CanvasPanel Name="CanvasPanel_28" ExportPath="/Script/UMG.CanvasPanel'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.CanvasPanel_28'"
-   Begin Object Class=/Script/UMG.CanvasPanelSlot Name="CanvasPanelSlot_1" ExportPath="/Script/UMG.CanvasPanelSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.CanvasPanel_28.CanvasPanelSlot_1'"
+Begin Object Class=/Script/UMG.CanvasPanel Name="CanvasPanel_31" ExportPath="/Script/UMG.CanvasPanel'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.CanvasPanel_31'"
+   Begin Object Class=/Script/UMG.CanvasPanelSlot Name="CanvasPanelSlot_18" ExportPath="/Script/UMG.CanvasPanelSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.CanvasPanel_31.CanvasPanelSlot_18'"
    End Object
-   Begin Object Name="CanvasPanelSlot_1" ExportPath="/Script/UMG.CanvasPanelSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.CanvasPanel_28.CanvasPanelSlot_1'"
+   Begin Object Name="CanvasPanelSlot_18" ExportPath="/Script/UMG.CanvasPanelSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.CanvasPanel_31.CanvasPanelSlot_18'"
       LayoutData=(Offsets=(Right=625.000000,Bottom=750.000000),Anchors=(Minimum=(X=0.500000,Y=0.500000),Maximum=(X=0.500000,Y=0.500000)),Alignment=(X=0.500000,Y=0.500000))
-      Parent="/Script/UMG.CanvasPanel'CanvasPanel_28'"
-      Content="/Script/UMG.StackBox'StackBox_0'"
+      Parent="/Script/UMG.CanvasPanel'CanvasPanel_31'"
+      Content="/Script/UMG.StackBox'StackBox_32'"
    End Object
-   Slots(0)="/Script/UMG.CanvasPanelSlot'CanvasPanelSlot_1'"
+   Slots(0)="/Script/UMG.CanvasPanelSlot'CanvasPanelSlot_18'"
    bExpandedInDesigner=True
 End Object
-Begin Object Class=/Script/UMGEditor.WidgetSlotPair Name="WidgetSlotPair_7" ExportPath="/Script/UMGEditor.WidgetSlotPair'/Engine/Transient.WidgetSlotPair_7'"
-   WidgetName="CanvasPanel_28"
+Begin Object Class=/Script/UMGEditor.WidgetSlotPair Name="WidgetSlotPair_50" ExportPath="/Script/UMGEditor.WidgetSlotPair'/Engine/Transient.WidgetSlotPair_50'"
+   WidgetName="CanvasPanel_31"
 End Object
-Begin Object Class=/Script/UMG.StackBox Name="StackBox_0" ExportPath="/Script/UMG.StackBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_0'"
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_2" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_0.StackBoxSlot_2'"
+Begin Object Class=/Script/UMG.StackBox Name="StackBox_32" ExportPath="/Script/UMG.StackBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_32'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_2" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_32.StackBoxSlot_2'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_1" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_0.StackBoxSlot_1'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_1" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_32.StackBoxSlot_1'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_3" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_0.StackBoxSlot_3'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_0" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_32.StackBoxSlot_0'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_0" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_0.StackBoxSlot_0'"
-   End Object
-   Begin Object Name="StackBoxSlot_2" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_0.StackBoxSlot_2'"
-      VerticalAlignment=VAlign_Center
-   End Object
-   Begin Object Name="StackBoxSlot_1" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_0.StackBoxSlot_1'"
-      HorizontalAlignment=HAlign_Center
-      VerticalAlignment=VAlign_Top
-      Parent="/Script/UMG.StackBox'StackBox_0'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Tittle'"
-   End Object
-   Begin Object Name="StackBoxSlot_3" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_0.StackBoxSlot_3'"
+   Begin Object Name="StackBoxSlot_2" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_32.StackBoxSlot_2'"
       Padding=(Top=3.000000)
       VerticalAlignment=VAlign_Bottom
-      Parent="/Script/UMG.StackBox'StackBox_0'"
+      Parent="/Script/UMG.StackBox'StackBox_32'"
       Content="/Script/UMG.ScaleBox'ScaleBox_0'"
    End Object
-   Begin Object Name="StackBoxSlot_0" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_0.StackBoxSlot_0'"
-      Parent="/Script/UMG.StackBox'StackBox_0'"
-      Content="/Script/UMG.StackBox'StackBox_106'"
+   Begin Object Name="StackBoxSlot_1" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_32.StackBoxSlot_1'"
+      Parent="/Script/UMG.StackBox'StackBox_32'"
+      Content="/Script/UMG.StackBox'StackBox_77'"
+   End Object
+   Begin Object Name="StackBoxSlot_0" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_32.StackBoxSlot_0'"
+      Parent="/Script/UMG.StackBox'StackBox_32'"
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Tittle'"
    End Object
    Orientation=Orient_Vertical
-   Slots(0)="/Script/UMG.StackBoxSlot'StackBoxSlot_1'"
-   Slots(1)="/Script/UMG.StackBoxSlot'StackBoxSlot_0'"
-   Slots(2)="/Script/UMG.StackBoxSlot'StackBoxSlot_3'"
+   Slots(0)="/Script/UMG.StackBoxSlot'StackBoxSlot_0'"
+   Slots(1)="/Script/UMG.StackBoxSlot'StackBoxSlot_1'"
+   Slots(2)="/Script/UMG.StackBoxSlot'StackBoxSlot_2'"
+   bExpandedInDesigner=True
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Tittle" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.Tittle'"
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Tittle" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Tittle'"
    Text=INVTEXT("MOST CASH")
    ColorAndOpacity=(SpecifiedColor=(R=0.000000,G=1.000000,B=0.000000,A=1.000000))
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=8,OutlineColor=(R=0.000000,G=0.213542,B=0.000000,A=1.000000)),TypefaceFontName="BurbankRegular-Black",Size=67.500000)
+   Justification=Center
    DisplayLabel="Tittle"
 End Object
-Begin Object Class=/Script/UMG.StackBox Name="StackBox_106" ExportPath="/Script/UMG.StackBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106'"
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_0" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_0'"
+Begin Object Class=/Script/UMG.StackBox Name="StackBox_77" ExportPath="/Script/UMG.StackBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_77'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_2" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_77.StackBoxSlot_2'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_2" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_2'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_1" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_77.StackBoxSlot_1'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_3" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_3'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_0" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_77.StackBoxSlot_0'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_1" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_1'"
+   Begin Object Name="StackBoxSlot_2" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_77.StackBoxSlot_2'"
+      Parent="/Script/UMG.StackBox'StackBox_77'"
+      Content="/Script/UMG.StackBox'StackBox_185'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_4" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_4'"
-   End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_5" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_5'"
-   End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_6" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_6'"
-   End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_8" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_8'"
-   End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_9" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_9'"
-   End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_10" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_10'"
-   End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_11" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_11'"
-   End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_18" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_18'"
-   End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_17" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_17'"
-   End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_16" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_16'"
-   End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_15" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_15'"
-   End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_14" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_14'"
-   End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_13" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_13'"
-   End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_12" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_12'"
-   End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_7" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_7'"
-   End Object
-   Begin Object Name="StackBoxSlot_0" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_0'"
-      VerticalAlignment=VAlign_Bottom
-   End Object
-   Begin Object Name="StackBoxSlot_2" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_2'"
-      Size=(SizeRule=Fill)
-      Parent="/Script/UMG.StackBox'StackBox_106'"
-      Content="/Script/UMG.StackBox'StackBox'"
-   End Object
-   Begin Object Name="StackBoxSlot_3" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_3'"
-      Parent="/Script/UMG.StackBox'StackBox_106'"
-      Content="/Script/UMG.StackBox'/Engine/Transient.StackBox_117'"
-   End Object
-   Begin Object Name="StackBoxSlot_1" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_1'"
-      Parent="/Script/UMG.StackBox'StackBox_106'"
+   Begin Object Name="StackBoxSlot_1" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_77.StackBoxSlot_1'"
+      Parent="/Script/UMG.StackBox'StackBox_77'"
       Content="/Script/UMG.StackBox'StackBox_177'"
    End Object
-   Begin Object Name="StackBoxSlot_4" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_4'"
-   End Object
-   Begin Object Name="StackBoxSlot_5" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_5'"
-   End Object
-   Begin Object Name="StackBoxSlot_6" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_6'"
-   End Object
-   Begin Object Name="StackBoxSlot_8" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_8'"
-   End Object
-   Begin Object Name="StackBoxSlot_9" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_9'"
-   End Object
-   Begin Object Name="StackBoxSlot_10" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_10'"
-   End Object
-   Begin Object Name="StackBoxSlot_11" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_11'"
-   End Object
-   Begin Object Name="StackBoxSlot_18" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_18'"
-      Padding=(Right=30.000000)
-      HorizontalAlignment=HAlign_Center
-      VerticalAlignment=VAlign_Center
-   End Object
-   Begin Object Name="StackBoxSlot_17" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_17'"
-      Padding=(Right=30.000000)
-      HorizontalAlignment=HAlign_Center
-      VerticalAlignment=VAlign_Center
-   End Object
-   Begin Object Name="StackBoxSlot_16" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_16'"
-      Padding=(Right=30.000000)
-      HorizontalAlignment=HAlign_Center
-      VerticalAlignment=VAlign_Center
-   End Object
-   Begin Object Name="StackBoxSlot_15" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_15'"
-      Padding=(Right=55.000000)
-      HorizontalAlignment=HAlign_Center
-      VerticalAlignment=VAlign_Center
-   End Object
-   Begin Object Name="StackBoxSlot_14" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_14'"
-      Padding=(Right=30.000000)
-      HorizontalAlignment=HAlign_Center
-      VerticalAlignment=VAlign_Center
-   End Object
-   Begin Object Name="StackBoxSlot_13" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_13'"
-      Padding=(Right=30.000000)
-      HorizontalAlignment=HAlign_Center
-      VerticalAlignment=VAlign_Center
-   End Object
-   Begin Object Name="StackBoxSlot_12" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_12'"
-      Padding=(Right=44.000000)
-      HorizontalAlignment=HAlign_Center
-      VerticalAlignment=VAlign_Center
-   End Object
-   Begin Object Name="StackBoxSlot_7" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_106.StackBoxSlot_7'"
-      Padding=(Right=45.000000)
-      HorizontalAlignment=HAlign_Center
-      VerticalAlignment=VAlign_Center
+   Begin Object Name="StackBoxSlot_0" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_77.StackBoxSlot_0'"
+      Size=(SizeRule=Fill)
+      Parent="/Script/UMG.StackBox'StackBox_77'"
+      Content="/Script/UMG.StackBox'StackBox_123'"
    End Object
    Slots(0)="/Script/UMG.StackBoxSlot'StackBoxSlot_1'"
-   Slots(1)="/Script/UMG.StackBoxSlot'StackBoxSlot_2'"
-   Slots(2)="/Script/UMG.StackBoxSlot'StackBoxSlot_3'"
+   Slots(1)="/Script/UMG.StackBoxSlot'StackBoxSlot_0'"
+   Slots(2)="/Script/UMG.StackBoxSlot'StackBoxSlot_2'"
    bExpandedInDesigner=True
 End Object
-Begin Object Class=/Script/UMG.StackBox Name="StackBox_177" ExportPath="/Script/UMG.StackBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177'"
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_0" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_0'"
+Begin Object Class=/Script/UMG.StackBox Name="StackBox_177" ExportPath="/Script/UMG.StackBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_177'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_6" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_177.StackBoxSlot_6'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_1" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_1'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_8" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_177.StackBoxSlot_8'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_2" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_2'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_9" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_177.StackBoxSlot_9'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_3" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_3'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_10" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_177.StackBoxSlot_10'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_15" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_15'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_11" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_177.StackBoxSlot_11'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_14" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_14'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_12" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_177.StackBoxSlot_12'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_13" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_13'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_13" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_177.StackBoxSlot_13'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_12" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_12'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_14" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_177.StackBoxSlot_14'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_11" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_11'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_15" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_177.StackBoxSlot_15'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_10" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_10'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_0" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_177.StackBoxSlot_0'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_9" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_9'"
-   End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_8" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_8'"
-   End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_6" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_6'"
-   End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_4" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_4'"
-   End Object
-   Begin Object Name="StackBoxSlot_0" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_0'"
+   Begin Object Name="StackBoxSlot_6" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_177.StackBoxSlot_6'"
       Padding=(Top=-5.000000,Bottom=-5.000000)
       HorizontalAlignment=HAlign_Left
       VerticalAlignment=VAlign_Center
       Parent="/Script/UMG.StackBox'StackBox_177'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Top1'"
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Top2'"
    End Object
-   Begin Object Name="StackBoxSlot_1" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_1'"
-      Padding=(Left=20.000000,Right=20.000000)
-      Size=(SizeRule=Fill)
-      HorizontalAlignment=HAlign_Center
-      VerticalAlignment=VAlign_Center
-   End Object
-   Begin Object Name="StackBoxSlot_2" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_2'"
-      HorizontalAlignment=HAlign_Right
-      VerticalAlignment=VAlign_Center
-   End Object
-   Begin Object Name="StackBoxSlot_3" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_3'"
-      Padding=(Left=40.000000,Right=40.000000)
-      Size=(SizeRule=Fill)
-   End Object
-   Begin Object Name="StackBoxSlot_15" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_15'"
-      Padding=(Top=-5.000000,Bottom=-5.000000)
-      Size=(SizeRule=Fill)
-      HorizontalAlignment=HAlign_Left
-      VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'StackBox_177'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Top10'"
-   End Object
-   Begin Object Name="StackBoxSlot_14" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_14'"
-      Padding=(Top=-5.000000,Bottom=-5.000000)
-      Size=(SizeRule=Fill)
-      HorizontalAlignment=HAlign_Left
-      VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'StackBox_177'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Top9'"
-   End Object
-   Begin Object Name="StackBoxSlot_13" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_13'"
-      Padding=(Top=-5.000000,Bottom=-5.000000)
-      Size=(SizeRule=Fill)
-      HorizontalAlignment=HAlign_Left
-      VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'StackBox_177'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Top8'"
-   End Object
-   Begin Object Name="StackBoxSlot_12" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_12'"
-      Padding=(Top=-5.000000,Bottom=-5.000000)
-      Size=(SizeRule=Fill)
-      HorizontalAlignment=HAlign_Left
-      VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'StackBox_177'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Top7'"
-   End Object
-   Begin Object Name="StackBoxSlot_11" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_11'"
-      Padding=(Top=-5.000000,Bottom=-5.000000)
-      Size=(SizeRule=Fill)
-      HorizontalAlignment=HAlign_Left
-      VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'StackBox_177'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Top6'"
-   End Object
-   Begin Object Name="StackBoxSlot_10" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_10'"
-      Padding=(Top=-5.000000,Bottom=-5.000000)
-      Size=(SizeRule=Fill)
-      HorizontalAlignment=HAlign_Left
-      VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'StackBox_177'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Top5'"
-   End Object
-   Begin Object Name="StackBoxSlot_9" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_9'"
-      Padding=(Top=-5.000000,Bottom=-5.000000)
-      Size=(SizeRule=Fill)
-      HorizontalAlignment=HAlign_Left
-      VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'StackBox_177'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Top4'"
-   End Object
-   Begin Object Name="StackBoxSlot_8" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_8'"
+   Begin Object Name="StackBoxSlot_8" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_177.StackBoxSlot_8'"
       Padding=(Top=-5.000000,Bottom=-5.000000)
       Size=(SizeRule=Fill)
       HorizontalAlignment=HAlign_Left
@@ -279,17 +107,68 @@ Begin Object Class=/Script/UMG.StackBox Name="StackBox_177" ExportPath="/Script/
       Parent="/Script/UMG.StackBox'StackBox_177'"
       Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Top3'"
    End Object
-   Begin Object Name="StackBoxSlot_6" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_6'"
+   Begin Object Name="StackBoxSlot_9" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_177.StackBoxSlot_9'"
+      Padding=(Top=-5.000000,Bottom=-5.000000)
+      Size=(SizeRule=Fill)
+      HorizontalAlignment=HAlign_Left
+      VerticalAlignment=VAlign_Center
+      Parent="/Script/UMG.StackBox'StackBox_177'"
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Top4'"
+   End Object
+   Begin Object Name="StackBoxSlot_10" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_177.StackBoxSlot_10'"
+      Padding=(Top=-5.000000,Bottom=-5.000000)
+      Size=(SizeRule=Fill)
+      HorizontalAlignment=HAlign_Left
+      VerticalAlignment=VAlign_Center
+      Parent="/Script/UMG.StackBox'StackBox_177'"
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Top5'"
+   End Object
+   Begin Object Name="StackBoxSlot_11" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_177.StackBoxSlot_11'"
+      Padding=(Top=-5.000000,Bottom=-5.000000)
+      Size=(SizeRule=Fill)
+      HorizontalAlignment=HAlign_Left
+      VerticalAlignment=VAlign_Center
+      Parent="/Script/UMG.StackBox'StackBox_177'"
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Top6'"
+   End Object
+   Begin Object Name="StackBoxSlot_12" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_177.StackBoxSlot_12'"
+      Padding=(Top=-5.000000,Bottom=-5.000000)
+      Size=(SizeRule=Fill)
+      HorizontalAlignment=HAlign_Left
+      VerticalAlignment=VAlign_Center
+      Parent="/Script/UMG.StackBox'StackBox_177'"
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Top7'"
+   End Object
+   Begin Object Name="StackBoxSlot_13" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_177.StackBoxSlot_13'"
+      Padding=(Top=-5.000000,Bottom=-5.000000)
+      Size=(SizeRule=Fill)
+      HorizontalAlignment=HAlign_Left
+      VerticalAlignment=VAlign_Center
+      Parent="/Script/UMG.StackBox'StackBox_177'"
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Top8'"
+   End Object
+   Begin Object Name="StackBoxSlot_14" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_177.StackBoxSlot_14'"
+      Padding=(Top=-5.000000,Bottom=-5.000000)
+      Size=(SizeRule=Fill)
+      HorizontalAlignment=HAlign_Left
+      VerticalAlignment=VAlign_Center
+      Parent="/Script/UMG.StackBox'StackBox_177'"
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Top9'"
+   End Object
+   Begin Object Name="StackBoxSlot_15" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_177.StackBoxSlot_15'"
+      Padding=(Top=-5.000000,Bottom=-5.000000)
+      Size=(SizeRule=Fill)
+      HorizontalAlignment=HAlign_Left
+      VerticalAlignment=VAlign_Center
+      Parent="/Script/UMG.StackBox'StackBox_177'"
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Top10'"
+   End Object
+   Begin Object Name="StackBoxSlot_0" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_177.StackBoxSlot_0'"
       Padding=(Top=-5.000000,Bottom=-5.000000)
       HorizontalAlignment=HAlign_Left
       VerticalAlignment=VAlign_Center
       Parent="/Script/UMG.StackBox'StackBox_177'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Top2'"
-   End Object
-   Begin Object Name="StackBoxSlot_4" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_177.StackBoxSlot_4'"
-      Size=(SizeRule=Fill)
-      HorizontalAlignment=HAlign_Center
-      VerticalAlignment=VAlign_Center
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Top1'"
    End Object
    Orientation=Orient_Vertical
    Slots(0)="/Script/UMG.StackBoxSlot'StackBoxSlot_0'"
@@ -303,7 +182,7 @@ Begin Object Class=/Script/UMG.StackBox Name="StackBox_177" ExportPath="/Script/
    Slots(8)="/Script/UMG.StackBoxSlot'StackBoxSlot_14'"
    Slots(9)="/Script/UMG.StackBoxSlot'StackBoxSlot_15'"
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Top1" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.Top1'"
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Top1" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Top1'"
    Text=INVTEXT("#1")
    ColorAndOpacity=(SpecifiedColor=(R=1.000000,G=0.834783,B=0.000000,A=1.000000))
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=3,OutlineColor=(R=0.140625,G=0.117391,B=0.000000,A=1.000000)),TypefaceFontName="BurbankRegular-Black",Size=37.500000)
@@ -311,7 +190,7 @@ Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Top1
    ShadowColorAndOpacity=(R=0.140625,G=0.117391,B=0.000000,A=1.000000)
    DisplayLabel="Top 1"
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Top2" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.Top2'"
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Top2" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Top2'"
    Text=INVTEXT("#2")
    ColorAndOpacity=(SpecifiedColor=(R=0.119792,G=0.119792,B=0.119792,A=1.000000))
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=3,OutlineColor=(R=0.020833,G=0.020833,B=0.020833,A=1.000000)),TypefaceFontName="BurbankRegular-Black",Size=37.500000)
@@ -319,7 +198,7 @@ Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Top2
    ShadowColorAndOpacity=(R=0.020833,G=0.020833,B=0.020833,A=1.000000)
    DisplayLabel="Top 2"
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Top3" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.Top3'"
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Top3" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Top3'"
    Text=INVTEXT("#3")
    ColorAndOpacity=(SpecifiedColor=(R=0.895833,G=0.157106,B=0.000576,A=1.000000))
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=3,OutlineColor=(R=0.223958,G=0.039277,B=0.000144,A=1.000000)),TypefaceFontName="BurbankRegular-Black",Size=37.500000)
@@ -327,683 +206,582 @@ Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Top3
    ShadowColorAndOpacity=(R=0.223958,G=0.039277,B=0.000144,A=1.000000)
    DisplayLabel="Top 3"
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Top4" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.Top4'"
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Top4" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Top4'"
    Text=INVTEXT("#4")
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=37.500000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
    DisplayLabel="Top 4"
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Top5" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.Top5'"
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Top5" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Top5'"
    Text=INVTEXT("#5")
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=37.500000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
    DisplayLabel="Top 5"
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Top6" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.Top6'"
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Top6" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Top6'"
    Text=INVTEXT("#6")
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=37.500000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
    DisplayLabel="Top 6"
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Top7" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.Top7'"
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Top7" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Top7'"
    Text=INVTEXT("#7")
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=37.500000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
    DisplayLabel="Top 7"
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Top8" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.Top8'"
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Top8" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Top8'"
    Text=INVTEXT("#8")
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=37.500000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
    DisplayLabel="Top 8"
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Top9" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.Top9'"
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Top9" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Top9'"
    Text=INVTEXT("#9")
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=37.500000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
    DisplayLabel="Top 9"
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Top10" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.Top10'"
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Top10" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Top10'"
    Text=INVTEXT("#10")
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=37.500000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
    DisplayLabel="Top 10"
 End Object
-Begin Object Class=/Script/UMG.StackBox Name="StackBox" ExportPath="/Script/UMG.StackBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox'"
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_0" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_0'"
+Begin Object Class=/Script/UMG.StackBox Name="StackBox_123" ExportPath="/Script/UMG.StackBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_123'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_9" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_123.StackBoxSlot_9'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_1" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_1'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_8" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_123.StackBoxSlot_8'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_2" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_2'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_7" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_123.StackBoxSlot_7'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_3" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_3'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_6" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_123.StackBoxSlot_6'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_14" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_14'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_5" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_123.StackBoxSlot_5'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_13" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_13'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_4" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_123.StackBoxSlot_4'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_12" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_12'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_3" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_123.StackBoxSlot_3'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_11" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_11'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_2" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_123.StackBoxSlot_2'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_10" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_10'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_1" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_123.StackBoxSlot_1'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_9" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_9'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_0" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_123.StackBoxSlot_0'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_8" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_8'"
-   End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_7" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_7'"
-   End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_6" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_6'"
-   End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_5" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_5'"
-   End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_4" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_4'"
-   End Object
-   Begin Object Name="StackBoxSlot_0" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_0'"
-      Padding=(Top=-5.000000,Bottom=-5.000000)
-      HorizontalAlignment=HAlign_Left
-      VerticalAlignment=VAlign_Center
-   End Object
-   Begin Object Name="StackBoxSlot_1" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_1'"
-      Padding=(Right=30.000000)
-      HorizontalAlignment=HAlign_Center
-      VerticalAlignment=VAlign_Center
-   End Object
-   Begin Object Name="StackBoxSlot_2" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_2'"
-      HorizontalAlignment=HAlign_Right
-      VerticalAlignment=VAlign_Center
-   End Object
-   Begin Object Name="StackBoxSlot_3" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_3'"
-      Padding=(Left=20.000000,Right=20.000000)
+   Begin Object Name="StackBoxSlot_9" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_123.StackBoxSlot_9'"
+      Padding=(Left=15.000000,Right=15.000000)
       Size=(SizeRule=Fill)
       HorizontalAlignment=HAlign_Center
       VerticalAlignment=VAlign_Center
-   End Object
-   Begin Object Name="StackBoxSlot_14" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_14'"
-      Size=(SizeRule=Fill)
-      HorizontalAlignment=HAlign_Center
-      VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'StackBox'"
-      Content="/Script/UMG.ScaleBox'/Engine/Transient.ScaleBox_103'"
-   End Object
-   Begin Object Name="StackBoxSlot_13" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_13'"
-      Size=(SizeRule=Fill)
-      HorizontalAlignment=HAlign_Center
-      VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'StackBox'"
-      Content="/Script/UMG.ScaleBox'/Engine/Transient.ScaleBox_102'"
-   End Object
-   Begin Object Name="StackBoxSlot_12" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_12'"
-      Size=(SizeRule=Fill)
-      HorizontalAlignment=HAlign_Center
-      VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'StackBox'"
+      Parent="/Script/UMG.StackBox'StackBox_123'"
       Content="/Script/UMG.ScaleBox'ScaleBox_8'"
    End Object
-   Begin Object Name="StackBoxSlot_11" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_11'"
+   Begin Object Name="StackBoxSlot_8" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_123.StackBoxSlot_8'"
+      Padding=(Left=15.000000,Right=15.000000)
       Size=(SizeRule=Fill)
       HorizontalAlignment=HAlign_Center
       VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'StackBox'"
+      Parent="/Script/UMG.StackBox'StackBox_123'"
       Content="/Script/UMG.ScaleBox'ScaleBox_7'"
    End Object
-   Begin Object Name="StackBoxSlot_10" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_10'"
+   Begin Object Name="StackBoxSlot_7" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_123.StackBoxSlot_7'"
+      Padding=(Left=15.000000,Right=15.000000)
       Size=(SizeRule=Fill)
       HorizontalAlignment=HAlign_Center
       VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'StackBox'"
-      Content="/Script/UMG.ScaleBox'/Engine/Transient.ScaleBox_99'"
+      Parent="/Script/UMG.StackBox'StackBox_123'"
+      Content="/Script/UMG.ScaleBox'ScaleBox_6'"
    End Object
-   Begin Object Name="StackBoxSlot_9" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_9'"
+   Begin Object Name="StackBoxSlot_6" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_123.StackBoxSlot_6'"
+      Padding=(Left=15.000000,Right=15.000000)
       Size=(SizeRule=Fill)
       HorizontalAlignment=HAlign_Center
       VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'StackBox'"
+      Parent="/Script/UMG.StackBox'StackBox_123'"
       Content="/Script/UMG.ScaleBox'ScaleBox_5'"
    End Object
-   Begin Object Name="StackBoxSlot_8" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_8'"
+   Begin Object Name="StackBoxSlot_5" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_123.StackBoxSlot_5'"
+      Padding=(Left=15.000000,Right=15.000000)
       Size=(SizeRule=Fill)
       HorizontalAlignment=HAlign_Center
       VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'StackBox'"
+      Parent="/Script/UMG.StackBox'StackBox_123'"
       Content="/Script/UMG.ScaleBox'ScaleBox_4'"
    End Object
-   Begin Object Name="StackBoxSlot_7" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_7'"
+   Begin Object Name="StackBoxSlot_4" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_123.StackBoxSlot_4'"
+      Padding=(Left=15.000000,Right=15.000000)
       Size=(SizeRule=Fill)
       HorizontalAlignment=HAlign_Center
       VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'StackBox'"
+      Parent="/Script/UMG.StackBox'StackBox_123'"
       Content="/Script/UMG.ScaleBox'ScaleBox_3'"
    End Object
-   Begin Object Name="StackBoxSlot_6" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_6'"
-      Padding=(Top=-5.000000,Bottom=-5.000000)
-      Size=(SizeRule=Fill)
-      HorizontalAlignment=HAlign_Left
-      VerticalAlignment=VAlign_Center
-   End Object
-   Begin Object Name="StackBoxSlot_5" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_5'"
+   Begin Object Name="StackBoxSlot_3" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_123.StackBoxSlot_3'"
+      Padding=(Left=15.000000,Right=15.000000)
       Size=(SizeRule=Fill)
       HorizontalAlignment=HAlign_Center
       VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'StackBox'"
+      Parent="/Script/UMG.StackBox'StackBox_123'"
       Content="/Script/UMG.ScaleBox'ScaleBox_2'"
    End Object
-   Begin Object Name="StackBoxSlot_4" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox.StackBoxSlot_4'"
+   Begin Object Name="StackBoxSlot_2" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_123.StackBoxSlot_2'"
+      Padding=(Left=15.000000,Right=15.000000)
       Size=(SizeRule=Fill)
       HorizontalAlignment=HAlign_Center
       VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'StackBox'"
-      Content="/Script/UMG.ScaleBox'ScaleBox_11'"
+      Parent="/Script/UMG.StackBox'StackBox_123'"
+      Content="/Script/UMG.ScaleBox'ScaleBox_1'"
+   End Object
+   Begin Object Name="StackBoxSlot_1" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_123.StackBoxSlot_1'"
+      Padding=(Left=15.000000,Right=15.000000)
+      Size=(SizeRule=Fill)
+      HorizontalAlignment=HAlign_Center
+      VerticalAlignment=VAlign_Center
+      Parent="/Script/UMG.StackBox'StackBox_123'"
+      Content="/Script/UMG.ScaleBox'ScaleBox'"
+   End Object
+   Begin Object Name="StackBoxSlot_0" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_123.StackBoxSlot_0'"
+      Padding=(Left=15.000000,Right=15.000000)
+      Size=(SizeRule=Fill)
+      HorizontalAlignment=HAlign_Center
+      VerticalAlignment=VAlign_Center
+      Parent="/Script/UMG.StackBox'StackBox_123'"
+      Content="/Script/UMG.ScaleBox'ScaleBox_45'"
    End Object
    Orientation=Orient_Vertical
-   Slots(0)="/Script/UMG.StackBoxSlot'StackBoxSlot_4'"
-   Slots(1)="/Script/UMG.StackBoxSlot'StackBoxSlot_5'"
-   Slots(2)="/Script/UMG.StackBoxSlot'StackBoxSlot_7'"
-   Slots(3)="/Script/UMG.StackBoxSlot'StackBoxSlot_8'"
-   Slots(4)="/Script/UMG.StackBoxSlot'StackBoxSlot_9'"
-   Slots(5)="/Script/UMG.StackBoxSlot'StackBoxSlot_10'"
-   Slots(6)="/Script/UMG.StackBoxSlot'StackBoxSlot_11'"
-   Slots(7)="/Script/UMG.StackBoxSlot'StackBoxSlot_12'"
-   Slots(8)="/Script/UMG.StackBoxSlot'StackBoxSlot_13'"
-   Slots(9)="/Script/UMG.StackBoxSlot'StackBoxSlot_14'"
+   Slots(0)="/Script/UMG.StackBoxSlot'StackBoxSlot_0'"
+   Slots(1)="/Script/UMG.StackBoxSlot'StackBoxSlot_1'"
+   Slots(2)="/Script/UMG.StackBoxSlot'StackBoxSlot_2'"
+   Slots(3)="/Script/UMG.StackBoxSlot'StackBoxSlot_3'"
+   Slots(4)="/Script/UMG.StackBoxSlot'StackBoxSlot_4'"
+   Slots(5)="/Script/UMG.StackBoxSlot'StackBoxSlot_5'"
+   Slots(6)="/Script/UMG.StackBoxSlot'StackBoxSlot_6'"
+   Slots(7)="/Script/UMG.StackBoxSlot'StackBoxSlot_7'"
+   Slots(8)="/Script/UMG.StackBoxSlot'StackBoxSlot_8'"
+   Slots(9)="/Script/UMG.StackBoxSlot'StackBoxSlot_9'"
    bExpandedInDesigner=True
 End Object
-Begin Object Class=/Script/UMG.ScaleBox Name="ScaleBox_11" ExportPath="/Script/UMG.ScaleBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.ScaleBox_11'"
-   Begin Object Class=/Script/UMG.ScaleBoxSlot Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.ScaleBox_11.ScaleBoxSlot_0'"
+Begin Object Class=/Script/UMG.ScaleBox Name="ScaleBox_45" ExportPath="/Script/UMG.ScaleBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_45'"
+   Begin Object Class=/Script/UMG.ScaleBoxSlot Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_45.ScaleBoxSlot_0'"
    End Object
-   Begin Object Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.ScaleBox_11.ScaleBoxSlot_0'"
-      Parent="/Script/UMG.ScaleBox'ScaleBox_11'"
+   Begin Object Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_45.ScaleBoxSlot_0'"
+      Parent="/Script/UMG.ScaleBox'ScaleBox_45'"
       Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Name1'"
    End Object
    Slots(0)="/Script/UMG.ScaleBoxSlot'ScaleBoxSlot_0'"
+   bExpandedInDesigner=True
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Name1" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.Name1'"
-   Text=INVTEXT("BU2FL")
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Name1" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Name1'"
+   Text=INVTEXT("asdasdasdad")
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=30.000000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
-   Justification=Center
    DisplayLabel="Name 1"
 End Object
-Begin Object Class=/Script/UMG.ScaleBox Name="ScaleBox_2" ExportPath="/Script/UMG.ScaleBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.ScaleBox_2'"
-   Begin Object Class=/Script/UMG.ScaleBoxSlot Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.ScaleBox_2.ScaleBoxSlot_0'"
+Begin Object Class=/Script/UMG.ScaleBox Name="ScaleBox" ExportPath="/Script/UMG.ScaleBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox'"
+   Begin Object Class=/Script/UMG.ScaleBoxSlot Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox.ScaleBoxSlot_0'"
    End Object
-   Begin Object Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.ScaleBox_2.ScaleBoxSlot_0'"
-      Parent="/Script/UMG.ScaleBox'ScaleBox_2'"
+   Begin Object Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox.ScaleBoxSlot_0'"
+      Parent="/Script/UMG.ScaleBox'ScaleBox'"
       Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Name2'"
    End Object
    Slots(0)="/Script/UMG.ScaleBoxSlot'ScaleBoxSlot_0'"
    bExpandedInDesigner=True
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Name2" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.Name2'"
-   Text=INVTEXT("SAND_Fresser2.0")
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Name2" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Name2'"
+   Text=INVTEXT("BU2FL")
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=30.000000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
-   Justification=Center
    DisplayLabel="Name 2"
 End Object
-Begin Object Class=/Script/UMG.ScaleBox Name="ScaleBox_3" ExportPath="/Script/UMG.ScaleBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.ScaleBox_3'"
-   Begin Object Class=/Script/UMG.ScaleBoxSlot Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.ScaleBox_3.ScaleBoxSlot_0'"
+Begin Object Class=/Script/UMG.ScaleBox Name="ScaleBox_1" ExportPath="/Script/UMG.ScaleBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_1'"
+   Begin Object Class=/Script/UMG.ScaleBoxSlot Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_1.ScaleBoxSlot_0'"
    End Object
-   Begin Object Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.ScaleBox_3.ScaleBoxSlot_0'"
-      Parent="/Script/UMG.ScaleBox'ScaleBox_3'"
+   Begin Object Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_1.ScaleBoxSlot_0'"
+      Parent="/Script/UMG.ScaleBox'ScaleBox_1'"
       Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Name3'"
    End Object
    Slots(0)="/Script/UMG.ScaleBoxSlot'ScaleBoxSlot_0'"
    bExpandedInDesigner=True
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Name3" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.Name3'"
-   Text=INVTEXT("VloneRR6")
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Name3" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Name3'"
+   Text=INVTEXT("BU2FL")
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=30.000000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
-   Justification=Center
    DisplayLabel="Name 3"
 End Object
-Begin Object Class=/Script/UMG.ScaleBox Name="ScaleBox_4" ExportPath="/Script/UMG.ScaleBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.ScaleBox_4'"
-   Begin Object Class=/Script/UMG.ScaleBoxSlot Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.ScaleBox_4.ScaleBoxSlot_0'"
+Begin Object Class=/Script/UMG.ScaleBox Name="ScaleBox_2" ExportPath="/Script/UMG.ScaleBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_2'"
+   Begin Object Class=/Script/UMG.ScaleBoxSlot Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_2.ScaleBoxSlot_0'"
    End Object
-   Begin Object Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.ScaleBox_4.ScaleBoxSlot_0'"
-      Parent="/Script/UMG.ScaleBox'ScaleBox_4'"
+   Begin Object Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_2.ScaleBoxSlot_0'"
+      Parent="/Script/UMG.ScaleBox'ScaleBox_2'"
       Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Name4'"
    End Object
    Slots(0)="/Script/UMG.ScaleBoxSlot'ScaleBoxSlot_0'"
    bExpandedInDesigner=True
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Name4" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.Name4'"
-   Text=INVTEXT("Death_to_thy_all")
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Name4" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Name4'"
+   Text=INVTEXT("BU2FL")
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=30.000000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
-   Justification=Center
    DisplayLabel="Name 4"
 End Object
-Begin Object Class=/Script/UMG.ScaleBox Name="ScaleBox_5" ExportPath="/Script/UMG.ScaleBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.ScaleBox_5'"
-   Begin Object Class=/Script/UMG.ScaleBoxSlot Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.ScaleBox_5.ScaleBoxSlot_0'"
+Begin Object Class=/Script/UMG.ScaleBox Name="ScaleBox_3" ExportPath="/Script/UMG.ScaleBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_3'"
+   Begin Object Class=/Script/UMG.ScaleBoxSlot Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_3.ScaleBoxSlot_0'"
    End Object
-   Begin Object Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.ScaleBox_5.ScaleBoxSlot_0'"
-      Parent="/Script/UMG.ScaleBox'ScaleBox_5'"
+   Begin Object Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_3.ScaleBoxSlot_0'"
+      Parent="/Script/UMG.ScaleBox'ScaleBox_3'"
       Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Name5'"
    End Object
    Slots(0)="/Script/UMG.ScaleBoxSlot'ScaleBoxSlot_0'"
    bExpandedInDesigner=True
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Name5" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.Name5'"
-   Text=INVTEXT("YT. AARON 2.0")
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Name5" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Name5'"
+   Text=INVTEXT("BU2FL")
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=30.000000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
-   Justification=Center
    DisplayLabel="Name 5"
 End Object
-Begin Object Class=/Script/UMG.ScaleBox Name="ScaleBox_99" ExportPath="/Script/UMG.ScaleBox'/Engine/Transient.ScaleBox_99'"
-   Begin Object Class=/Script/UMG.ScaleBoxSlot Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/Engine/Transient.ScaleBox_99:ScaleBoxSlot_0'"
+Begin Object Class=/Script/UMG.ScaleBox Name="ScaleBox_4" ExportPath="/Script/UMG.ScaleBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_4'"
+   Begin Object Class=/Script/UMG.ScaleBoxSlot Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_4.ScaleBoxSlot_0'"
    End Object
-   Begin Object Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/Engine/Transient.ScaleBox_99:ScaleBoxSlot_0'"
-      Parent="/Script/UMG.ScaleBox'/Engine/Transient.ScaleBox_99'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.UEFN_TextBlock_C_431'"
+   Begin Object Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_4.ScaleBoxSlot_0'"
+      Parent="/Script/UMG.ScaleBox'ScaleBox_4'"
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Name6'"
    End Object
-   Slots(0)="/Script/UMG.ScaleBoxSlot'/Engine/Transient.ScaleBox_99:ScaleBoxSlot_0'"
+   Slots(0)="/Script/UMG.ScaleBoxSlot'ScaleBoxSlot_0'"
    bExpandedInDesigner=True
 End Object
-Begin Object Class=/Script/UMGEditor.WidgetSlotPair Name="WidgetSlotPair_8" ExportPath="/Script/UMGEditor.WidgetSlotPair'/Engine/Transient.WidgetSlotPair_8'"
-   WidgetName="ScaleBox_99"
-   SlotPropertyNames(0)="Padding"
-   SlotPropertyNames(1)="Size"
-   SlotPropertyNames(2)="HorizontalAlignment"
-   SlotPropertyNames(3)="VerticalAlignment"
-   SlotPropertyValues(0)="(Left=0.000000,Top=0.000000,Right=0.000000,Bottom=0.000000)"
-   SlotPropertyValues(1)="(Value=1.000000,SizeRule=Fill)"
-   SlotPropertyValues(2)="HAlign_Center"
-   SlotPropertyValues(3)="VAlign_Center"
-End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="UEFN_TextBlock_C_431" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.UEFN_TextBlock_C_431'"
-   Text=INVTEXT("nutellabrot200")
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Name6" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Name6'"
+   Text=INVTEXT("BU2FL")
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=30.000000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
-   Justification=Center
    DisplayLabel="Name 6"
 End Object
-Begin Object Class=/Script/UMG.ScaleBox Name="ScaleBox_7" ExportPath="/Script/UMG.ScaleBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.ScaleBox_7'"
-   Begin Object Class=/Script/UMG.ScaleBoxSlot Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.ScaleBox_7.ScaleBoxSlot_0'"
+Begin Object Class=/Script/UMG.ScaleBox Name="ScaleBox_5" ExportPath="/Script/UMG.ScaleBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_5'"
+   Begin Object Class=/Script/UMG.ScaleBoxSlot Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_5.ScaleBoxSlot_0'"
    End Object
-   Begin Object Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.ScaleBox_7.ScaleBoxSlot_0'"
-      Parent="/Script/UMG.ScaleBox'ScaleBox_7'"
+   Begin Object Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_5.ScaleBoxSlot_0'"
+      Parent="/Script/UMG.ScaleBox'ScaleBox_5'"
       Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Name7'"
    End Object
    Slots(0)="/Script/UMG.ScaleBoxSlot'ScaleBoxSlot_0'"
    bExpandedInDesigner=True
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Name7" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.Name7'"
-   Text=INVTEXT("カラスに食べられたはるまき")
-   Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=26.250000)
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Name7" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Name7'"
+   Text=INVTEXT("BU2FL")
+   Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=30.000000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
-   Justification=Center
    DisplayLabel="Name 7"
 End Object
-Begin Object Class=/Script/UMG.ScaleBox Name="ScaleBox_8" ExportPath="/Script/UMG.ScaleBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.ScaleBox_8'"
-   Begin Object Class=/Script/UMG.ScaleBoxSlot Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.ScaleBox_8.ScaleBoxSlot_0'"
+Begin Object Class=/Script/UMG.ScaleBox Name="ScaleBox_6" ExportPath="/Script/UMG.ScaleBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_6'"
+   Begin Object Class=/Script/UMG.ScaleBoxSlot Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_6.ScaleBoxSlot_0'"
    End Object
-   Begin Object Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.ScaleBox_8.ScaleBoxSlot_0'"
-      Parent="/Script/UMG.ScaleBox'ScaleBox_8'"
+   Begin Object Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_6.ScaleBoxSlot_0'"
+      Parent="/Script/UMG.ScaleBox'ScaleBox_6'"
       Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Name8'"
    End Object
    Slots(0)="/Script/UMG.ScaleBoxSlot'ScaleBoxSlot_0'"
    bExpandedInDesigner=True
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Name8" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.Name8'"
-   Text=INVTEXT("TRXLY")
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Name8" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Name8'"
+   Text=INVTEXT("BU2FL")
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=30.000000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
-   Justification=Center
    DisplayLabel="Name 8"
 End Object
-Begin Object Class=/Script/UMG.ScaleBox Name="ScaleBox_102" ExportPath="/Script/UMG.ScaleBox'/Engine/Transient.ScaleBox_102'"
-   Begin Object Class=/Script/UMG.ScaleBoxSlot Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/Engine/Transient.ScaleBox_102:ScaleBoxSlot_0'"
+Begin Object Class=/Script/UMG.ScaleBox Name="ScaleBox_7" ExportPath="/Script/UMG.ScaleBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_7'"
+   Begin Object Class=/Script/UMG.ScaleBoxSlot Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_7.ScaleBoxSlot_0'"
    End Object
-   Begin Object Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/Engine/Transient.ScaleBox_102:ScaleBoxSlot_0'"
-      Parent="/Script/UMG.ScaleBox'/Engine/Transient.ScaleBox_102'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.UEFN_TextBlock_C_434'"
+   Begin Object Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_7.ScaleBoxSlot_0'"
+      Parent="/Script/UMG.ScaleBox'ScaleBox_7'"
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Name9'"
    End Object
-   Slots(0)="/Script/UMG.ScaleBoxSlot'/Engine/Transient.ScaleBox_102:ScaleBoxSlot_0'"
+   Slots(0)="/Script/UMG.ScaleBoxSlot'ScaleBoxSlot_0'"
    bExpandedInDesigner=True
 End Object
-Begin Object Class=/Script/UMGEditor.WidgetSlotPair Name="WidgetSlotPair_9" ExportPath="/Script/UMGEditor.WidgetSlotPair'/Engine/Transient.WidgetSlotPair_9'"
-   WidgetName="ScaleBox_102"
-   SlotPropertyNames(0)="Padding"
-   SlotPropertyNames(1)="Size"
-   SlotPropertyNames(2)="HorizontalAlignment"
-   SlotPropertyNames(3)="VerticalAlignment"
-   SlotPropertyValues(0)="(Left=0.000000,Top=0.000000,Right=0.000000,Bottom=0.000000)"
-   SlotPropertyValues(1)="(Value=1.000000,SizeRule=Fill)"
-   SlotPropertyValues(2)="HAlign_Center"
-   SlotPropertyValues(3)="VAlign_Center"
-End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="UEFN_TextBlock_C_434" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.UEFN_TextBlock_C_434'"
-   Text=INVTEXT("dodo_rapido15")
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Name9" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Name9'"
+   Text=INVTEXT("BU2FL")
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=30.000000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
-   Justification=Center
    DisplayLabel="Name 9"
 End Object
-Begin Object Class=/Script/UMG.ScaleBox Name="ScaleBox_103" ExportPath="/Script/UMG.ScaleBox'/Engine/Transient.ScaleBox_103'"
-   Begin Object Class=/Script/UMG.ScaleBoxSlot Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/Engine/Transient.ScaleBox_103:ScaleBoxSlot_0'"
+Begin Object Class=/Script/UMG.ScaleBox Name="ScaleBox_8" ExportPath="/Script/UMG.ScaleBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_8'"
+   Begin Object Class=/Script/UMG.ScaleBoxSlot Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_8.ScaleBoxSlot_0'"
    End Object
-   Begin Object Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/Engine/Transient.ScaleBox_103:ScaleBoxSlot_0'"
-      Parent="/Script/UMG.ScaleBox'/Engine/Transient.ScaleBox_103'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.UEFN_TextBlock_C_435'"
+   Begin Object Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_8.ScaleBoxSlot_0'"
+      Parent="/Script/UMG.ScaleBox'ScaleBox_8'"
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Name10'"
    End Object
-   Slots(0)="/Script/UMG.ScaleBoxSlot'/Engine/Transient.ScaleBox_103:ScaleBoxSlot_0'"
+   Slots(0)="/Script/UMG.ScaleBoxSlot'ScaleBoxSlot_0'"
+   bExpandedInDesigner=True
 End Object
-Begin Object Class=/Script/UMGEditor.WidgetSlotPair Name="WidgetSlotPair_10" ExportPath="/Script/UMGEditor.WidgetSlotPair'/Engine/Transient.WidgetSlotPair_10'"
-   WidgetName="ScaleBox_103"
-   SlotPropertyNames(0)="Padding"
-   SlotPropertyNames(1)="Size"
-   SlotPropertyNames(2)="HorizontalAlignment"
-   SlotPropertyNames(3)="VerticalAlignment"
-   SlotPropertyValues(0)="(Left=0.000000,Top=0.000000,Right=0.000000,Bottom=0.000000)"
-   SlotPropertyValues(1)="(Value=1.000000,SizeRule=Fill)"
-   SlotPropertyValues(2)="HAlign_Center"
-   SlotPropertyValues(3)="VAlign_Center"
-End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="UEFN_TextBlock_C_435" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.UEFN_TextBlock_C_435'"
-   Text=INVTEXT("mxtc6")
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Name10" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Name10'"
+   Text=INVTEXT("BU2FL")
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=30.000000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
-   Justification=Center
    DisplayLabel="Name 10"
 End Object
-Begin Object Class=/Script/UMG.StackBox Name="StackBox_117" ExportPath="/Script/UMG.StackBox'/Engine/Transient.StackBox_117'"
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_0" ExportPath="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_0'"
+Begin Object Class=/Script/UMG.StackBox Name="StackBox_185" ExportPath="/Script/UMG.StackBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_185'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_9" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_185.StackBoxSlot_9'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_1" ExportPath="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_1'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_8" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_185.StackBoxSlot_8'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_2" ExportPath="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_2'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_7" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_185.StackBoxSlot_7'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_11" ExportPath="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_11'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_6" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_185.StackBoxSlot_6'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_10" ExportPath="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_10'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_5" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_185.StackBoxSlot_5'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_9" ExportPath="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_9'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_4" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_185.StackBoxSlot_4'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_8" ExportPath="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_8'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_3" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_185.StackBoxSlot_3'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_7" ExportPath="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_7'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_2" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_185.StackBoxSlot_2'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_6" ExportPath="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_6'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_1" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_185.StackBoxSlot_1'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_5" ExportPath="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_5'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_0" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_185.StackBoxSlot_0'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_4" ExportPath="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_4'"
-   End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_3" ExportPath="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_3'"
-   End Object
-   Begin Object Name="StackBoxSlot_0" ExportPath="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_0'"
-      Padding=(Top=-5.000000,Bottom=-5.000000)
+   Begin Object Name="StackBoxSlot_9" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_185.StackBoxSlot_9'"
       Size=(SizeRule=Fill)
-      HorizontalAlignment=HAlign_Left
-      VerticalAlignment=VAlign_Center
-   End Object
-   Begin Object Name="StackBoxSlot_1" ExportPath="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_1'"
-      Padding=(Right=45.000000)
       HorizontalAlignment=HAlign_Center
       VerticalAlignment=VAlign_Center
+      Parent="/Script/UMG.StackBox'StackBox_185'"
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Value10'"
    End Object
-   Begin Object Name="StackBoxSlot_2" ExportPath="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_2'"
+   Begin Object Name="StackBoxSlot_8" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_185.StackBoxSlot_8'"
+      Size=(SizeRule=Fill)
+      HorizontalAlignment=HAlign_Center
+      VerticalAlignment=VAlign_Center
+      Parent="/Script/UMG.StackBox'StackBox_185'"
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Value9'"
+   End Object
+   Begin Object Name="StackBoxSlot_7" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_185.StackBoxSlot_7'"
+      Size=(SizeRule=Fill)
+      HorizontalAlignment=HAlign_Center
+      VerticalAlignment=VAlign_Center
+      Parent="/Script/UMG.StackBox'StackBox_185'"
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Value8'"
+   End Object
+   Begin Object Name="StackBoxSlot_6" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_185.StackBoxSlot_6'"
+      Size=(SizeRule=Fill)
+      HorizontalAlignment=HAlign_Center
+      VerticalAlignment=VAlign_Center
+      Parent="/Script/UMG.StackBox'StackBox_185'"
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Value7'"
+   End Object
+   Begin Object Name="StackBoxSlot_5" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_185.StackBoxSlot_5'"
+      Size=(SizeRule=Fill)
+      HorizontalAlignment=HAlign_Center
+      VerticalAlignment=VAlign_Center
+      Parent="/Script/UMG.StackBox'StackBox_185'"
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Value6'"
+   End Object
+   Begin Object Name="StackBoxSlot_4" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_185.StackBoxSlot_4'"
+      Size=(SizeRule=Fill)
+      HorizontalAlignment=HAlign_Center
+      VerticalAlignment=VAlign_Center
+      Parent="/Script/UMG.StackBox'StackBox_185'"
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Value5'"
+   End Object
+   Begin Object Name="StackBoxSlot_3" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_185.StackBoxSlot_3'"
+      Size=(SizeRule=Fill)
+      HorizontalAlignment=HAlign_Center
+      VerticalAlignment=VAlign_Center
+      Parent="/Script/UMG.StackBox'StackBox_185'"
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Value4'"
+   End Object
+   Begin Object Name="StackBoxSlot_2" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_185.StackBoxSlot_2'"
+      Size=(SizeRule=Fill)
+      HorizontalAlignment=HAlign_Center
+      VerticalAlignment=VAlign_Center
+      Parent="/Script/UMG.StackBox'StackBox_185'"
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Value3'"
+   End Object
+   Begin Object Name="StackBoxSlot_1" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_185.StackBoxSlot_1'"
+      Size=(SizeRule=Fill)
+      HorizontalAlignment=HAlign_Center
+      VerticalAlignment=VAlign_Center
+      Parent="/Script/UMG.StackBox'StackBox_185'"
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Value2'"
+   End Object
+   Begin Object Name="StackBoxSlot_0" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_185.StackBoxSlot_0'"
       Size=(SizeRule=Fill)
       HorizontalAlignment=HAlign_Right
       VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'/Engine/Transient.StackBox_117'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.Value2'"
-   End Object
-   Begin Object Name="StackBoxSlot_11" ExportPath="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_11'"
-      Size=(SizeRule=Fill)
-      HorizontalAlignment=HAlign_Right
-      VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'/Engine/Transient.StackBox_117'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.Value10'"
-   End Object
-   Begin Object Name="StackBoxSlot_10" ExportPath="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_10'"
-      Size=(SizeRule=Fill)
-      HorizontalAlignment=HAlign_Right
-      VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'/Engine/Transient.StackBox_117'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.Value9'"
-   End Object
-   Begin Object Name="StackBoxSlot_9" ExportPath="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_9'"
-      Size=(SizeRule=Fill)
-      HorizontalAlignment=HAlign_Right
-      VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'/Engine/Transient.StackBox_117'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.Value8'"
-   End Object
-   Begin Object Name="StackBoxSlot_8" ExportPath="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_8'"
-      Size=(SizeRule=Fill)
-      HorizontalAlignment=HAlign_Right
-      VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'/Engine/Transient.StackBox_117'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.Value7'"
-   End Object
-   Begin Object Name="StackBoxSlot_7" ExportPath="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_7'"
-      Size=(SizeRule=Fill)
-      HorizontalAlignment=HAlign_Right
-      VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'/Engine/Transient.StackBox_117'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.Value6'"
-   End Object
-   Begin Object Name="StackBoxSlot_6" ExportPath="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_6'"
-      Size=(SizeRule=Fill)
-      HorizontalAlignment=HAlign_Right
-      VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'/Engine/Transient.StackBox_117'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.Value4'"
-   End Object
-   Begin Object Name="StackBoxSlot_5" ExportPath="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_5'"
-      Size=(SizeRule=Fill)
-      HorizontalAlignment=HAlign_Right
-      VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'/Engine/Transient.StackBox_117'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.Value3'"
-   End Object
-   Begin Object Name="StackBoxSlot_4" ExportPath="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_4'"
-      Size=(SizeRule=Fill)
-      HorizontalAlignment=HAlign_Right
-      VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'/Engine/Transient.StackBox_117'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.Value1'"
-   End Object
-   Begin Object Name="StackBoxSlot_3" ExportPath="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_3'"
-      Size=(SizeRule=Fill)
-      HorizontalAlignment=HAlign_Right
-      VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'/Engine/Transient.StackBox_117'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.Value5'"
+      Parent="/Script/UMG.StackBox'StackBox_185'"
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Value1'"
    End Object
    Orientation=Orient_Vertical
-   Slots(0)="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_4'"
-   Slots(1)="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_2'"
-   Slots(2)="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_5'"
-   Slots(3)="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_6'"
-   Slots(4)="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_3'"
-   Slots(5)="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_7'"
-   Slots(6)="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_8'"
-   Slots(7)="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_9'"
-   Slots(8)="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_10'"
-   Slots(9)="/Script/UMG.StackBoxSlot'/Engine/Transient.StackBox_117:StackBoxSlot_11'"
+   Slots(0)="/Script/UMG.StackBoxSlot'StackBoxSlot_0'"
+   Slots(1)="/Script/UMG.StackBoxSlot'StackBoxSlot_1'"
+   Slots(2)="/Script/UMG.StackBoxSlot'StackBoxSlot_2'"
+   Slots(3)="/Script/UMG.StackBoxSlot'StackBoxSlot_3'"
+   Slots(4)="/Script/UMG.StackBoxSlot'StackBoxSlot_4'"
+   Slots(5)="/Script/UMG.StackBoxSlot'StackBoxSlot_5'"
+   Slots(6)="/Script/UMG.StackBoxSlot'StackBoxSlot_6'"
+   Slots(7)="/Script/UMG.StackBoxSlot'StackBoxSlot_7'"
+   Slots(8)="/Script/UMG.StackBoxSlot'StackBoxSlot_8'"
+   Slots(9)="/Script/UMG.StackBoxSlot'StackBoxSlot_9'"
+   bExpandedInDesigner=True
 End Object
-Begin Object Class=/Script/UMGEditor.WidgetSlotPair Name="WidgetSlotPair_11" ExportPath="/Script/UMGEditor.WidgetSlotPair'/Engine/Transient.WidgetSlotPair_11'"
-   WidgetName="StackBox_117"
-   SlotPropertyNames(0)="Padding"
-   SlotPropertyNames(1)="Size"
-   SlotPropertyNames(2)="HorizontalAlignment"
-   SlotPropertyNames(3)="VerticalAlignment"
-   SlotPropertyValues(0)="(Left=0.000000,Top=0.000000,Right=0.000000,Bottom=0.000000)"
-   SlotPropertyValues(1)="(Value=1.000000,SizeRule=Automatic)"
-   SlotPropertyValues(2)="HAlign_Fill"
-   SlotPropertyValues(3)="VAlign_Fill"
-End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Value1" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.Value1'"
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Value1" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Value1'"
    Text=INVTEXT("$4.6Dc")
    ColorAndOpacity=(SpecifiedColor=(R=0.093476,G=1.000000,B=0.078125,A=1.000000))
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=30.000000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
-   Justification=Right
    DisplayLabel="Value 1"
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Value2" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.Value2'"
-   Text=INVTEXT("$1.8Dc")
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Value2" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Value2'"
+   Text=INVTEXT("$4.6Dc")
    ColorAndOpacity=(SpecifiedColor=(R=0.093476,G=1.000000,B=0.078125,A=1.000000))
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=30.000000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
-   Justification=Right
    DisplayLabel="Value 2"
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Value3" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.Value3'"
-   Text=INVTEXT("$1.3Dc")
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Value3" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Value3'"
+   Text=INVTEXT("$4.6Dc")
    ColorAndOpacity=(SpecifiedColor=(R=0.093476,G=1.000000,B=0.078125,A=1.000000))
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=30.000000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
-   Justification=Right
    DisplayLabel="Value 3"
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Value4" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.Value4'"
-   Text=INVTEXT("$376.2No")
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Value4" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Value4'"
+   Text=INVTEXT("$4.6Dc")
    ColorAndOpacity=(SpecifiedColor=(R=0.093476,G=1.000000,B=0.078125,A=1.000000))
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=30.000000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
-   Justification=Right
    DisplayLabel="Value 4"
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Value5" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.Value5'"
-   Text=INVTEXT("$2.8Dc")
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Value5" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Value5'"
+   Text=INVTEXT("$4.6Dc")
    ColorAndOpacity=(SpecifiedColor=(R=0.093476,G=1.000000,B=0.078125,A=1.000000))
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=30.000000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
-   Justification=Right
    DisplayLabel="Value 5"
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Value6" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.Value6'"
-   Text=INVTEXT("$257.4No")
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Value6" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Value6'"
+   Text=INVTEXT("$4.6Dc")
    ColorAndOpacity=(SpecifiedColor=(R=0.093476,G=1.000000,B=0.078125,A=1.000000))
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=30.000000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
-   Justification=Right
    DisplayLabel="Value 6"
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Value7" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.Value7'"
-   Text=INVTEXT("$95.6No")
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Value7" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Value7'"
+   Text=INVTEXT("$4.6Dc")
    ColorAndOpacity=(SpecifiedColor=(R=0.093476,G=1.000000,B=0.078125,A=1.000000))
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=30.000000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
-   Justification=Right
    DisplayLabel="Value 7"
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Value8" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.Value8'"
-   Text=INVTEXT("$58.9No")
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Value8" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Value8'"
+   Text=INVTEXT("$4.6Dc")
    ColorAndOpacity=(SpecifiedColor=(R=0.093476,G=1.000000,B=0.078125,A=1.000000))
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=30.000000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
-   Justification=Right
    DisplayLabel="Value 8"
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Value9" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.Value9'"
-   Text=INVTEXT("$13.6No")
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Value9" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Value9'"
+   Text=INVTEXT("$4.6Dc")
    ColorAndOpacity=(SpecifiedColor=(R=0.093476,G=1.000000,B=0.078125,A=1.000000))
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=30.000000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
-   Justification=Right
    DisplayLabel="Value 9"
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Value10" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/Engine/Transient.Value10'"
-   Text=INVTEXT("$2.3No")
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Value10" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Value10'"
+   Text=INVTEXT("$4.6Dc")
    ColorAndOpacity=(SpecifiedColor=(R=0.093476,G=1.000000,B=0.078125,A=1.000000))
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=30.000000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
-   Justification=Right
    DisplayLabel="Value 10"
 End Object
-Begin Object Class=/Script/UMG.ScaleBox Name="ScaleBox_0" ExportPath="/Script/UMG.ScaleBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.ScaleBox_0'"
-   Begin Object Class=/Script/UMG.ScaleBoxSlot Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.ScaleBox_0.ScaleBoxSlot_0'"
+Begin Object Class=/Script/UMG.ScaleBox Name="ScaleBox_0" ExportPath="/Script/UMG.ScaleBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_0'"
+   Begin Object Class=/Script/UMG.ScaleBoxSlot Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_0.ScaleBoxSlot_0'"
    End Object
-   Begin Object Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.ScaleBox_0.ScaleBoxSlot_0'"
+   Begin Object Name="ScaleBoxSlot_0" ExportPath="/Script/UMG.ScaleBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.ScaleBox_0.ScaleBoxSlot_0'"
       Parent="/Script/UMG.ScaleBox'ScaleBox_0'"
       Content="/Script/UMG.StackBox'StackBox_9'"
    End Object
    Slots(0)="/Script/UMG.ScaleBoxSlot'ScaleBoxSlot_0'"
-   bExpandedInDesigner=True
 End Object
-Begin Object Class=/Script/UMG.StackBox Name="StackBox_9" ExportPath="/Script/UMG.StackBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_9'"
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_4" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_9.StackBoxSlot_4'"
+Begin Object Class=/Script/UMG.StackBox Name="StackBox_9" ExportPath="/Script/UMG.StackBox'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_9'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_3" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_9.StackBoxSlot_3'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_1" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_9.StackBoxSlot_1'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_1" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_9.StackBoxSlot_1'"
    End Object
-   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_3" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_9.StackBoxSlot_3'"
+   Begin Object Class=/Script/UMG.StackBoxSlot Name="StackBoxSlot_4" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_9.StackBoxSlot_4'"
    End Object
-   Begin Object Name="StackBoxSlot_4" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_9.StackBoxSlot_4'"
-      Padding=(Left=-2.000000)
-      HorizontalAlignment=HAlign_Center
-      VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'StackBox_9'"
-      Content="/Script/UMG.Image'Image_103'"
-   End Object
-   Begin Object Name="StackBoxSlot_1" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_9.StackBoxSlot_1'"
-      Padding=(Top=1.500000,Right=2.000000)
-      HorizontalAlignment=HAlign_Center
-      VerticalAlignment=VAlign_Center
-      Parent="/Script/UMG.StackBox'StackBox_9'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'UEFN_TextBlock_C_30'"
-   End Object
-   Begin Object Name="StackBoxSlot_3" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.StackBox_9.StackBoxSlot_3'"
+   Begin Object Name="StackBoxSlot_3" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_9.StackBoxSlot_3'"
       Padding=(Top=1.500000)
       HorizontalAlignment=HAlign_Center
       VerticalAlignment=VAlign_Center
       Parent="/Script/UMG.StackBox'StackBox_9'"
-      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'UEFN_TextBlock_C_29'"
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Discord2'"
+   End Object
+   Begin Object Name="StackBoxSlot_1" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_9.StackBoxSlot_1'"
+      Padding=(Top=1.500000,Right=2.000000)
+      HorizontalAlignment=HAlign_Center
+      VerticalAlignment=VAlign_Center
+      Parent="/Script/UMG.StackBox'StackBox_9'"
+      Content="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'Discord1'"
+   End Object
+   Begin Object Name="StackBoxSlot_4" ExportPath="/Script/UMG.StackBoxSlot'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.StackBox_9.StackBoxSlot_4'"
+      Padding=(Left=-2.000000)
+      HorizontalAlignment=HAlign_Center
+      VerticalAlignment=VAlign_Center
+      Parent="/Script/UMG.StackBox'StackBox_9'"
+      Content="/Script/UMG.Image'DiscordIcon'"
    End Object
    Slots(0)="/Script/UMG.StackBoxSlot'StackBoxSlot_1'"
    Slots(1)="/Script/UMG.StackBoxSlot'StackBoxSlot_3'"
    Slots(2)="/Script/UMG.StackBoxSlot'StackBoxSlot_4'"
-   bExpandedInDesigner=True
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="UEFN_TextBlock_C_30" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.UEFN_TextBlock_C_30'"
-   Text=NSLOCTEXT("[E4B73E033CA646892BEE5327B14A4FF5]", "53C7EB684C9D949713A29C96E5189C09", "Submit your stats to our")
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Discord1" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Discord1'"
+   Text=NSLOCTEXT("[E67E59999487A4CF6EA72B2825BA1469]", "2F2A38254B814FCBCB94E98396DA4EE3", "Submit your stats to our")
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=24.750000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
    Justification=Center
+   DisplayLabel="Discord 1"
 End Object
-Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="UEFN_TextBlock_C_29" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.UEFN_TextBlock_C_29'"
-   Text=NSLOCTEXT("[E4B73E033CA646892BEE5327B14A4FF5]", "D20EC55C4CD183F09B2C629697DBCBFF", "DISCORD ")
+Begin Object Class=/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C Name="Discord2" ExportPath="/Game/Valkyrie/UMG/UEFN_TextBlock.UEFN_TextBlock_C'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.Discord2'"
+   Text=NSLOCTEXT("[E67E59999487A4CF6EA72B2825BA1469]", "05CE43A04AE0B467F628938FA2EDB0B4", "DISCORD ")
    ColorAndOpacity=(SpecifiedColor=(R=0.097587,G=0.130136,B=0.887923,A=1.000000))
    Font=(FontObject="/Script/Engine.Font'/FortUILibrary/Fonts/Burbank.Burbank'",OutlineSettings=(OutlineSize=2),TypefaceFontName="BurbankRegular-Black",Size=24.750000)
    ShadowOffset=(X=2.000000,Y=2.000000)
    ShadowColorAndOpacity=(R=0.000000,G=0.000000,B=0.000000,A=1.000000)
    Justification=Center
+   DisplayLabel="Discord 2"
 End Object
-Begin Object Class=/Script/UMG.Image Name="Image_103" ExportPath="/Script/UMG.Image'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WBP_LeaderboardData.WBP_LeaderboardData:WidgetTree.Image_103'"
+Begin Object Class=/Script/UMG.Image Name="DiscordIcon" ExportPath="/Script/UMG.Image'/MT_LasersForBrainrots/MT/Leaderboard/World/Widgets/WPB_Leaderboard_CASH.WPB_Leaderboard_CASH:WidgetTree.DiscordIcon'"
    Brush=(DrawAs=RoundedBox,ImageType=FullColor,ImageSize=(X=40.000000,Y=40.000000),ResourceObject="/Script/Engine.Texture2D'/MT_LasersForBrainrots/MT/CreatorProfile/Discord/icon_discord2.icon_discord2'",OutlineSettings=(Color=(SpecifiedColor=(R=1.000000,G=1.000000,B=1.000000,A=1.000000)),Width=1.000000))
+   DisplayLabel="Discord  Icon"
 End Object
