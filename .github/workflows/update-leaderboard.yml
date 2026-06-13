@@ -44,4 +44,8 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           GEMINI_MODEL: gemini-2.5-flash
+          # Indica si la ejecución fue manual ('workflow_dispatch') o
+          # por cron ('schedule'). El bot usa esto para decidir si
+          # refresca TODOS los embeds (manual) o solo los que cambiaron.
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
         run: python batch_update.py
