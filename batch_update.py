@@ -557,25 +557,39 @@ async def on_ready():
             print("[BATCH] No hay mensajes nuevos.")
 
         # --- Refrescar embeds y resúmenes ---
-        # Política: refrescamos SOLO los juegos que han cambiado en esta
-        # ejecución. Si quisieras refrescar todos siempre (por si alguien
-        # borra un embed a mano), cambia 'juegos_tocados' por 'GAMES'.
-        if not juegos_tocados:
-            print("[BATCH] Ningún juego cambió. No se refrescan embeds.")
-        else:
-            print(f"[BATCH] Refrescando embeds de: {sorted(juegos_tocados)}")
-            for game_key in juegos_tocados:
-                game_config = GAMES[game_key]
-                try:
-                    await _actualizar_embed(c_leaderboard, game_key, game_config)
-                except Exception as e:
-                    print(f"[ERROR] Embed de '{game_key}': {e}")
+        # Política:
+        #   - Ejecución MANUAL (workflow_dispatch): refresca TODOS los
+        #     juegos desde la base de datos. Útil tras editar nombres a
+        #     mano en Supabase, o si alguien borró un embed.
+        #   - Ejecución por CRON (schedule): solo los juegos que han
+        #     cambiado en esta tanda (ahorra trabajo y llamadas).
+        es_manual = os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch"
 
-                if c_summary is not None:
-                    try:
-                        await _actualizar_resumen(c_summary, game_key, game_config)
-                    except Exception as e:
-                        print(f"[ERROR] Resumen de '{game_key}': {e}")
+        if es_manual:
+            a_refrescar = set(GAMES.keys())
+            print(
+                "[BATCH] Ejecución MANUAL: refresco TODOS los embeds "
+                f"desde la base de datos ({sorted(a_refrescar)})."
+            )
+        elif juegos_tocados:
+            a_refrescar = juegos_tocados
+            print(f"[BATCH] Refrescando embeds de: {sorted(juegos_tocados)}")
+        else:
+            a_refrescar = set()
+            print("[BATCH] Ningún juego cambió. No se refrescan embeds.")
+
+        for game_key in a_refrescar:
+            game_config = GAMES[game_key]
+            try:
+                await _actualizar_embed(c_leaderboard, game_key, game_config)
+            except Exception as e:
+                print(f"[ERROR] Embed de '{game_key}': {e}")
+
+            if c_summary is not None:
+                try:
+                    await _actualizar_resumen(c_summary, game_key, game_config)
+                except Exception as e:
+                    print(f"[ERROR] Resumen de '{game_key}': {e}")
 
     finally:
         await client.close()
