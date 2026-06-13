@@ -23,8 +23,6 @@ Al terminar cierra la conexión.
 """
 
 import asyncio
-import io
-import json
 import os
 from datetime import datetime
 
@@ -35,9 +33,7 @@ from database import (
     guardar_stat,
     guardar_ultimo_mensaje_global,
     guardar_id_embed,
-    guardar_id_resumen,
     obtener_id_embed,
-    obtener_id_resumen,
     obtener_top,
     obtener_ultimo_mensaje_global,
 )
@@ -46,11 +42,10 @@ from games import (
     GAMES,
     LEADERBOARD_CHANNEL,
     SUBMIT_CHANNEL,
-    SUMMARY_CHANNEL,
     get_game_by_island_code,
 )
 from gemini_service import extract_stats_from_image
-from widget_export import build_widget_t3d
+from widget_site import generar_widgets_json
 
 
 # Ruta de la plantilla T3D del widget (la misma para todos los juegos;
@@ -372,116 +367,6 @@ async def _actualizar_embed(
 
 
 # =====================================================================
-#  ARCHIVO .JSON DEL CANAL DE MODERADORES (1 por juego)
-# =====================================================================
-def _construir_json(game_key: str, game_config: dict, datos: dict) -> str:
-    """JSON con el leaderboard de un juego, valores formateados (legible)."""
-    leaderboards = {}
-    for stat_key, top in datos.items():
-        stat_info = game_config["stats"][stat_key]
-        fmt = stat_info.get("format", "raw")
-        leaderboards[stat_key] = [
-            {
-                "name": fila["username"],
-                "value": format_value(int(fila["best_value"]), fmt),
-                "isVip": bool(fila.get("is_vip", False)),
-            }
-            for fila in top
-        ]
-
-    documento = {
-        "game": game_config["display_name"],
-        "updated_at": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
-        "leaderboards": leaderboards,
-    }
-    return json.dumps(documento, indent=2, ensure_ascii=False)
-
-
-async def _actualizar_resumen(
-    canal: discord.TextChannel, game_key: str, game_config: dict
-) -> None:
-    """
-    Borra el mensaje anterior y envía uno nuevo con un .txt por stat:
-    cada .txt es el T3D del widget de UEFN ya rellenado (nombres,
-    valores, título y color de esa stat), listo para pegar con Ctrl+V
-    en el Designer del WBP_LeaderboardData.
-    """
-    plantilla = _cargar_plantilla_widget()
-
-    # Construimos un archivo .txt por cada stat del juego.
-    archivos: list[discord.File] = []
-    if plantilla is not None:
-        for stat_key, stat_info in game_config["stats"].items():
-            top = await obtener_top(
-                game_key, stat_key, limit=game_config["top_size"]
-            )
-            fmt = stat_info.get("format", "raw")
-            # Filas con el valor ya formateado como se ve en el widget.
-            filas = [
-                {
-                    "name": fila["username"],
-                    "value": format_value(int(fila["best_value"]), fmt),
-                    "isVip": bool(fila.get("is_vip", False)),
-                }
-                for fila in top
-            ]
-            titulo = stat_info.get("title", stat_key.upper())
-            color = stat_info.get("widget_color")  # (r,g,b) 0-1 o None
-
-            t3d = build_widget_t3d(
-                template_t3d=plantilla,
-                rows=filas,
-                title=titulo,
-                color_rgb=color,
-                rows_count=game_config["top_size"],
-            )
-            archivos.append(
-                discord.File(
-                    io.BytesIO(t3d.encode("utf-8")),
-                    filename=f"{game_key}_{stat_key}_widget.txt",
-                )
-            )
-
-    # Borrar el mensaje anterior (si lo hay).
-    msg_id = await obtener_id_resumen(game_key)
-    if msg_id is not None:
-        try:
-            anterior = await canal.fetch_message(int(msg_id))
-            await anterior.delete()
-        except discord.NotFound:
-            pass
-        except discord.HTTPException as e:
-            print(f"[WARN] No pude borrar el resumen anterior de {game_key}: {e}")
-
-    emoji = game_config.get("emoji", "🎮")
-    mensaje_texto = (
-        f"{emoji} **{game_config['display_name']}** {emoji} — widgets UEFN\n"
-        f"_Updated: {datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')}_\n"
-        f"Un archivo por estadística. Descarga, abre, copia TODO y pégalo "
-        f"con Ctrl+V en el Designer del widget en UEFN."
-    )
-
-    if not archivos:
-        # Sin plantilla no hay nada que adjuntar; avisamos en el canal.
-        mensaje_texto += (
-            "\n\n⚠️ No encontré la plantilla del widget en el repositorio, "
-            "así que no pude generar los archivos. Revisa que exista "
-            "`widget_templates/leaderboard_widget.t3d`."
-        )
-        try:
-            nuevo = await canal.send(content=mensaje_texto)
-            await guardar_id_resumen(game_key, str(nuevo.id))
-        except discord.HTTPException as e:
-            print(f"[ERROR] No pude enviar el aviso de {game_key}: {e}")
-        return
-
-    try:
-        nuevo = await canal.send(content=mensaje_texto, files=archivos)
-        await guardar_id_resumen(game_key, str(nuevo.id))
-    except discord.HTTPException as e:
-        print(f"[ERROR] No pude enviar los widgets de {game_key}: {e}")
-
-
 # =====================================================================
 #  ORQUESTADOR
 # =====================================================================
@@ -505,20 +390,10 @@ async def on_ready():
             print(f"[FATAL] Canal de leaderboards #{LEADERBOARD_CHANNEL}: {err or 'no encontrado'}.")
             return
 
-        c_summary, err = _resolver_canal(canales_texto, SUMMARY_CHANNEL)
-        if err or c_summary is None:
-            print(f"[WARN] Canal resumen #{SUMMARY_CHANNEL}: {err or 'no encontrado'}. Sigo sin él.")
-
         # --- Avisos de permisos ---
         p_lb = c_leaderboard.permissions_for(c_leaderboard.guild.me)
         if not p_lb.send_messages:
             print(f"[WARN] Sin 'Send Messages' en #{LEADERBOARD_CHANNEL}.")
-        if c_summary:
-            p_sm = c_summary.permissions_for(c_summary.guild.me)
-            if not p_sm.attach_files:
-                print(f"[WARN] Sin 'Attach Files' en #{SUMMARY_CHANNEL}: no podré subir el .json.")
-            if not p_sm.manage_messages:
-                print(f"[WARN] Sin 'Manage Messages' en #{SUMMARY_CHANNEL}: se acumularán mensajes.")
 
         # --- Leer mensajes nuevos del canal de envío ---
         ultimo_id = await obtener_ultimo_mensaje_global()
@@ -585,11 +460,21 @@ async def on_ready():
             except Exception as e:
                 print(f"[ERROR] Embed de '{game_key}': {e}")
 
-            if c_summary is not None:
-                try:
-                    await _actualizar_resumen(c_summary, game_key, game_config)
-                except Exception as e:
-                    print(f"[ERROR] Resumen de '{game_key}': {e}")
+        # --- Generar el JSON de widgets para la web ---
+        # Se regenera siempre que haya habido algún refresco (manual o
+        # con juegos cambiados), porque el JSON es global (todos los
+        # juegos en un archivo). Si nada cambió, no hace falta tocarlo.
+        if a_refrescar:
+            try:
+                plantilla = _cargar_plantilla_widget()
+                escrito = await generar_widgets_json(plantilla, obtener_top)
+                if not escrito:
+                    print(
+                        "[WEB] No se generó widgets.json (falta la "
+                        "plantilla en widget_templates/)."
+                    )
+            except Exception as e:
+                print(f"[ERROR] Generando widgets.json: {e}")
 
     finally:
         await client.close()
