@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Widgets · Brainrots Leaderboards</title>
+<style>
+  :root {
+    --bg: #0b0d12;
+    --panel: #141821;
+    --panel-2: #1b212d;
+    --line: #28303f;
+    --text: #e6ebf2;
+    --muted: #8893a6;
+    --accent: #9966ff;
+    --ok: #3ddc84;
+    --mono: ui-monospace, "SF Mono", "JetBrains Mono", "Fira Code", Consolas, monospace;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.5;
+    padding: 24px 16px 64px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; }
+
+  header { margin-bottom: 28px; }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-size: clamp(26px, 5vw, 40px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+  h1 .accent { color: var(--accent); }
+  .sub { color: var(--muted); margin-top: 10px; font-size: 15px; }
+  .sub code {
+    font-family: var(--mono);
+    background: var(--panel-2);
+    padding: 1px 6px;
+    border-radius: 5px;
+    color: var(--text);
+    font-size: 13px;
+  }
+
+  /* Tabs de juego */
+  .games {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 28px 0 4px;
+  }
+  .game-tab {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: border-color .15s, color .15s, background .15s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .game-tab:hover { color: var(--text); }
+  .game-tab[aria-selected="true"] {
+    color: #fff;
+    background: var(--panel-2);
+    border-color: var(--game, var(--accent));
+    box-shadow: inset 0 -2px 0 0 var(--game, var(--accent));
+  }
+  .game-tab .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--game, var(--accent));
+  }
+
+  /* Tabs de stat */
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 18px 0;
+  }
+  .stat-tab {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 7px 14px;
+    cursor: pointer;
+    transition: border-color .15s, color .15s;
+  }
+  .stat-tab:hover { color: var(--text); }
+  .stat-tab[aria-selected="true"] {
+    color: #0b0d12;
+    background: var(--game, var(--accent));
+    border-color: var(--game, var(--accent));
+  }
+
+  /* Panel */
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+  .panel-title {
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .updated {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .copy-btn {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 700;
+    color: #0b0d12;
+    background: var(--game, var(--accent));
+    border: none;
+    border-radius: 9px;
+    padding: 10px 18px;
+    cursor: pointer;
+    transition: transform .08s, filter .15s;
+    white-space: nowrap;
+  }
+  .copy-btn:hover { filter: brightness(1.08); }
+  .copy-btn:active { transform: translateY(1px); }
+  .copy-btn.done { background: var(--ok); }
+
+  /* Vista previa top */
+  .preview { padding: 14px 18px; border-bottom: 1px solid var(--line); }
+  .preview table { width: 100%; border-collapse: collapse; }
+  .preview td {
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 4px 0;
+    color: var(--text);
+  }
+  .preview td.rank { color: var(--muted); width: 34px; }
+  .preview td.val { text-align: right; color: var(--game, var(--accent)); font-weight: 600; }
+  .preview td.name { color: var(--text); }
+  .preview .vip { color: #ffd93d; }
+  .preview .empty { color: var(--muted); font-style: italic; }
+
+  /* Bloque de código */
+  .code-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 18px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  pre {
+    margin: 0;
+    padding: 0 18px 18px;
+    max-height: 280px;
+    overflow: auto;
+    font-family: var(--mono);
+    font-size: 11px;
+    line-height: 1.5;
+    color: #aeb6c4;
+    white-space: pre;
+  }
+  pre::-webkit-scrollbar { height: 8px; width: 8px; }
+  pre::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
+
+  .empty-state {
+    padding: 40px 18px;
+    text-align: center;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 14px;
+  }
+  footer {
+    margin-top: 28px;
+    color: var(--muted);
+    font-size: 13px;
+    font-family: var(--mono);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">UEFN · Leaderboard widgets</div>
+    <h1>Copia tu widget <span class="accent">y pégalo en UEFN</span></h1>
+    <p class="sub">Elige juego y estadística, pulsa <strong>Copiar widget</strong>, y pega con <code>Ctrl+V</code> en el Designer. Sin descargas.</p>
+  </header>
+
+  <div class="games" id="games" role="tablist" aria-label="Juegos"></div>
+  <div class="stats" id="stats" role="tablist" aria-label="Estadísticas"></div>
+
+  <div class="panel" id="panel">
+    <div class="empty-state" id="emptyState">Cargando widgets…</div>
+  </div>
+
+  <footer id="footer"></footer>
+</div>
+
+<script>
+const state = { data: null, game: 0, stat: 0 };
+
+async function load() {
+  try {
+    const res = await fetch('widgets.json?t=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    state.data = await res.json();
+    if (!state.data.games || !state.data.games.length) {
+      document.getElementById('emptyState').textContent =
+        'Aún no hay widgets generados. Vuelve cuando el bot haya corrido.';
+      return;
+    }
+    renderGames();
+    renderStats();
+    renderPanel();
+    document.getElementById('footer').textContent =
+      'Última actualización global: ' + (state.data.updated || '—');
+  } catch (e) {
+    document.getElementById('emptyState').textContent =
+      'No pude cargar widgets.json (' + e.message + ').';
+  }
+}
+
+function setVar(el, game) {
+  if (game && game.color) el.style.setProperty('--game', game.color);
+}
+
+function renderGames() {
+  const cont = document.getElementById('games');
+  cont.innerHTML = '';
+  state.data.games.forEach((g, i) => {
+    const b = document.createElement('button');
+    b.className = 'game-tab';
+    b.setAttribute('role', 'tab');
+    b.setAttribute('aria-selected', i === state.game);
+    if (g.color) b.style.setProperty('--game', g.color);
+    b.innerHTML = '<span class="dot"></span>' +
+      (g.emoji ? g.emoji + ' ' : '') + escapeHtml(g.name);
+    b.onclick = () => { state.game = i; state.stat = 0; renderGames(); renderStats(); renderPanel(); };
+    cont.appendChild(b);
+  });
+}
+
+function renderStats() {
+  const cont = document.getElementById('stats');
+  const game = state.data.games[state.game];
+  setVar(cont, game);
+  cont.innerHTML = '';
+  game.stats.forEach((s, i) => {
+    const b = document.createElement('button');
+    b.className = 'stat-tab';
+    b.setAttribute('role', 'tab');
+    b.setAttribute('aria-selected', i === state.stat);
+    if (game.color) b.style.setProperty('--game', game.color);
+    b.textContent = (s.emoji ? s.emoji + ' ' : '') + s.title;
+    b.onclick = () => { state.stat = i; renderStats(); renderPanel(); };
+    cont.appendChild(b);
+  });
+}
+
+function renderPanel() {
+  const panel = document.getElementById('panel');
+  const game = state.data.games[state.game];
+  const stat = game.stats[state.stat];
+  if (game.color) panel.style.setProperty('--game', game.color);
+
+  const rows = (stat.rows || []).map((r, i) => {
+    if (!r.name) {
+      return '<tr><td class="rank">' + (i+1) + '</td><td class="name empty" colspan="2">—</td></tr>';
+    }
+    const vip = r.isVip ? ' vip' : '';
+    const crown = r.isVip ? '👑 ' : '';
+    return '<tr><td class="rank">' + (i+1) + '</td>' +
+      '<td class="name' + vip + '">' + crown + escapeHtml(r.name) + '</td>' +
+      '<td class="val">' + escapeHtml(r.value || '') + '</td></tr>';
+  }).join('');
+
+  panel.innerHTML =
+    '<div class="panel-head">' +
+      '<div>' +
+        '<div class="panel-title">' + escapeHtml(game.name) + ' · ' + escapeHtml(stat.title) + '</div>' +
+        '<div class="updated">Actualizado: ' + escapeHtml(stat.updated || '—') + '</div>' +
+      '</div>' +
+      '<button class="copy-btn" id="copyBtn">Copiar widget</button>' +
+    '</div>' +
+    '<div class="preview"><table>' + rows + '</table></div>' +
+    '<div class="code-head">T3D · pégalo en el Designer de UEFN</div>' +
+    '<pre id="t3d"></pre>';
+
+  document.getElementById('t3d').textContent = stat.t3d || '';
+  document.getElementById('copyBtn').onclick = () => copyT3D(stat.t3d || '');
+}
+
+async function copyT3D(text) {
+  const btn = document.getElementById('copyBtn');
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (e) {
+    // Fallback para navegadores sin Clipboard API
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (_) {}
+    document.body.removeChild(ta);
+  }
+  btn.textContent = '¡Copiado!';
+  btn.classList.add('done');
+  setTimeout(() => { btn.textContent = 'Copiar widget'; btn.classList.remove('done'); }, 1600);
+}
+
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+load();
+</script>
+</body>
+</html>
