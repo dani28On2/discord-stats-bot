@@ -66,6 +66,7 @@ STATS_INCOME_CASH = {
         "format": "income",
         "emoji": "💰",
         "title": "MOST INCOME",
+        "widget_color": (1.0, 0.8705882, 0.1254902),  # amarillo
     },
     "cash": {
         "desc": (
@@ -86,6 +87,7 @@ STATS_INCOME_CASH = {
         "format": "money",
         "emoji": "💵",
         "title": "MOST CASH",
+        "widget_color": (0.0, 0.8823529, 0.0470588),  # verde
     },
 }
 
@@ -108,6 +110,7 @@ STATS_SPEED_WINS = {
         "format": "plain",   # -> '8.2K' (sin símbolo monetario)
         "emoji": "🏃",
         "title": "MOST SPEED",
+        "widget_color": (1.0, 0.0, 0.0),  # rojo
     },
     "wins": {
         "desc": (
@@ -124,6 +127,7 @@ STATS_SPEED_WINS = {
         "format": "plain",
         "emoji": "🏆",
         "title": "MOST WINS",
+        "widget_color": (1.0, 0.8705882, 0.1254902),  # amarillo
     },
 }
 
