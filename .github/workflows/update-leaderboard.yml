@@ -16,6 +16,10 @@ concurrency:
   group: actualizar-leaderboard
   cancel-in-progress: false
 
+# Permiso para que el bot haga commit de docs/widgets.json al repo.
+permissions:
+  contents: write
+
 jobs:
   actualizar:
     runs-on: ubuntu-latest
@@ -49,3 +53,17 @@ jobs:
           # refresca TODOS los embeds (manual) o solo los que cambiaron.
           GITHUB_EVENT_NAME: ${{ github.event_name }}
         run: python batch_update.py
+
+      - name: Publicar widgets en la web (commit de docs/widgets.json)
+        # Solo hace commit si el archivo cambió. Usa el GITHUB_TOKEN
+        # automático (no necesitas crear tokens personales).
+        run: |
+          if [ -n "$(git status --porcelain docs/widgets.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add docs/widgets.json
+            git commit -m "Actualizar widgets [skip ci]"
+            git push
+          else
+            echo "Sin cambios en docs/widgets.json; nada que publicar."
+          fi
