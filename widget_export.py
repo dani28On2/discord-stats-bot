@@ -183,6 +183,8 @@ def build_widget_t3d(
     title: str | None = None,
     color_rgb: tuple[float, float, float] | None = None,
     rows_count: int = WIDGET_ROWS,
+    template_project: str | None = None,
+    target_project: str | None = None,
 ) -> str:
     """
     Devuelve el T3D con los datos del leaderboard sustituidos.
@@ -195,8 +197,22 @@ def build_widget_t3d(
       color_rgb    : (r,g,b) 0-1 para el título y los valores. Si None,
                      no se tocan los colores.
       rows_count   : nº de filas del widget (por defecto 10).
+      template_project : nombre del proyecto UEFN de la plantilla (ej.
+                     "MT_LasersForBrainrots"). Es el MT_XXX que aparece
+                     en las rutas de la plantilla.
+      target_project : nombre del proyecto UEFN del juego destino (ej.
+                     "MT_KeyboardMusicParkour"). Si ambos están dados y
+                     son distintos, se reemplaza el proyecto en todas las
+                     rutas para que el widget pegue bien en ese proyecto.
     """
     out = template_t3d
+
+    # 0) Reescribir el proyecto en las rutas (ExportPath, etc.), si el
+    #    juego destino vive en otro proyecto UEFN distinto al de la
+    #    plantilla. Solo cambia el token MT_XXX; el resto de la ruta es
+    #    idéntico entre proyectos.
+    if template_project and target_project and template_project != target_project:
+        out = out.replace(template_project, target_project)
 
     # 1) Nombres y valores, fila por fila.
     for i in range(1, rows_count + 1):
