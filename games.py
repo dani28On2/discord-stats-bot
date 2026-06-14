@@ -36,6 +36,17 @@ SUMMARY_CHANNEL = "📊︱leaderboard-data"
 
 
 # ---------------------------------------------------------------------
+# Proyecto UEFN de la PLANTILLA del widget.
+# La plantilla (widget_templates/leaderboard_widget.t3d) se copió desde
+# este proyecto, así que sus rutas internas (ExportPath) contienen este
+# nombre. El bot lo reemplaza por el 'uefn_project' de cada juego al
+# generar su widget, para que las rutas apunten al proyecto correcto.
+# Si algún día rehaces la plantilla desde otro proyecto, cambia esto.
+# ---------------------------------------------------------------------
+TEMPLATE_UEFN_PROJECT = "MT_LasersForBrainrots"
+
+
+# ---------------------------------------------------------------------
 # Sufijos del juego (Verse: STRING_Abbrev). Mantener sincronizado con
 # formatting.ABBREV.
 # ---------------------------------------------------------------------
@@ -158,6 +169,7 @@ GAMES: dict[str, dict] = {
         "emoji": "💥",
         "island_code": "2943-6452-4033",
         "color": 0xFF3355,  # rojo coral (laser)
+        "uefn_project": "MT_LasersForBrainrots",
         "player_name_description": NOMBRE_JUGADOR_DESC,
         "stats": STATS_INCOME_CASH,
         "top_size": 10,
@@ -171,6 +183,7 @@ GAMES: dict[str, dict] = {
         "emoji": "⚡",
         "island_code": "7694-0608-3252",
         "color": 0xFFD93D,  # amarillo (flash/rayo)
+        "uefn_project": "MT_BeFlashForBrainrots",
         "player_name_description": NOMBRE_JUGADOR_DESC,
         "stats": STATS_INCOME_CASH,
         "top_size": 10,
@@ -184,6 +197,7 @@ GAMES: dict[str, dict] = {
         "emoji": "💪",
         "island_code": "4852-1373-7293",
         "color": 0x4ECDC4,  # verde turquesa (kick)
+        "uefn_project": "brainrot_template",
         "player_name_description": NOMBRE_JUGADOR_DESC,
         "stats": STATS_INCOME_CASH,
         "top_size": 10,
@@ -197,6 +211,7 @@ GAMES: dict[str, dict] = {
         "emoji": "⌨️",
         "island_code": "1931-6763-0020",
         "color": 0x9966FF,  # morado (sin chocar con los otros tres)
+        "uefn_project": "MT_KeyboardMusicParkour",
         "player_name_description": NOMBRE_JUGADOR_DESC,
         "stats": STATS_SPEED_WINS,
         "top_size": 10,
