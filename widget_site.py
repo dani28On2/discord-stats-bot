@@ -16,7 +16,7 @@ import os
 from datetime import datetime, timezone
 
 from formatting import format_value
-from games import GAMES
+from games import GAMES, TEMPLATE_UEFN_PROJECT
 from widget_export import build_widget_t3d
 
 _DIR = os.path.dirname(os.path.abspath(__file__))
@@ -89,6 +89,8 @@ async def generar_widgets_json(plantilla: str | None, obtener_top) -> bool:
                 title=titulo,
                 color_rgb=color,
                 rows_count=game_config["top_size"],
+                template_project=TEMPLATE_UEFN_PROJECT,
+                target_project=game_config.get("uefn_project"),
             )
 
             stats.append(
