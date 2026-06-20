@@ -209,6 +209,7 @@ GAMES: dict[str, dict] = {
     "keyboard_escape": {
         "display_name": "Keyboard Escape",
         "emoji": "⌨️",
+        "enabled": False,  # desactivado: ignora capturas y no se muestra
         "island_code": "1931-6763-0020",
         "color": 0x9966FF,  # morado (sin chocar con los otros tres)
         "uefn_project": "MT_KeyboardMusicParkour",
@@ -255,3 +256,12 @@ def get_game_by_island_code(island_code: str) -> tuple[str, dict] | None:
         if _normalizar_codigo(cfg.get("island_code", "")) == objetivo:
             return key, cfg
     return None
+
+
+def game_enabled(game_config: dict) -> bool:
+    """
+    True si el juego está activo. Un juego se desactiva poniendo
+    'enabled': False en su config. Si el campo no existe, se considera
+    activo (para no romper juegos que no lo declaren).
+    """
+    return game_config.get("enabled", True)
