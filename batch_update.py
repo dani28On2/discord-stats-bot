@@ -42,6 +42,7 @@ from games import (
     GAMES,
     LEADERBOARD_CHANNEL,
     SUBMIT_CHANNEL,
+    game_enabled,
     get_game_by_island_code,
 )
 from gemini_service import extract_stats_from_image
@@ -204,6 +205,16 @@ async def _procesar_mensaje(message: discord.Message) -> str | None:
         return None
 
     game_key, game_config = juego
+
+    # 2.4) Si el juego está DESACTIVADO (enabled: False en games.py),
+    #       ignoramos la captura en silencio: ni se procesa, ni se guarda,
+    #       ni se responde al usuario.
+    if not game_enabled(game_config):
+        print(
+            f"[INFO] msg {message.id}: juego '{game_key}' desactivado; "
+            f"ignoro la captura en silencio."
+        )
+        return None
 
     # 2.5) Verificar que el NOMBRE del jugador se ve completo en la
     #      captura. Sin esto, se nos colaría como username el que dice
@@ -452,6 +463,15 @@ async def on_ready():
         else:
             a_refrescar = set()
             print("[BATCH] Ningún juego cambió. No se refrescan embeds.")
+
+        # Excluir juegos desactivados (enabled: False): no se refrescan
+        # sus embeds.
+        desactivados = {
+            k for k in a_refrescar if not game_enabled(GAMES[k])
+        }
+        if desactivados:
+            print(f"[BATCH] Juegos desactivados (omitidos): {sorted(desactivados)}")
+        a_refrescar = a_refrescar - desactivados
 
         for game_key in a_refrescar:
             game_config = GAMES[game_key]
