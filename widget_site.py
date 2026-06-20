@@ -16,7 +16,7 @@ import os
 from datetime import datetime, timezone
 
 from formatting import format_value
-from games import GAMES, TEMPLATE_UEFN_PROJECT
+from games import GAMES, TEMPLATE_UEFN_PROJECT, game_enabled
 from widget_export import build_widget_t3d
 
 _DIR = os.path.dirname(os.path.abspath(__file__))
@@ -66,6 +66,9 @@ async def generar_widgets_json(plantilla: str | None, obtener_top) -> bool:
     juegos = []
 
     for game_key, game_config in GAMES.items():
+        # Saltar juegos desactivados (enabled: False): no aparecen en la web.
+        if not game_enabled(game_config):
+            continue
         stats = []
         for stat_key, stat_info in game_config["stats"].items():
             top = await obtener_top(
