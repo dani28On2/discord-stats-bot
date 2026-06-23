@@ -36,6 +36,9 @@ from database import (
     obtener_id_embed,
     obtener_top,
     obtener_ultimo_mensaje_global,
+    añadir_pendiente,
+    listar_pendientes,
+    quitar_pendiente,
 )
 from formatting import format_value, parse_abbrev
 from games import (
@@ -45,7 +48,7 @@ from games import (
     game_enabled,
     get_game_by_island_code,
 )
-from gemini_service import extract_stats_from_image
+from gemini_service import GeminiTransientError, extract_stats_from_image
 from widget_site import generar_widgets_json
 
 
@@ -178,8 +181,13 @@ async def _procesar_mensaje(message: discord.Message) -> str | None:
         image_bytes = await attachment.read()
         stats = await extract_stats_from_image(image_bytes, attachment.content_type)
         print(f"[DEBUG] msg {message.id}: {stats}")
+    except GeminiTransientError:
+        # Error transitorio (sobrecarga/timeout): NO avisamos al usuario.
+        # Se propaga para que el orquestador lo encole y lo reintente en
+        # la siguiente pasada.
+        raise
     except Exception as error:
-        print(f"[WARN] msg {message.id}: error en Gemini: {error}")
+        print(f"[WARN] msg {message.id}: error definitivo en Gemini: {error}")
         contenido, am = _build_rejection(message, "gemini_error")
         await message.reply(contenido, allowed_mentions=am)
         return None
@@ -299,6 +307,75 @@ async def _procesar_mensaje(message: discord.Message) -> str | None:
         mention_author=False,
     )
     return game_key
+
+
+# Nº máximo de pasadas (ejecuciones) que reintentamos una captura en cola
+# antes de rendirnos y avisar al usuario.
+MAX_PASADAS_PENDIENTE = 5
+
+
+async def _procesar_cola_pendientes(
+    c_submit: discord.TextChannel, juegos_tocados: set[str]
+) -> None:
+    """
+    Reintenta las capturas que quedaron en cola por errores transitorios
+    de Gemini en pasadas anteriores. Por cada una:
+      - La recupera del canal por su ID.
+      - Intenta procesarla de nuevo.
+      - Si funciona: la quita de la cola y marca el juego para refrescar.
+      - Si vuelve a fallar por Gemini: incrementa su contador; si llega a
+        MAX_PASADAS_PENDIENTE, avisa al usuario y la quita de la cola.
+      - Si el mensaje ya no existe (borrado): la quita de la cola.
+    """
+    pendientes = await listar_pendientes()
+    if not pendientes:
+        return
+
+    print(f"[QUEUE] {len(pendientes)} captura(s) pendiente(s) por reintentar.")
+    for message_id, intentos in pendientes:
+        try:
+            message = await c_submit.fetch_message(int(message_id))
+        except discord.NotFound:
+            print(f"[QUEUE] msg {message_id} ya no existe; lo saco de la cola.")
+            await quitar_pendiente(message_id)
+            continue
+        except discord.HTTPException as e:
+            print(f"[QUEUE] No pude recuperar msg {message_id}: {e}. Lo dejo en cola.")
+            continue
+
+        if not message.attachments:
+            await quitar_pendiente(message_id)
+            continue
+
+        try:
+            game_key = await _procesar_mensaje(message)
+        except GeminiTransientError as e:
+            nuevos_intentos = intentos + 1
+            if nuevos_intentos >= MAX_PASADAS_PENDIENTE:
+                # Nos rendimos: ahora sí avisamos al usuario.
+                print(
+                    f"[QUEUE] msg {message_id} agotó {MAX_PASADAS_PENDIENTE} "
+                    f"pasadas; aviso al usuario y lo saco de la cola."
+                )
+                contenido, am = _build_rejection(message, "gemini_error")
+                try:
+                    await message.reply(contenido, allowed_mentions=am)
+                except discord.HTTPException:
+                    pass
+                await quitar_pendiente(message_id)
+            else:
+                print(
+                    f"[QUEUE] msg {message_id} sigue fallando "
+                    f"({nuevos_intentos}/{MAX_PASADAS_PENDIENTE}); lo dejo en cola."
+                )
+                await añadir_pendiente(message_id, intentos=nuevos_intentos)
+            continue
+
+        # Se procesó (bien o rechazada por otro motivo): sale de la cola.
+        await quitar_pendiente(message_id)
+        if game_key:
+            juegos_tocados.add(game_key)
+            print(f"[QUEUE] msg {message_id} procesada con éxito en reintento.")
 
 
 # =====================================================================
@@ -424,15 +501,27 @@ async def on_ready():
                 )
             ]
 
-        # --- Procesar cada captura y trackear qué juegos hay que refrescar ---
+        # --- Procesar la COLA de pendientes primero (capturas que
+        #     fallaron por errores transitorios de Gemini en pasadas
+        #     anteriores). Se reintentan hasta MAX_PASADAS_PENDIENTE veces.
         juegos_tocados: set[str] = set()
+        await _procesar_cola_pendientes(c_submit, juegos_tocados)
+
+        # --- Procesar cada captura NUEVA y trackear qué juegos refrescar ---
         if mensajes:
             for message in mensajes:
                 if message.author == client.user:
                     continue
                 if not message.attachments:
                     continue
-                game_key = await _procesar_mensaje(message)
+                try:
+                    game_key = await _procesar_mensaje(message)
+                except GeminiTransientError as e:
+                    # Gemini sobrecargado: encolar para la próxima pasada,
+                    # sin avisar al usuario. El puntero igual avanza.
+                    print(f"[QUEUE] msg {message.id} encolada (Gemini transitorio): {e}")
+                    await añadir_pendiente(str(message.id), intentos=1)
+                    continue
                 if game_key:
                     juegos_tocados.add(game_key)
 
