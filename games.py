@@ -47,13 +47,14 @@ TEMPLATE_UEFN_PROJECT = "MT_LasersForBrainrots"
 
 
 # ---------------------------------------------------------------------
-# Sufijos del juego (Verse: STRING_Abbrev). Mantener sincronizado con
-# formatting.ABBREV.
+# Sufijos del juego (Verse: STRING_Abbrev). Se derivan automáticamente
+# de formatting.ABBREV para que SIEMPRE estén sincronizados: si cambias
+# la lista en formatting.py, esto se actualiza solo.
 # ---------------------------------------------------------------------
-SUFIJOS_DEL_JUEGO = (
-    "K, M, B, T, Qa, Qi, Sx, Sp, Oc, No, Dc, Un, Du, Tr, "
-    "Qt, Qn, Se, St, Og, Nn, Vg, UVg"
-)
+from formatting import ABBREV as _ABBREV
+
+# Todos los sufijos reales (sin el primero, que es "" = unidades).
+SUFIJOS_DEL_JUEGO = ", ".join(s for s in _ABBREV if s)
 
 # Stats compartidas (income/cash). Si en el futuro un juego tiene stats
 # distintas, defínelas en línea en su bloque y no uses esta plantilla.
