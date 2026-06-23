@@ -45,7 +45,7 @@ _client = genai.Client(api_key=GEMINI_API_KEY)
 #   503 -> UNAVAILABLE (modelo sobrecargado)
 #   500 / 504 -> errores internos / timeouts del servicio
 _TRANSIENT_STATUS_CODES = {429, 500, 503, 504}
-_MAX_REINTENTOS = 3  # 1 intento + 2 reintentos = 3 intentos en total
+_MAX_REINTENTOS = 2  # reintentos rápidos en el momento; si persiste, va a la cola
 _BACKOFF_BASE = 2.0  # segundos: 2, 4, 8...
 
 
@@ -241,15 +241,23 @@ def _extraer_sync(image_bytes: bytes, mime_type: str) -> dict:
     return parsed.model_dump()
 
 
+class GeminiTransientError(Exception):
+    """
+    Error transitorio de Gemini (sobrecarga 503, rate limit 429, timeout)
+    que persiste tras los reintentos rápidos. El bot lo trata encolando
+    la captura para reintentarla en la siguiente ejecución, SIN avisar al
+    usuario (no es culpa suya).
+    """
+
+
 async def extract_stats_from_image(
     image_bytes: bytes, mime_type: str
 ) -> dict:
     """
-    Versión asíncrona con REINTENTOS para errores transitorios
-    (429 rate limit, 503 servicio sobrecargado, timeouts).
-
-    Si tras todos los intentos sigue fallando, propaga la excepción
-    para que el bot la trate como error final.
+    Hace un par de reintentos RÁPIDOS para errores transitorios momentáneos.
+    Si el error transitorio persiste, lanza GeminiTransientError para que
+    el bot encole la captura y la reintente en la siguiente pasada.
+    Los errores DEFINITIVOS (no transitorios) se propagan tal cual.
     """
     ultimo_error: Exception | None = None
     for intento in range(1, _MAX_REINTENTOS + 1):
@@ -258,22 +266,21 @@ async def extract_stats_from_image(
         except Exception as error:
             ultimo_error = error
             if not _es_error_transitorio(error):
-                # Error definitivo (no es de los que arregla esperar):
-                # no tiene sentido reintentar.
+                # Error definitivo (no lo arregla esperar): se propaga.
                 raise
             if intento >= _MAX_REINTENTOS:
                 break
 
-            # Backoff exponencial con un poco de jitter aleatorio:
-            # 2s, 4s, 8s ± 25%. Evita que reintentos paralelos coincidan.
+            # Backoff exponencial corto con jitter: 2s, 4s ± 25%.
             espera = _BACKOFF_BASE ** intento
             espera += random.uniform(0, espera * 0.25)
             print(
-                f"[RETRY] Gemini error transitorio (intento {intento}/"
-                f"{_MAX_REINTENTOS}), reintentando en {espera:.1f}s: {error}"
+                f"[RETRY] Gemini transitorio (intento {intento}/"
+                f"{_MAX_REINTENTOS}), reintento rápido en {espera:.1f}s: {error}"
             )
             await asyncio.sleep(espera)
 
-    # Se agotaron los reintentos: relanzamos el último error.
-    assert ultimo_error is not None
-    raise ultimo_error
+    # Agotados los reintentos rápidos y sigue siendo transitorio:
+    # lo marcamos como GeminiTransientError para que el bot lo ENCOLE
+    # en vez de avisar al usuario.
+    raise GeminiTransientError(str(ultimo_error)) from ultimo_error
