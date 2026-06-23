@@ -195,6 +195,65 @@ async def state_set(key: str, value: str) -> None:
     return await asyncio.to_thread(_state_set_sync, key, value)
 
 
+def _state_list_sync(prefix: str) -> list[dict]:
+    """Devuelve [{key, value}, ...] de todas las filas cuya key empieza por prefix."""
+    consulta = (
+        _supabase.table(STATE)
+        .select("key, value")
+        .like("key", f"{prefix}%")
+        .execute()
+    )
+    return consulta.data or []
+
+
+def _state_delete_sync(key: str) -> None:
+    _supabase.table(STATE).delete().eq("key", key).execute()
+
+
+async def state_list(prefix: str) -> list[dict]:
+    return await asyncio.to_thread(_state_list_sync, prefix)
+
+
+async def state_delete(key: str) -> None:
+    return await asyncio.to_thread(_state_delete_sync, key)
+
+
+# ---------------------------------------------------------------------
+# Cola de capturas PENDIENTES por reintentar.
+# Cuando Gemini falla con un error transitorio (sobrecarga, timeout), en
+# vez de avisar al usuario, guardamos la captura aquí y la reintentamos
+# en la siguiente ejecución del bot. Clave: pending:<message_id>.
+# El valor es el número de intentos ya realizados (como string).
+# ---------------------------------------------------------------------
+_PENDING_PREFIX = "pending:"
+
+
+async def añadir_pendiente(message_id: str, intentos: int = 1) -> None:
+    """Guarda/actualiza una captura pendiente con su contador de intentos."""
+    await state_set(f"{_PENDING_PREFIX}{message_id}", str(intentos))
+
+
+async def listar_pendientes() -> list[tuple[str, int]]:
+    """
+    Devuelve [(message_id, intentos), ...] de todas las capturas en cola.
+    """
+    filas = await state_list(_PENDING_PREFIX)
+    salida = []
+    for fila in filas:
+        mid = fila["key"][len(_PENDING_PREFIX):]
+        try:
+            intentos = int(fila["value"])
+        except (ValueError, TypeError):
+            intentos = 1
+        salida.append((mid, intentos))
+    return salida
+
+
+async def quitar_pendiente(message_id: str) -> None:
+    """Saca una captura de la cola (se procesó bien o se agotó)."""
+    await state_delete(f"{_PENDING_PREFIX}{message_id}")
+
+
 # Helpers semánticos para que batch_update.py se lea mejor.
 # Ahora SOLO hay un canal de envío, así que el "último mensaje
 # procesado" es un único valor global (no por juego).
